@@ -6,6 +6,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "./firebase.config";
 import StackNav from "./User/StacKNav2";
+import { Footer } from "./User/Screens/Footer";
 export default function App() {
   const [isLogedIn, setIsLogedIn] = useState(false);
   const [check, setcheck] = useState("");
@@ -19,7 +20,15 @@ export default function App() {
   return (
     <NavigationContainer>
       {console.log(check)}
-      {isLogedIn ? <StackNav /> : <StackNavigation />}
+      {isLogedIn ? (
+        <>
+          <StackNav />
+          <Footer />
+        </>
+      ) : (
+        <StackNavigation />
+      )}
+
       <StatusBar style="dark" />
     </NavigationContainer>
   );
