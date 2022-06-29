@@ -1,9 +1,15 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Slide_2 from './Screens/Logo/Slide_2/Slide_2';
-import Slide_3 from './Screens/Logo/Slide_3/Slide_3';
-import Slide_1 from './Screens/Logo/Slide_1/Slide_1';
-import Let_s_In from './Screens/Logo/Let_s_In/Let_s_In';
+import SecondView from './Screens/SecondView';
+import ThirdView from './Screens/ThirdView';
+import FirstView from './Screens/FirstView';
+import Let_s_In from './Screens/Let_s_In';
+import SignUp  from './Screens/SignUp';
+import Login from './Screens/Login.js';
+import ProfileFill from './Screens/ProfileFill.js'
+import Welcome from './Screens/Welcome';
+import MarkerDetail from './Screens/MarkerDetail'
+import SearchFilter from './Screens/SearchFilter'
 
 const Stack = createNativeStackNavigator()
 
@@ -11,13 +17,16 @@ const Stack = createNativeStackNavigator()
 const StackNavigation = () =>{
 return (
 <Stack.Navigator screenOptions={{headerShown: false}}>
-    <Stack.Group>
-      <Stack.Screen name="Slide_1" component={Slide_1} />
-      <Stack.Screen name="Slide_2" component={Slide_2} />
-      <Stack.Screen name="Slide_3" component={Slide_3} />
-      <Stack.Screen name="Let_s_In" component={Let_s_In} />
-
-      </Stack.Group>
+       <Stack.Screen name="Welcome" component={Welcome} />
+       <Stack.Screen name="FirstView" component={FirstView} />
+      <Stack.Screen name="SecondView" component={SecondView} />
+      <Stack.Screen name="ThirdView" component={ThirdView} />
+      <Stack.Screen name="Let_s_In" component={Let_s_In} /> 
+      <Stack.Screen name='Login' component={Login} />
+      <Stack.Screen name='SignUp' component={SignUp} />  
+       <Stack.Screen name='ProfileFill' component={ProfileFill} />
+      <Stack.Screen name="MarkerDetail" component={MarkerDetail} /> 
+       <Stack.Screen name='SearchFilter' component={SearchFilter} /> 
     </Stack.Navigator>
     )
 }
