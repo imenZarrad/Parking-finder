@@ -2,7 +2,8 @@ import { Dimensions } from 'react-native';
 
 import { StyleSheet } from 'react-native';
 
-const Iwidth = Dimensions.get('window').width / 2;
+const Iwidth = Dimensions.get('window').width ;
+const IHeigth = Dimensions.get('window').height;
 
 
 
@@ -22,7 +23,7 @@ export default StyleSheet.create({
         position: "relative",
         borderRadius: 50,
         width: Iwidth,
-        height: Iwidth,
+        height: IHeigth,
       },
       Txt444: {
         // position: "relative",

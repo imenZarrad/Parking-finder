@@ -1,7 +1,8 @@
 import { Dimensions } from 'react-native';
 import { StyleSheet } from 'react-native';
 
-const Iwidth = Dimensions.get('window').width / 2;
+const Iwidth = Dimensions.get('window').width;
+const IHeigth = Dimensions.get('window').height;
 
 
   export default StyleSheet.create({
@@ -10,7 +11,7 @@ const Iwidth = Dimensions.get('window').width / 2;
               alignItems: 'center',
               justifyContent: 'center',
               width: Iwidth,
-              height: Iwidth,
+              height: IHeigth,
           },
         container: {
           display: "flex",
@@ -20,14 +21,14 @@ const Iwidth = Dimensions.get('window').width / 2;
           position: "relative",
           borderRadius: 50,
           width: Iwidth,
-          height: Iwidth,
+          height: IHeigth,
         },
         Txt444: {
           // position: "relative",
           top: 500,
           left: 10,
           fontSize: 14,
-          fontFamily: "EBGaramond_400Regular",
+          // fontFamily: "EBGaramond_400Regular",
           
           fontWeight: "400",
           color: "rgba(0,0,0,1)",
@@ -60,7 +61,7 @@ const Iwidth = Dimensions.get('window').width / 2;
         },
         Txt864: {
           fontSize: 28,
-          fontFamily: "EBGaramond_600SemiBold,",
+          // fontFamily: "EBGaramond_600SemiBold,",
           fontWeight: "600",
           color: "rgba(0,0,0,1)",
           textAlign: "center",
@@ -108,7 +109,7 @@ const Iwidth = Dimensions.get('window').width / 2;
         },
         Txt653: {
           fontSize: 16,
-          fontFamily: "EBGaramond_500Medium",
+          // fontFamily: "EBGaramond_500Medium",
           fontWeight: "700",
           color: "rgba(255, 255, 255, 1)",
           textAlign: "center",
@@ -127,7 +128,7 @@ const Iwidth = Dimensions.get('window').width / 2;
         },
         Txt208: {
           fontSize: 16,
-          fontFamily: "EBGaramond_500Medium",
+          // fontFamily: "EBGaramond_500Medium",
           fontWeight: "700",
           color: "rgba(188,0,99,1)",
           textAlign: "center",
