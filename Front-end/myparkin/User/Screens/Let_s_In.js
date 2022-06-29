@@ -92,7 +92,6 @@ const styles = StyleSheet.create({
   },
   Txt428: {
     fontSize: 48,
-    // fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     color: "rgba(3, 52, 83, 1)",
     textAlign: "center",
@@ -130,7 +129,6 @@ const styles = StyleSheet.create({
   },
   Txt218: {
     fontSize: 14,
-    // fontFamily: "Poppins, sans-serif",
     fontWeight: "600",
     color: "rgba(0,0,0,1)",
     textAlign: "center",
@@ -159,7 +157,6 @@ const styles = StyleSheet.create({
   },
   Txt218: {
     fontSize: 14,
-    // fontFamily: "Poppins, sans-serif",
     fontWeight: "600",
     color: "rgba(0,0,0,1)",
     textAlign: "center",
@@ -187,7 +184,6 @@ const styles = StyleSheet.create({
   },
   Txt218: {
     fontSize: 14,
-    // fontFamily: "Poppins, sans-serif",
     fontWeight: "600",
     color: "rgba(0,0,0,1)",
     textAlign: "center",
@@ -213,7 +209,6 @@ const styles = StyleSheet.create({
   },
   Txt898: {
     fontSize: 16,
-    // fontFamily: "Montserrat, sans-serif",
     fontWeight: "700",
     color: "rgba(5,97,174,1)",
     textAlign: "center",
@@ -245,7 +240,6 @@ const styles = StyleSheet.create({
   },
   Txt191: {
     fontSize: 16,
-    // fontFamily: "Montserrat, sans-serif",
     fontWeight: "700",
     color: "rgba(5,97,174,1)",
     textAlign: "center",
@@ -261,7 +255,6 @@ const styles = StyleSheet.create({
   },
   Txt199: {
     fontSize: 16,
-    // fontFamily: "Montserrat, sans-serif",
     fontWeight: "400",
     color: "rgba(156,148,148,1)",
     textAlign: "center",
@@ -270,7 +263,6 @@ const styles = StyleSheet.create({
   },
   Txt561: {
     fontSize: 16,
-    // fontFamily: "Montserrat, sans-serif",
     fontWeight: "700",
     color: "rgba(5,97,174,1)",
     textAlign: "center",

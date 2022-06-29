@@ -1,49 +1,52 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, Image, Text, View, ImageBackground, Button, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Image,
+  Text,
+  View,
+  ImageBackground,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 
 export default function Slide_1() {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
   return (
     <View style={styles.GooglePixel}>
       <View style={styles.Android}>
         <View style={styles.Group135}>
           <View style={styles.imgcontainer}>
-          <Image
-          style={styles.Undraw_tourist_map_re_293e1}
-          source={require("./images/First.png")}
-        />
+            <Image
+              style={styles.Undraw_tourist_map_re_293e1}
+              source={require("./images/First.png")}
+            />
           </View>
-          {/* pargagraphe */}
-          <View style={styles.Group137}>    
-          <View style={styles.Group134}>
-            <View style={styles.Frame137}>
-              <Text style={styles.Txt411}>
-                Find Parking Places Around You Easily
+          <View style={styles.Group137}>
+            <View style={styles.Group134}>
+              <View style={styles.Frame137}>
+                <Text style={styles.Txt411}>
+                  Find Parking Places Around You Easily
+                </Text>
+              </View>
+              <Text style={styles.Txt9109}>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry.{" "}
               </Text>
             </View>
-            <Text style={styles.Txt9109}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.{" "}
-            </Text>
           </View>
-          </View> 
 
-          {/* small rectangle */}
-          {/* <View style={styles.Frame138}>
-            <View style={styles.Group138}>
-              <View style={styles.Rectangle3} />
-              <View style={styles.Rectangle1} />
-              <View style={styles.Rectangle2} />
-              </View>
-            </View> */}
-             
-          {/* buttons container */}
           <View style={styles.Group131}>
-            <TouchableOpacity style={styles.Group295} onPress={()=> navigation.navigate("SecondView")}>
-              <Text style={styles.Txt1074} onPress={()=> navigation.navigate("Slide_2")}>Next</Text>
+            <TouchableOpacity
+              style={styles.Group295}
+              onPress={() => navigation.navigate("SecondView")}
+            >
+              <Text style={styles.Txt1074}>Next</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.Group532} onPress={()=> navigation.navigate("Let_s_In")}>
+            <TouchableOpacity
+              style={styles.Group532}
+              onPress={() => navigation.navigate("Let_s_In")}
+            >
               <Text style={styles.Txt3610}>Skip</Text>
             </TouchableOpacity>
           </View>
@@ -100,11 +103,10 @@ const styles = StyleSheet.create({
     height: "100%",
     resizeMode: "cover",
   },
-  Group137:{
+  Group137: {
     // backgroundColor:"blue",
-    top:40,
-    height:"35%",
-    
+    top: 40,
+    height: "35%",
   },
 
   Group134: {
@@ -128,7 +130,6 @@ const styles = StyleSheet.create({
   },
   Txt411: {
     fontSize: 26,
-    // fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     color: "rgba(3, 52, 83, 1)",
     textAlign: "center",
@@ -138,7 +139,6 @@ const styles = StyleSheet.create({
   },
   Txt9109: {
     fontSize: 14,
-    // fontFamily: "Poppins, sans-serif",
     fontWeight: "400",
     color: "rgba(0,0,0,1)",
     textAlign: "center",
@@ -151,14 +151,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 48,
-    height:"10%",
+    height: "10%",
     // backgroundColor: "black",
   },
-  Group138:{
+  Group138: {
     // backgroundColor:"blue",
-    top:40,
-    height:"35%",
-    
+    top: 40,
+    height: "35%",
   },
   Rectangle3: {
     backgroundColor: "rgba(188,0,99,1)",
@@ -202,7 +201,6 @@ const styles = StyleSheet.create({
   },
   Txt1074: {
     fontSize: 16,
-    // fontFamily: "Montserrat, sans-serif",
     fontWeight: "700",
     color: "rgba(5,97,174,1)",
     textAlign: "center",
@@ -222,7 +220,6 @@ const styles = StyleSheet.create({
   },
   Txt3610: {
     fontSize: 16,
-    // fontFamily: "Montserrat, sans-serif",
     fontWeight: "700",
     color: "rgba(5,97,174,1)",
     textAlign: "center",

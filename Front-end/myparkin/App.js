@@ -1,14 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import StackNavigation from './User/StackNavigator';
-import { StatusBar } from 'expo-status-bar';
-
-
+import { StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import StackNavigation from "./User/StackNavigator";
+import { StatusBar } from "expo-status-bar";
+import { onAuthStateChanged } from "firebase/auth";
+import { useState } from "react";
+import { auth } from "./firebase.config";
+import StackNav from "./User/StacKNav2";
 export default function App() {
+  const [isLogedIn, setIsLogedIn] = useState(false);
+  const [check, setcheck] = useState("");
+  onAuthStateChanged(auth, (user) => {
+    if (user != null) {
+      const uid = user.email;
+      setIsLogedIn(true);
+      setcheck(uid);
+    }
+  });
   return (
     <NavigationContainer>
-      <StackNavigation />
-      <StatusBar style='dark' />
+      {console.log(check)}
+      {isLogedIn ? <StackNav /> : <StackNavigation />}
+      <StatusBar style="dark" />
     </NavigationContainer>
   );
 }
@@ -16,8 +28,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
