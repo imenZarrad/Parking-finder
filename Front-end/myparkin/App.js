@@ -23,7 +23,7 @@ export default function App() {
       {isLogedIn ? (
         <>
           <StackNav />
-          <Footer />
+          {/* <Footer /> */}
         </>
       ) : (
         <StackNavigation />
