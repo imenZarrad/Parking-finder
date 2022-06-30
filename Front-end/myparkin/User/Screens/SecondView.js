@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
     width: 38,
-    height: 17,
+    height: 20,
   },
 });
 
