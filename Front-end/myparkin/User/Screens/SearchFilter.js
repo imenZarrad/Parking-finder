@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
   },
   Txt503: {
     fontSize: 24,
-    fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     color: "rgba(0,0,0,1)",
     marginBottom: 45,
@@ -167,14 +166,12 @@ const styles = StyleSheet.create({
   },
   Txt559: {
     fontSize: 20,
-    fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     color: "rgba(0,0,0,1)",
     marginRight: 255,
   },
   Txt011: {
     fontSize: 16,
-    fontFamily: "Jost, sans-serif",
     fontWeight: "400",
     color: "rgba(188,0,99,1)",
   },
@@ -202,7 +199,6 @@ const styles = StyleSheet.create({
   },
   Txt9100: {
     fontSize: 16,
-    fontFamily: "Jost, sans-serif",
     fontWeight: "500",
     color: "rgba(255, 255, 255, 1)",
   },
@@ -223,7 +219,6 @@ const styles = StyleSheet.create({
   },
   Txt448: {
     fontSize: 16,
-    fontFamily: "Jost, sans-serif",
     fontWeight: "500",
     color: "rgba(188,0,99,1)",
   },
@@ -243,7 +238,6 @@ const styles = StyleSheet.create({
   },
   Txt448: {
     fontSize: 16,
-    fontFamily: "Jost, sans-serif",
     fontWeight: "500",
     color: "rgba(188,0,99,1)",
   },
@@ -272,7 +266,6 @@ const styles = StyleSheet.create({
   },
   Txt626: {
     fontSize: 20,
-    fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     color: "rgba(0,0,0,1)",
     marginBottom: 8,
@@ -337,7 +330,6 @@ const styles = StyleSheet.create({
   },
   Txt8510: {
     fontSize: 9,
-    fontFamily: "Jost, sans-serif",
     fontWeight: "500",
     color: "rgba(255, 255, 255, 1)",
     width: 27,
@@ -376,7 +368,6 @@ const styles = StyleSheet.create({
   },
   Txt013: {
     fontSize: 20,
-    fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     color: "rgba(0,0,0,1)",
     marginRight: 194,
@@ -417,7 +408,6 @@ const styles = StyleSheet.create({
   },
   Txt325: {
     fontSize: 15,
-    fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     color: "rgba(188,0,99,1)",
   },
@@ -437,7 +427,6 @@ const styles = StyleSheet.create({
   },
   Txt706: {
     fontSize: 15,
-    fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     color: "rgba(255, 255, 255, 1)",
   },

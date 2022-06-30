@@ -15,10 +15,8 @@ import {
 } from "react-native";
 import Lottie from "lottie-react-native";
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
-import {ListItem} from '@rneui/themed'
 
 export default function Iphone13ProMax61() {
-
   const [date, setDate] = useState(new Date());
 
   const onChange = (event, selectedDate) => {
@@ -31,19 +29,28 @@ export default function Iphone13ProMax61() {
       value: date,
       onChange,
       mode: currentMode,
-      is24Hour: true
-    })
+      is24Hour: true,
+    });
   };
 
   const showDatepicker = () => {
-    showMode('date');
+    showMode("date");
   };
 
   const validate = (text) => {
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     console.log(text, reg.test(text));
   };
-
+  const logOut = () => {
+    signOut(auth)
+      .then((res) => {
+        // setIsSignedIn(false);
+        alert("ok");
+      })
+      .catch((err) => {
+        alert(err.message, "eee");
+      });
+  };
   return (
     <KeyboardAvoidingView>
       <ScrollView
@@ -67,7 +74,9 @@ export default function Iphone13ProMax61() {
                   style={styles.FrameLottie}
                 />
               </TouchableWithoutFeedback>
-              <Text style={styles.Txt269}>Your Profile</Text>
+              <Text onPress={logOut} style={styles.Txt269}>
+                Your Profile
+              </Text>
             </View>
             <Image
               style={styles.Group158}
@@ -176,7 +185,6 @@ const styles = StyleSheet.create({
 
   Txt269: {
     fontSize: 29,
-    fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     lineHeight: 34,
     color: "rgba(0,0,0,1)",
@@ -267,7 +275,6 @@ const styles = StyleSheet.create({
   },
   Txt664: {
     fontSize: 10,
-    // fontFamily: "Poppins, sans-serif",
     fontWeight: "400",
     color: "rgba(183,176,176,1)",
     // marginRight: 213,
@@ -275,7 +282,7 @@ const styles = StyleSheet.create({
   Frame3: {
     width: 16,
     height: 16.52,
-    transform: [{ translateX: 270}, {translateY:-15 }],
+    transform: [{ translateX: 270 }, { translateY: -15 }],
   },
 
   Group162: {
@@ -295,7 +302,7 @@ const styles = StyleSheet.create({
   Frame4: {
     width: 16,
     height: 11.9,
-    transform: [{ translateX: 290}, {translateY:-55 }]
+    transform: [{ translateX: 290 }, { translateY: -55 }],
   },
 
   Group163: {
@@ -316,7 +323,7 @@ const styles = StyleSheet.create({
   Frame5: {
     width: 27,
     height: 18,
-    transform: [{translateY:-59 },{translateX: 3 }]
+    transform: [{ translateY: -59 }, { translateX: 3 }],
   },
   Frame6: {
     width: 6,
@@ -325,7 +332,6 @@ const styles = StyleSheet.create({
   },
   Txt856: {
     fontSize: 15,
-    // fontFamily: "Poppins, sans-serif",
     fontWeight: "600",
     color: "rgba(183,176,176,1)",
   },
@@ -346,7 +352,6 @@ const styles = StyleSheet.create({
   },
   Txt283: {
     fontSize: 15,
-    // fontFamily: "Poppins, sans-serif",
     fontWeight: "600",
     color: "rgba(183,176,176,1)",
     marginRight: 248,
@@ -370,7 +375,6 @@ const styles = StyleSheet.create({
   },
   Txt211: {
     fontSize: 16,
-    // fontFamily: "Montserrat, sans-serif",
     fontWeight: "700",
     color: "rgba(255, 255, 255, 1)",
     textAlign: "center",
