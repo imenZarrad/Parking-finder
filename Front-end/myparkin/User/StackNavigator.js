@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SecondView from './Screens/SecondView';
 import ThirdView from './Screens/ThirdView';
@@ -11,7 +11,10 @@ import Welcome from './Screens/Welcome';
 import MarkerDetail from './Screens/MarkerDetail'
 import SearchFilter from './Screens/SearchFilter'
 
-const Stack = createNativeStackNavigator()
+
+import  Map  from "./Screens/map/Map";
+
+const Stack = createNativeStackNavigator();
 
 
 const StackNavigation = () =>{
@@ -28,7 +31,7 @@ return (
       <Stack.Screen name="MarkerDetail" component={MarkerDetail} /> 
        <Stack.Screen name='SearchFilter' component={SearchFilter} /> 
     </Stack.Navigator>
-    )
-}
+  );
+};
 
 export default StackNavigation;

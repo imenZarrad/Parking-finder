@@ -15,9 +15,10 @@ import {
 } from "react-native";
 import Lottie from "lottie-react-native";
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
+import { useNavigation } from "@react-navigation/native";
 
 export default function Iphone13ProMax61() {
-
+  const navigation = useNavigation();
   const [date, setDate] = useState(new Date());
 
   const onChange = (event, selectedDate) => {
@@ -30,19 +31,28 @@ export default function Iphone13ProMax61() {
       value: date,
       onChange,
       mode: currentMode,
-      is24Hour: true
-    })
+      is24Hour: true,
+    });
   };
 
   const showDatepicker = () => {
-    showMode('date');
+    showMode("date");
   };
 
   const validate = (text) => {
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     console.log(text, reg.test(text));
   };
-
+  const logOut = () => {
+    signOut(auth)
+      .then((res) => {
+        // setIsSignedIn(false);
+        alert("ok");
+      })
+      .catch((err) => {
+        alert(err.message, "eee");
+      });
+  };
   return (
     <KeyboardAvoidingView>
       <ScrollView
@@ -57,79 +67,77 @@ export default function Iphone13ProMax61() {
           <View style={styles.Frame217}>
             <View style={styles.Frame159}>
               <TouchableWithoutFeedback
-                onPress={() => navigation.navigate("Let_s_In")}
+                onPress={() => navigation.navigate("SignUp")}
               >
                 <Lottie
-                  source={require("./assets/arrow.json")}
+                  source={require("./assets/arrow2.json")}
                   autoPlay
                   loop
                   style={styles.FrameLottie}
                 />
               </TouchableWithoutFeedback>
-              <Text style={styles.Txt269}>Your Profile</Text>
+              <Text onPress={logOut} style={styles.Txt269}>
+                Your Profile
+              </Text>
             </View>
             <Image
               style={styles.Group158}
               source={{
-                uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/hs7mujhdsdi-322%3A241?alt=media&token=e36f87a7-cf27-4382-bf10-a8eb634eb232",
+                uri: "https://img.icons8.com/cotton/452/user-male-circle.png",
               }}
             />
+             <Image
+                  style={styles.Frame14}
+                  source={{
+                    uri: "https://img.icons8.com/external-anggara-filled-outline-anggara-putra/452/external-edit-interface-anggara-filled-outline-anggara-putra.png",
+                  }}
+                />
             <SafeAreaView style={styles.Frame166}>
+              <View style={styles.Group159} >
               <TextInput
                 maxLength={10}
-                style={styles.Group159}
+                style={styles.Txt448}
                 placeholder='FullName'
               />
+              </View>
               {/* <TextInput maxLength={10} style={styles.Txt856} placeholder="FullName"/> */}
               {/* </View> */}
+              <View style={styles.Group159}>
               <TextInput
                 maxLength={7}
-                style={styles.Group160}
+                style={styles.Txt448}
                 placeholder='Username'
               />
+              </View>
               {/* <TextInput style={styles.Txt856} placeholder="Username"/> */}
               {/* </View> */}
-              <TouchableOpacity style={styles.Group161} onPress={showDatepicker}>
-                <Text style={styles.Txt664}>Birthdate: {String(date)}</Text>
+              <TouchableOpacity style={styles.Group160} onPress={showDatepicker}>
+                <Text style={styles.Txt448}>Birthdate: {String(date)}</Text>
                 <Image
                   style={styles.Frame3}
                   source={{
                     uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/hs7mujhdsdi-322%3A229?alt=media&token=b6cce5c3-d97e-4930-b501-8119c53dfd93",
                   }}
                 />
-                
                 </TouchableOpacity>
-                
-                
-              <TextInput style={styles.Group162} placeholder='Email' onChangeText={validate} />
-                
-                <Image
-                  style={styles.Frame4}
-                  source={{
-                    uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/hs7mujhdsdi-322%3A231?alt=media&token=286c1bcf-aca9-4069-8905-f21ef5dfa5af",
-                  }}
-                />
-              
-              <TextInput keyboardType="numeric" style={styles.Group163} placeholder='Phone Number'/>
-                <Image
+                <View style={styles.Group159}>
+              <TextInput style={styles.Txt448} placeholder='Email' onChangeText={validate} />
+               
+              </View>
+              <View style={styles.Group159}>
+              <TextInput keyboardType="numeric" style={styles.Txt448} placeholder='Phone Number'/>
+                {/* <Image
                   style={styles.Frame5}
                   source={{
                     uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Tunisia.svg/1280px-Flag_of_Tunisia.svg.png",
                   }}
-                />
-              <View style={styles.Group164}>
-                <Text style={styles.Txt283}>Gender</Text>
-                <Image
-                  style={styles.Frame7}
-                  source={{
-                    uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/hs7mujhdsdi-322%3A237?alt=media&token=6bfc21ad-de9f-4ffb-820b-a9fb826b6667",
-                  }}
-                />
-              </View>
-            </SafeAreaView>
-            <View style={styles.Frame165}>
+                /> */}
+                </View>
+              <View style={styles.Frame165}>
               <Text style={styles.Txt211}>Continue</Text>
             </View>
+            </SafeAreaView>
+            
           </View>
         </View>
       </ScrollView>
@@ -166,6 +174,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
+    // width:'100%',
+    // height:'100%'
   },
   Frame159: {
     display: "flex",
@@ -173,11 +183,11 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     // marginBottom: 17,
+    top:'7%'
   },
 
   Txt269: {
     fontSize: 29,
-    fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     lineHeight: 34,
     color: "rgba(0,0,0,1)",
@@ -190,6 +200,7 @@ const styles = StyleSheet.create({
     width: 132,
     height: 133,
     marginBottom: 17,
+    marginTop:'10%'
   },
   Frame166: {
     display: "flex",
@@ -202,56 +213,94 @@ const styles = StyleSheet.create({
     paddingRight: 0,
     marginBottom: 17,
     width: "100%",
-    height: "60%",
+    height: "50%",
+    // top:'4%'
+    marginLeft:'22%'
   },
   Group159: {
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 27,
-    paddingRight: 262,
-    marginBottom: 23,
-    borderRadius: 15,
-    backgroundColor: "rgba(217,217,217,0.5)",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "rgba(0,0,0,1)",
+    display: "flex",
+       flexDirection: "row",
+       alignItems: "center",
+       paddingTop: 17,
+       paddingBottom: 17,
+      //  paddingLeft: 26,
+      //  paddingRight: 5,
+      backgroundColor: "rgba(71, 192, 192, 0.08)",
+    // borderWidth: 1,
+    // borderStyle: "solid",
+    // borderColor: "rgba(0,0,0,1)",
+       marginBottom: 28,
+       borderRadius: 15,
+      //  backgroundColor: "rgba(71, 192, 192, 0.08)",
+       
+      //  backgroundColor:'blue',
+      width:'70%',
+      height:'17%'
+  },
+  Txt448: {
+    fontSize: 15,
+   //  fontFamily: "Montserrat, sans-serif",
+    fontWeight: "500",
+    color: "rgba(169,169,169,1)",
+   //  textAlign: "center",
+   //  justifyContent: "center",
     width: "100%",
-    height: "12%",
+    height: "100%",
+    // backgroundColor:'yellow',
+    marginLeft: "8%",
+    marginRight: "7%",
   },
 
   Group160: {
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 27,
-    paddingRight: 259,
-    marginBottom: 23,
-    borderRadius: 15,
-    backgroundColor: "rgba(217,217,217,0.5)",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "rgba(0,0,0,1)",
-    width: "100%",
-    height: "12%",
-    // color: "rgba(183,176,176,1)",
+    display: "flex",
+       flexDirection: "row",
+       alignItems: "center",
+       paddingTop: 17,
+       paddingBottom: 17,
+      //  paddingLeft: 26,
+      //  paddingRight: '%',
+      backgroundColor: "rgba(71, 192, 192, 0.08)",
+    // borderWidth: 1,
+    // borderStyle: "solid",
+    // borderColor: "rgba(0,0,0,1)",
+        marginLeft: '3%',
+        // paddingRight: '5%',
+
+       marginBottom: 28,
+       borderRadius: 15,
+      //  backgroundColor: "rgba(71, 192, 192, 0.08)",
+       
+      //  backgroundColor:'blue',
+      width:'60%',
+      height:'15%'
   },
 
   Group161: {
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 27,
-    paddingRight: 262,
-    marginBottom: 23,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingTop: 17,
+    paddingBottom: 17,
+   //  paddingLeft: 26,
+   //  paddingRight: '%',
+   backgroundColor: "rgba(71, 192, 192, 0.08)",
+ // borderWidth: 1,
+ // borderStyle: "solid",
+ // borderColor: "rgba(0,0,0,1)",
+     marginLeft: '3%',
+     // paddingRight: '5%',
+
+    marginBottom: 28,
     borderRadius: 15,
-    backgroundColor: "rgba(217,217,217,0.5)",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "rgba(0,0,0,1)",
-    width: "98%",
-    height: "12%",
+   //  backgroundColor: "rgba(71, 192, 192, 0.08)",
+    
+   //  backgroundColor:'blue',
+   width:'60%',
+   height:'15%',
+   marginLeft:'8%'
   },
   Txt664: {
     fontSize: 10,
-    // fontFamily: "Poppins, sans-serif",
     fontWeight: "400",
     color: "rgba(183,176,176,1)",
     // marginRight: 213,
@@ -259,7 +308,7 @@ const styles = StyleSheet.create({
   Frame3: {
     width: 16,
     height: 16.52,
-    transform: [{ translateX: 270}, {translateY:-15 }],
+    transform: [{ translateX: -10 }],
   },
 
   Group162: {
@@ -279,7 +328,7 @@ const styles = StyleSheet.create({
   Frame4: {
     width: 16,
     height: 11.9,
-    transform: [{ translateX: 290}, {translateY:-55 }]
+    transform: [{ translateX: 290 }, { translateY: -55 }],
   },
 
   Group163: {
@@ -300,7 +349,7 @@ const styles = StyleSheet.create({
   Frame5: {
     width: 27,
     height: 18,
-    transform: [{translateY:-59 },{translateX: 3 }]
+    transform: [{ translateY: -2 }, { translateX: -9 }],
   },
   Frame6: {
     width: 6,
@@ -309,7 +358,6 @@ const styles = StyleSheet.create({
   },
   Txt856: {
     fontSize: 15,
-    // fontFamily: "Poppins, sans-serif",
     fontWeight: "600",
     color: "rgba(183,176,176,1)",
   },
@@ -330,7 +378,6 @@ const styles = StyleSheet.create({
   },
   Txt283: {
     fontSize: 15,
-    // fontFamily: "Poppins, sans-serif",
     fontWeight: "600",
     color: "rgba(183,176,176,1)",
     marginRight: 248,
@@ -347,17 +394,22 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     paddingTop: 15,
     paddingBottom: 15,
-    paddingLeft: 128,
-    paddingRight: 128,
+    paddingLeft: 107,
+    paddingRight: 107,
     borderRadius: 50,
-    backgroundColor: "rgba(188,0,99,1)",
+    backgroundColor: "rgba(9, 66, 139, 1)",
+    marginRight:'18%'
   },
   Txt211: {
     fontSize: 16,
-    // fontFamily: "Montserrat, sans-serif",
     fontWeight: "700",
     color: "rgba(255, 255, 255, 1)",
     textAlign: "center",
     justifyContent: "center",
   },
+  Frame14:{
+    width: 27,
+    height: 18,
+    transform: [{ translateY: -40 }, { translateX: 59 }],
+  }
 });
