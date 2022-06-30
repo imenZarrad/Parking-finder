@@ -6,6 +6,7 @@ import Slide_1 from "./Screens/Logo/Slide_1/Slide_1";
 import Let_s_In from "./Screens/Logo/Let_s_In/Let_s_In";
 import LogIn from "./Screens/Logo/LogIn";
 import UserProfile from "./Screens/Logo/UserProfile";
+import EditProfile from "./Screens/Logo/EditProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +19,8 @@ const StackNavigation = () => {
         {/* <Stack.Screen name="Slide_3" component={Slide_3} /> */}
         {/* <Stack.Screen name="Let_s_In" component={Let_s_In} /> */}
         {/* <Stack.Screen name="UserProfile" component={UserProfile} /> */}
-        <Stack.Screen name="LogIn" component={LogIn} />
+        {/* <Stack.Screen name="LogIn" component={LogIn} /> */}
+        <Stack.Screen name="EditProfile" component={EditProfile} />
       </Stack.Group>
     </Stack.Navigator>
   );
