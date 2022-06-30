@@ -25,8 +25,8 @@ return (
       <Stack.Screen name='Login' component={Login} />
       <Stack.Screen name='SignUp' component={SignUp} />  
        <Stack.Screen name='ProfileFill' component={ProfileFill} />
-      <Stack.Screen name="MarkerDetail" component={MarkerDetail} /> 
-       <Stack.Screen name='SearchFilter' component={SearchFilter} /> 
+      {/* <Stack.Screen name="MarkerDetail" component={MarkerDetail} />  */}
+       {/* <Stack.Screen name='SearchFilter' component={SearchFilter} />  */}
     </Stack.Navigator>
     )
 }

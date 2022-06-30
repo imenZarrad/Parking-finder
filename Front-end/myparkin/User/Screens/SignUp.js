@@ -12,7 +12,7 @@ export default function Login() {
     <View style={styles.Iphone13ProMax59}>
       <View style={styles.Frame156}>
         <TouchableWithoutFeedback onPress={()=>navigation.navigate('Let_s_In')}>
-        <Lottie source={require('./assets/arrow.json')} autoPlay loop style={styles.FrameLottie}/>
+        <Lottie source={require('./assets/arrow2.json')} autoPlay loop style={styles.FrameLottie}/>
         </TouchableWithoutFeedback>
           <Text style={styles.Txt687}>Create Your Account</Text>
         
@@ -34,14 +34,18 @@ export default function Login() {
               }}
             />
             <TextInput style={styles.Txt1077} placeholder="Password"/>
-            <View style={styles.Group1}>
-              <Image
-                style={styles.Frame4}
-                source={{
-                  uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/mq4jswihp3-307%3A79?alt=media&token=644682b9-50be-4a64-811e-142f3d8d79c5",
-                }}
-              />
-            </View>
+            
+          </View>
+          <View style={styles.Group152}>
+            <Image
+              style={styles.Frame3}
+              source={{
+                uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/mq4jswihp3-307%3A60?alt=media&token=8a01e39e-840c-42f1-ad0e-adfa435c1a09",
+              }}
+            />
+            <TextInput style={styles.Txt1077} placeholder="Confirm"/>
+            
+            
           </View>
         </View>
         <View style={styles.Group155}>
@@ -95,29 +99,30 @@ const styles = StyleSheet.create({
        height: "100%",
      },
      Frame156: {
-       display: "flex",
+      display: "flex",
        flexDirection: "column",
        justifyContent: "center",
        alignItems: "center",
-       top:'-20%',
+       top:'0%',
        width:"100%"
 },
      FrameLottie:{
-       width: "20%",
-       height: "25%",
-       marginTop:"40%",
-       marginLeft:"-10%",
-       transform: [{ translateX: -25 }]
+      width: "20%",
+      height: "25%",
+      marginTop:"48%",
+      marginLeft:"-8%",
+      transform: [{ translateX: -25 }]
      },
      Txt687: {
-       fontSize: 48,
+      fontSize: 48,
       //  fontFamily: "Jost, sans-serif",
        fontWeight: "600",
        lineHeight: 56,
        color: "rgba(3, 52, 83, 1)",
        width: 391,
        marginBottom: 36,
-       paddingLeft:"10%",
+       paddingLeft:"20%",
+       marginTop:'-9%'
       //  paddingTop:"10%"
      },
    
@@ -127,67 +132,77 @@ const styles = StyleSheet.create({
        justifyContent: "center",
        alignItems: "center",
        marginBottom: 36,
+       marginTop:'-15%'
        
      },
      Group153: {
-       display: "flex",
-       flexDirection: "row",
-       alignItems: "center",
-       paddingTop: 17,
-       paddingBottom: 17,
-       paddingLeft: 26,
-       paddingRight: 252,
-       marginBottom: 28,
-       borderRadius: 15,
-       backgroundColor: "rgba(217,217,217,0.5)",
-       borderWidth: 1,
-       borderStyle: "solid",
-       borderColor: "rgba(0,0,0,1)",
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      paddingTop: 17,
+      paddingBottom: 17,
+     //  paddingLeft: 26,
+     //  paddingRight: 5,
+      marginBottom: 28,
+      borderRadius: 15,
+      backgroundColor: "rgba(71, 192, 192, 0.08)",
+  
+     //  backgroundColor:'blue'
+     width:'70%',
+     height:'14%'
      },
      Frame2: {
-       width: 15,
-       height: 11,
-       marginRight: 24,
+      width: "5%",
+      height: '58%',
+     //  marginRight: 24,
+     marginLeft:"10%",
+     marginRight:'7%'
      },
      Txt448: {
-       fontSize: 15,
+      fontSize: 15,
       //  fontFamily: "Montserrat, sans-serif",
        fontWeight: "500",
        color: "rgba(169,169,169,1)",
-       textAlign: "center",
-       justifyContent: "center",
-       width: 49,
-       height: 20,
+      //  textAlign: "center",
+      //  justifyContent: "center",
+       width: "100%",
+       height: "100%",
+      //  backgroundColor:'yellow'
      },
    
      Group152: {
-       display: "flex",
-       flexDirection: "row",
-       paddingTop: 17,
-       paddingBottom: 17,
-       paddingLeft: 30,
-       paddingRight: 23,
-       borderRadius: 15,
-       backgroundColor: "rgba(217,217,217,0.5)",
-       borderWidth: 1,
-       borderStyle: "solid",
-       borderColor: "rgba(0,0,0,1)",
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      paddingTop: 17,
+      paddingBottom: 17,
+     //  paddingLeft: 26,
+     //  paddingRight: 5,
+      marginBottom: 28,
+      borderRadius: 15,
+      backgroundColor: "rgba(71, 192, 192, 0.08)",
+     
+     //  backgroundColor:'blue'
+     width:'70%',
+     height:'14%'
      },
      Frame3: {
-       width: 12,
-       height: 15,
-       marginRight: 22,
+      width: "5%",
+      height: '60%',
+     //  marginRight: 24,
+     marginLeft:"10%",
+     marginRight:'7%'
      },
      Txt1077: {
-       fontSize: 15,
+      fontSize: 15,
       //  fontFamily: "Montserrat, sans-serif",
        fontWeight: "500",
        color: "rgba(169,169,169,1)",
-       textAlign: "center",
-       justifyContent: "center",
-       width: 81,
-       height: 20,
-       marginRight: 181,
+      //  textAlign: "center",
+      //  justifyContent: "center",
+       width: "100%",
+       height: "100%",
+      //  backgroundColor:'yellow'
      },
      Group1: {
        paddingTop: 2,
@@ -208,117 +223,125 @@ const styles = StyleSheet.create({
      },
    
      Group155: {
-       display: "flex",
-       flexDirection: "column",
-       alignItems: "center",
-     },
-     Frame155: {
-       display: "flex",
-       flexDirection: "column",
-       justifyContent: "center",
-       alignItems: "center",
-       marginBottom: 58,
-     },
-     Group154: {
-       display: "flex",
-       flexDirection: "row",
-       marginBottom: 32,
-     },
-     Rectangle13: {
-       borderWidth: 3,
-       borderStyle: "solid",
-       backgroundColor: "rgba(201,248,248,1)",
-       width: 18,
-       height: 19,
-       borderRadius: 6,
-       marginRight: 19,
-     },
-     Txt744: {
-       fontSize: 16,
-      //  fontFamily: "Jost, sans-serif",
-       fontWeight: "600",
-       color: "rgba(3, 52, 83, 1)",
-       textAlign: "center",
-       justifyContent: "center",
-     },
-     Frame1587: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+     //  backgroundColor:'red',
+      top:'-13%',
+    },
+    Frame155: {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
+      marginBottom: 50,
+     //  backgroundColor:'yellow',
+      top:'0%'
     },
-     Group151: {
-       paddingTop: 16,
-       paddingBottom: 14,
-       paddingLeft: 139,
-       paddingRight: 137,
-       marginBottom: 32,
-       borderRadius: 50,
-       backgroundColor: "rgba(201,248,248,1)",
-       width: 337,
-       height: 53,
-     },
-     Txt917: {
-       fontSize: 16,
-      //  fontFamily: "Montserrat, sans-serif",
-       fontWeight: "700",
-       color: "rgba(5,97,174,1)",
-       textAlign: "center",
-       justifyContent: "center",
-     },
-   
-     Txt744: {
-       fontSize: 16,
-      //  fontFamily: "Jost, sans-serif",
-       fontWeight: "600",
-       color: "rgba(3, 52, 83, 1)",
-       textAlign: "center",
-       justifyContent: "center",
-     },
-     Group150: {
-       marginBottom: 26,
-       width: 117,
-       height: 23,
-     },
-     Txt881: {
-       fontSize: 16,
-      //  fontFamily: "Jost, sans-serif",
-       fontWeight: "600",
-       color: "rgba(169,169,169,1)",
-       textAlign: "center",
-       justifyContent: "center",
-     },
-   
-     Group148: {
+    Group154: {
+      display: "flex",
+      flexDirection: "row",
+      marginBottom: 32,
+      
+    },
+    Rectangle13: {
+      borderWidth: 3,
+      borderStyle: "solid",
+      backgroundColor: "rgba(217,217,217,0.5)",
+      width: 18,
+      height: 19,
+      borderRadius: 6,
+      marginRight: 19,
+      
+    },
+    Txt744: {
+      fontSize: 16,
+     //  fontFamily: "Jost, sans-serif",
+      fontWeight: "600",
+      color: "rgba(3, 52, 83, 1)",
+      textAlign: "center",
+      justifyContent: "center",
+    },
+    Frame1587: {
+     display: "flex",
+     flexDirection: "column",
+     justifyContent: "center",
+     alignItems: "center",
+     top:'-10%',
+     // backgroundColor:'yellow',
+   },
+    Group151: {
+      paddingTop: 16,
+      paddingBottom: 14,
+      paddingLeft: 139,
+      paddingRight: 137,
+      marginBottom: 32,
+      borderRadius: 50,
+      backgroundColor: "rgba(9, 66, 139, 1)",
+      width: 337,
+      height: 53,
+    },
+    Txt917: {
+      fontSize: 16,
+     //  fontFamily: "Montserrat, sans-serif",
+      fontWeight: "700",
+      color: "white",
+      textAlign: "center",
+      justifyContent: "center",
+    },
+  
+    Txt744: {
+      fontSize: 16,
+     //  fontFamily: "Jost, sans-serif",
+      fontWeight: "600",
+      color: "rgba(3, 52, 83, 1)",
+      textAlign: "center",
+      justifyContent: "center",
+    },
+    Group150: {
       marginBottom: 26,
       width: 117,
       height: 23,
-     },
-     Group149: {
-       display: "flex",
-       flexDirection: "row",
-     },
-     Txt697: {
-       fontSize: 16,
-      //  fontFamily: "Montserrat, sans-serif",
-       fontWeight: "400",
-       color: "rgba(156,148,148,1)",
-       textAlign: "center",
-       justifyContent: "center",
-       width: 207,
-       height: 25,
-       marginRight: 4,
-     },
-     Txt644: {
-       fontSize: 16,
-      //  fontFamily: "Montserrat, sans-serif",
-       fontWeight: "700",
-       color: "rgba(5,97,174,1)",
-       textAlign: "center",
-       justifyContent: "center",
-       width: 65,
-       height: 25,
-     },
+    },
+    Txt881: {
+      fontSize: 16,
+     //  fontFamily: "Jost, sans-serif",
+      fontWeight: "600",
+      color: "rgba(169,169,169,1)",
+      textAlign: "center",
+      justifyContent: "center",
+    },
+  
+    Group148: {
+     marginBottom: 26,
+     width: 117,
+     height: 23,
+    },
+    Group149: {
+      display: "flex",
+      flexDirection: "row",
+    },
+    Txt697: {
+      fontSize: 16,
+     //  fontFamily: "Montserrat, sans-serif",
+      fontWeight: "400",
+      color: "rgba(156,148,148,1)",
+      textAlign: "center",
+      justifyContent: "center",
+      width: 207,
+      height: 25,
+      marginRight: 4,
+    },
+    Txt644: {
+      fontSize: 16,
+     //  fontFamily: "Montserrat, sans-serif",
+      fontWeight: "700",
+      color: "rgba(5,97,174,1)",
+      textAlign: "center",
+      justifyContent: "center",
+      width: 65,
+      height: 25,
+    },
    })
 
 

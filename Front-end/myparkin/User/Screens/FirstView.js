@@ -2,8 +2,9 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Image, Text, View, ImageBackground, Button, TouchableOpacity } from "react-native";
 
-export default function Slide_1() {
+export default function Slide_1(props) {
     const navigation = useNavigation();
+    console.log(props.route.params)
   return (
     <View style={styles.GooglePixel}>
       <View style={styles.Android}>
@@ -196,7 +197,7 @@ const styles = StyleSheet.create({
     paddingRight: 146,
     marginBottom: 8,
     borderRadius: 50,
-    backgroundColor: "rgba(101, 236, 244, 1)",
+    backgroundColor: "rgba(9, 66, 139, 1)",
     width: 337,
     height: "30%",
   },
@@ -204,7 +205,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     // fontFamily: "Montserrat, sans-serif",
     fontWeight: "700",
-    color: "rgba(5,97,174,1)",
+    color: "white",
     textAlign: "center",
     justifyContent: "center",
     width: 41,

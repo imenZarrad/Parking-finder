@@ -15,6 +15,7 @@ import {
 } from "react-native";
 import Lottie from "lottie-react-native";
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
+import {ListItem} from '@rneui/themed'
 
 export default function Iphone13ProMax61() {
 
@@ -75,50 +76,48 @@ export default function Iphone13ProMax61() {
               }}
             />
             <SafeAreaView style={styles.Frame166}>
+              <View style={styles.Group159} >
               <TextInput
                 maxLength={10}
-                style={styles.Group159}
+                style={styles.Txt448}
                 placeholder='FullName'
               />
+              </View>
               {/* <TextInput maxLength={10} style={styles.Txt856} placeholder="FullName"/> */}
               {/* </View> */}
+              <View style={styles.Group159}>
               <TextInput
                 maxLength={7}
-                style={styles.Group160}
+                style={styles.Txt448}
                 placeholder='Username'
               />
+              </View>
               {/* <TextInput style={styles.Txt856} placeholder="Username"/> */}
               {/* </View> */}
-              <TouchableOpacity style={styles.Group161} onPress={showDatepicker}>
-                <Text style={styles.Txt664}>Birthdate: {String(date)}</Text>
+              <TouchableOpacity style={styles.Group159} onPress={showDatepicker}>
+                <Text style={styles.Txt448}>Birthdate: {String(date)}</Text>
                 <Image
                   style={styles.Frame3}
                   source={{
                     uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/hs7mujhdsdi-322%3A229?alt=media&token=b6cce5c3-d97e-4930-b501-8119c53dfd93",
                   }}
                 />
-                
                 </TouchableOpacity>
-                
-                
-              <TextInput style={styles.Group162} placeholder='Email' onChangeText={validate} />
-                
-                <Image
-                  style={styles.Frame4}
-                  source={{
-                    uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/hs7mujhdsdi-322%3A231?alt=media&token=286c1bcf-aca9-4069-8905-f21ef5dfa5af",
-                  }}
-                />
-              
-              <TextInput keyboardType="numeric" style={styles.Group163} placeholder='Phone Number'/>
+                <View style={styles.Group159}>
+              <TextInput style={styles.Txt448} placeholder='Email' onChangeText={validate} />
+               
+              </View>
+              <View style={styles.Group159}>
+              <TextInput keyboardType="numeric" style={styles.Txt448} placeholder='Phone Number'/>
                 <Image
                   style={styles.Frame5}
                   source={{
                     uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Tunisia.svg/1280px-Flag_of_Tunisia.svg.png",
                   }}
                 />
-              <View style={styles.Group164}>
-                <Text style={styles.Txt283}>Gender</Text>
+                </View>
+              <View style={styles.Group159}>
+                <TextInput autoComplete="gender" style={styles.Txt448} placeholder='Gender'/>
                 <Image
                   style={styles.Frame7}
                   source={{
@@ -205,18 +204,35 @@ const styles = StyleSheet.create({
     height: "60%",
   },
   Group159: {
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 27,
-    paddingRight: 262,
-    marginBottom: 23,
-    borderRadius: 15,
-    backgroundColor: "rgba(217,217,217,0.5)",
+    display: "flex",
+       flexDirection: "row",
+       alignItems: "center",
+       paddingTop: 17,
+       paddingBottom: 17,
+      //  paddingLeft: 26,
+      //  paddingRight: 5,
+      backgroundColor: "rgba(217,217,217,0.5)",
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: "rgba(0,0,0,1)",
+       marginBottom: 28,
+       borderRadius: 15,
+      //  backgroundColor: "rgba(71, 192, 192, 0.08)",
+       
+      //  backgroundColor:'blue',
+      width:'70%',
+      height:'17%'
+  },
+  Txt448: {
+    fontSize: 15,
+   //  fontFamily: "Montserrat, sans-serif",
+    fontWeight: "500",
+    color: "rgba(169,169,169,1)",
+   //  textAlign: "center",
+   //  justifyContent: "center",
     width: "100%",
-    height: "12%",
+    height: "100%",
+    // backgroundColor:'yellow'
   },
 
   Group160: {
