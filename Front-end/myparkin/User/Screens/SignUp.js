@@ -90,7 +90,7 @@ export default function Login() {
                 <TextInput
                   style={styles.Txt448}
                   placeholder='Email'
-                  onChangeText={(text) => handleChange(text, "email")}
+                  // onChangeText={(text) => handleChange(text, "email")}
                 />
               </View>
               <View style={styles.Group152}>
@@ -103,7 +103,7 @@ export default function Login() {
                 <TextInput
                   style={styles.Txt1077}
                   placeholder='Password'
-                  onChangeText={(text) => handleChange(text, "password")}
+                  // onChangeText={(text) => handleChange(text, "password")}
                 />
               </View>
               <View style={styles.Group152}>
@@ -114,7 +114,7 @@ export default function Login() {
                   }}
                 />
                 <TextInput
-                  onChangeText={(text) => handleChange(text, "confirm")}
+                  // onChangeText={(text) => handleChange(text, "confirm")}
                   style={styles.Txt1077}
                   placeholder='Confirm'
                 />
@@ -126,7 +126,10 @@ export default function Login() {
                   <View style={styles.Rectangle13} />
                   <Text style={styles.Txt744}>Remember me</Text>
                 </View>
-                <TouchableOpacity style={styles.Group151} onPress={register}>
+                <TouchableOpacity style={styles.Group151}
+                onPress={()=>navigation.navigate('ProfileFill')}
+                //  onPress={register}
+                 >
                   <Text style={styles.Txt917}>Sign up</Text>
                 </TouchableOpacity>
               </View>

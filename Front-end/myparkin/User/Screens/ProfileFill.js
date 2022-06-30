@@ -15,8 +15,10 @@ import {
 } from "react-native";
 import Lottie from "lottie-react-native";
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
+import { useNavigation } from "@react-navigation/native";
 
 export default function Iphone13ProMax61() {
+  const navigation = useNavigation();
   const [date, setDate] = useState(new Date());
 
   const onChange = (event, selectedDate) => {
@@ -65,10 +67,10 @@ export default function Iphone13ProMax61() {
           <View style={styles.Frame217}>
             <View style={styles.Frame159}>
               <TouchableWithoutFeedback
-                onPress={() => navigation.navigate("Let_s_In")}
+                onPress={() => navigation.navigate("SignUp")}
               >
                 <Lottie
-                  source={require("./assets/arrow.json")}
+                  source={require("./assets/arrow2.json")}
                   autoPlay
                   loop
                   style={styles.FrameLottie}
@@ -81,9 +83,15 @@ export default function Iphone13ProMax61() {
             <Image
               style={styles.Group158}
               source={{
-                uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/hs7mujhdsdi-322%3A241?alt=media&token=e36f87a7-cf27-4382-bf10-a8eb634eb232",
+                uri: "https://img.icons8.com/cotton/452/user-male-circle.png",
               }}
             />
+             <Image
+                  style={styles.Frame14}
+                  source={{
+                    uri: "https://img.icons8.com/external-anggara-filled-outline-anggara-putra/452/external-edit-interface-anggara-filled-outline-anggara-putra.png",
+                  }}
+                />
             <SafeAreaView style={styles.Frame166}>
               <View style={styles.Group159} >
               <TextInput
@@ -103,7 +111,7 @@ export default function Iphone13ProMax61() {
               </View>
               {/* <TextInput style={styles.Txt856} placeholder="Username"/> */}
               {/* </View> */}
-              <TouchableOpacity style={styles.Group159} onPress={showDatepicker}>
+              <TouchableOpacity style={styles.Group160} onPress={showDatepicker}>
                 <Text style={styles.Txt448}>Birthdate: {String(date)}</Text>
                 <Image
                   style={styles.Frame3}
@@ -118,26 +126,18 @@ export default function Iphone13ProMax61() {
               </View>
               <View style={styles.Group159}>
               <TextInput keyboardType="numeric" style={styles.Txt448} placeholder='Phone Number'/>
-                <Image
+                {/* <Image
                   style={styles.Frame5}
                   source={{
                     uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Tunisia.svg/1280px-Flag_of_Tunisia.svg.png",
                   }}
-                />
+                /> */}
                 </View>
-              <View style={styles.Group159}>
-                <TextInput autoComplete="gender" style={styles.Txt448} placeholder='Gender'/>
-                <Image
-                  style={styles.Frame7}
-                  source={{
-                    uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/hs7mujhdsdi-322%3A237?alt=media&token=6bfc21ad-de9f-4ffb-820b-a9fb826b6667",
-                  }}
-                />
-              </View>
-            </SafeAreaView>
-            <View style={styles.Frame165}>
+              <View style={styles.Frame165}>
               <Text style={styles.Txt211}>Continue</Text>
             </View>
+            </SafeAreaView>
+            
           </View>
         </View>
       </ScrollView>
@@ -174,6 +174,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
+    // width:'100%',
+    // height:'100%'
   },
   Frame159: {
     display: "flex",
@@ -181,6 +183,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     // marginBottom: 17,
+    top:'7%'
   },
 
   Txt269: {
@@ -197,6 +200,7 @@ const styles = StyleSheet.create({
     width: 132,
     height: 133,
     marginBottom: 17,
+    marginTop:'10%'
   },
   Frame166: {
     display: "flex",
@@ -209,7 +213,9 @@ const styles = StyleSheet.create({
     paddingRight: 0,
     marginBottom: 17,
     width: "100%",
-    height: "60%",
+    height: "50%",
+    // top:'4%'
+    marginLeft:'22%'
   },
   Group159: {
     display: "flex",
@@ -219,10 +225,10 @@ const styles = StyleSheet.create({
        paddingBottom: 17,
       //  paddingLeft: 26,
       //  paddingRight: 5,
-      backgroundColor: "rgba(217,217,217,0.5)",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "rgba(0,0,0,1)",
+      backgroundColor: "rgba(71, 192, 192, 0.08)",
+    // borderWidth: 1,
+    // borderStyle: "solid",
+    // borderColor: "rgba(0,0,0,1)",
        marginBottom: 28,
        borderRadius: 15,
       //  backgroundColor: "rgba(71, 192, 192, 0.08)",
@@ -240,38 +246,58 @@ const styles = StyleSheet.create({
    //  justifyContent: "center",
     width: "100%",
     height: "100%",
-    // backgroundColor:'yellow'
+    // backgroundColor:'yellow',
+    marginLeft: "8%",
+    marginRight: "7%",
   },
 
   Group160: {
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 27,
-    paddingRight: 259,
-    marginBottom: 23,
-    borderRadius: 15,
-    backgroundColor: "rgba(217,217,217,0.5)",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "rgba(0,0,0,1)",
-    width: "100%",
-    height: "12%",
-    // color: "rgba(183,176,176,1)",
+    display: "flex",
+       flexDirection: "row",
+       alignItems: "center",
+       paddingTop: 17,
+       paddingBottom: 17,
+      //  paddingLeft: 26,
+      //  paddingRight: '%',
+      backgroundColor: "rgba(71, 192, 192, 0.08)",
+    // borderWidth: 1,
+    // borderStyle: "solid",
+    // borderColor: "rgba(0,0,0,1)",
+        marginLeft: '3%',
+        // paddingRight: '5%',
+
+       marginBottom: 28,
+       borderRadius: 15,
+      //  backgroundColor: "rgba(71, 192, 192, 0.08)",
+       
+      //  backgroundColor:'blue',
+      width:'60%',
+      height:'15%'
   },
 
   Group161: {
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 27,
-    paddingRight: 262,
-    marginBottom: 23,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingTop: 17,
+    paddingBottom: 17,
+   //  paddingLeft: 26,
+   //  paddingRight: '%',
+   backgroundColor: "rgba(71, 192, 192, 0.08)",
+ // borderWidth: 1,
+ // borderStyle: "solid",
+ // borderColor: "rgba(0,0,0,1)",
+     marginLeft: '3%',
+     // paddingRight: '5%',
+
+    marginBottom: 28,
     borderRadius: 15,
-    backgroundColor: "rgba(217,217,217,0.5)",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "rgba(0,0,0,1)",
-    width: "98%",
-    height: "12%",
+   //  backgroundColor: "rgba(71, 192, 192, 0.08)",
+    
+   //  backgroundColor:'blue',
+   width:'60%',
+   height:'15%',
+   marginLeft:'8%'
   },
   Txt664: {
     fontSize: 10,
@@ -282,7 +308,7 @@ const styles = StyleSheet.create({
   Frame3: {
     width: 16,
     height: 16.52,
-    transform: [{ translateX: 270 }, { translateY: -15 }],
+    transform: [{ translateX: -10 }],
   },
 
   Group162: {
@@ -323,7 +349,7 @@ const styles = StyleSheet.create({
   Frame5: {
     width: 27,
     height: 18,
-    transform: [{ translateY: -59 }, { translateX: 3 }],
+    transform: [{ translateY: -2 }, { translateX: -9 }],
   },
   Frame6: {
     width: 6,
@@ -368,10 +394,11 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     paddingTop: 15,
     paddingBottom: 15,
-    paddingLeft: 128,
-    paddingRight: 128,
+    paddingLeft: 107,
+    paddingRight: 107,
     borderRadius: 50,
-    backgroundColor: "rgba(188,0,99,1)",
+    backgroundColor: "rgba(9, 66, 139, 1)",
+    marginRight:'18%'
   },
   Txt211: {
     fontSize: 16,
@@ -380,4 +407,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
   },
+  Frame14:{
+    width: 27,
+    height: 18,
+    transform: [{ translateY: -40 }, { translateX: 59 }],
+  }
 });
