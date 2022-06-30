@@ -99,6 +99,7 @@ export default function Login() {
                   }}
                 />
                 <TextInput
+                  secureTextEntry={true}
                   onChangeText={(text) => handleChange(text, "password")}
                   style={styles.Txt1077}
                   placeholder="Password"

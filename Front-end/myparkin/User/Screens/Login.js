@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { signInWithEmailAndPassword,signOut } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../firebase.config";
 import {
   StyleSheet,
@@ -27,7 +27,7 @@ export default function Login() {
       .then((userCredential) => {
         const user = userCredential.user;
         alert(user.uid);
-        navigation.navigate("HestoryParking");
+        navigation.navigate("Map");
         // navigation.navigate("ProfileFill");
       })
       .catch((error) => {
@@ -211,7 +211,8 @@ const styles = StyleSheet.create({
     paddingRight: 252,
     marginBottom: 28,
     borderRadius: 15,
-    backgroundColor: "rgba(217,217,217,0.5)",
+    // backgroundColor: "rgba(217,217,217,0.5)",
+    // backgroundColor: "green",
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: "rgba(0,0,0,1)",
@@ -220,6 +221,7 @@ const styles = StyleSheet.create({
     width: 15,
     height: 11,
     marginRight: 24,
+    left:0
   },
   Txt448: {
     fontSize: 15,
@@ -227,8 +229,11 @@ const styles = StyleSheet.create({
     color: "rgba(169,169,169,1)",
     textAlign: "center",
     justifyContent: "center",
-    width: 49,
-    height: 20,
+    width: 280,
+    height: 30,
+    // backgroundColor: "blue",
+    position:"absolute",
+    left:30
   },
 
   Group152: {
