@@ -19,15 +19,15 @@ export default function App() {
   });
   return (
     <NavigationContainer>
-      {/* {console.log(check)}
+      {console.log(check)}
       {isLogedIn ? (
         <>
           <StackNav />
           <Footer />
         </>
-      ) : ( */}
+      ) : (
         <StackNavigation />
-      {/* )} */}
+      )}
 
       <StatusBar style="dark" />
     </NavigationContainer>
