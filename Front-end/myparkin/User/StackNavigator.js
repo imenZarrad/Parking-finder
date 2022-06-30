@@ -23,13 +23,15 @@ const StackNavigation = () => {
       <Stack.Screen name="FirstView" component={FirstView} />
       <Stack.Screen name="SecondView" component={SecondView} />
       <Stack.Screen name="ThirdView" component={ThirdView} />
+
       <Stack.Screen name="Let_s_In" component={Let_s_In} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="SignUp" component={SignUp} /> */}
       <Stack.Screen name="EditProfile" component={EditProfile} />
       {/* <Stack.Screen name='ProfileFill' component={ProfileFill} />
+
       <Stack.Screen name="MarkerDetail" component={MarkerDetail} /> 
-       <Stack.Screen name='SearchFilter' component={SearchFilter} />  */}
+       <Stack.Screen name='SearchFilter' component={SearchFilter} /> 
     </Stack.Navigator>
   );
 };

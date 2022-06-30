@@ -27,7 +27,7 @@ export default function Login() {
       .then((userCredential) => {
         const user = userCredential.user;
         alert(user.uid);
-        navigation.navigate("HestoryParking");
+        navigation.navigate("Map");
         // navigation.navigate("ProfileFill");
       })
       .catch((error) => {
@@ -71,7 +71,7 @@ export default function Login() {
               onPress={() => navigation.navigate("Let_s_In")}
             >
               <Lottie
-                source={require("./assets/arrow.json")}
+                source={require("./assets/arrow2.json")}
                 autoPlay
                 loop
                 style={styles.FrameLottie}
@@ -89,7 +89,7 @@ export default function Login() {
                 />
                 <TextInput
                   style={styles.Txt448}
-                  placeholder="Email"
+                  placeholder='Email'
                   onChangeText={(text) => handleChange(text, "email")}
                 />
               </View>
@@ -102,26 +102,16 @@ export default function Login() {
                 />
                 <TextInput
                   style={styles.Txt1077}
-                  placeholder="Password"
+                  placeholder='Password'
                   onChangeText={(text) => handleChange(text, "password")}
                 />
-                <View style={styles.Group1}>
-                  <Image
-                    style={styles.Frame4}
-                    source={{
-                      uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/mq4jswihp3-307%3A79?alt=media&token=644682b9-50be-4a64-811e-142f3d8d79c5",
-                    }}
-                  />
-                </View>
               </View>
             </View>
             <View style={styles.Group155}>
               <View style={styles.Frame155}>
                 <View style={styles.Group154}>
                   <View style={styles.Rectangle13} />
-                  <Text onPress={logOut} style={styles.Txt744}>
-                    Remember me
-                  </Text>
+                  <Text style={styles.Txt744}>Remember me</Text>
                 </View>
                 <TouchableOpacity style={styles.Group151} onPress={signIn}>
                   <Text style={styles.Txt917}>Sign in</Text>
@@ -137,10 +127,7 @@ export default function Login() {
                     uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/f120pi1r4t-324%3A287?alt=media&token=de1db7b7-0129-4d26-83bc-a150bb03687d",
                   }}
                 />
-                <TouchableOpacity
-                  style={styles.Group149}
-                  onPress={() => navigation.navigate("SignUp")}
-                >
+                <TouchableOpacity style={styles.Group149} onPress={signIn}>
                   <Text style={styles.Txt697}>Don't have any account?</Text>
                   <Text style={styles.Txt644}>Sign up</Text>
                 </TouchableOpacity>
@@ -173,24 +160,26 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    top: "-20%",
+    top: "-1.5%",
     width: "100%",
   },
   FrameLottie: {
     width: "20%",
     height: "25%",
-    marginTop: "30%",
+    marginTop: "40%",
     marginLeft: "-10%",
     transform: [{ translateX: -25 }],
   },
   Txt687: {
     fontSize: 48,
+    //  fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     lineHeight: 56,
     color: "rgba(3, 52, 83, 1)",
     width: 391,
     marginBottom: 36,
-    paddingLeft: "10%",
+    paddingLeft: "35%",
+    marginTop: "-10%",
     //  paddingTop:"10%"
   },
 
@@ -200,6 +189,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 36,
+    top: "-4%",
+    //  backgroundColor:'purple'
   },
   Group153: {
     display: "flex",
@@ -207,57 +198,69 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 17,
     paddingBottom: 17,
-    paddingLeft: 26,
-    paddingRight: 252,
+    //  paddingLeft: 26,
+    //  paddingRight: 5,
     marginBottom: 28,
     borderRadius: 15,
-    backgroundColor: "rgba(217,217,217,0.5)",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "rgba(0,0,0,1)",
+    backgroundColor: "rgba(71, 192, 192, 0.08)",
+
+    //  backgroundColor:'blue'
+    width: "70%",
+    height: "17%",
   },
   Frame2: {
-    width: 15,
-    height: 11,
-    marginRight: 24,
+    width: "5%",
+    height: "77%",
+    //  marginRight: 24,
+    marginLeft: "10%",
+    marginRight: "7%",
   },
   Txt448: {
     fontSize: 15,
+    //  fontFamily: "Montserrat, sans-serif",
     fontWeight: "500",
     color: "rgba(169,169,169,1)",
-    textAlign: "center",
-    justifyContent: "center",
-    width: 49,
-    height: 20,
+    //  textAlign: "center",
+    //  justifyContent: "center",
+    width: "100%",
+    height: "100%",
+    //  backgroundColor:'yellow'
   },
 
   Group152: {
     display: "flex",
     flexDirection: "row",
+    alignItems: "center",
     paddingTop: 17,
     paddingBottom: 17,
-    paddingLeft: 30,
-    paddingRight: 23,
+    //  paddingLeft: 26,
+    //  paddingRight: 5,
+    marginBottom: 28,
     borderRadius: 15,
-    backgroundColor: "rgba(217,217,217,0.5)",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "rgba(0,0,0,1)",
+    backgroundColor: "rgba(71, 192, 192, 0.08)",
+
+    //  backgroundColor:'blue'
+    width: "70%",
+    height: "17%",
   },
+
   Frame3: {
-    width: 12,
-    height: 15,
-    marginRight: 22,
+    width: "5%",
+    height: "77%",
+    //  marginRight: 24,
+    marginLeft: "10%",
+    marginRight: "7%",
   },
   Txt1077: {
     fontSize: 15,
+    //  fontFamily: "Montserrat, sans-serif",
     fontWeight: "500",
     color: "rgba(169,169,169,1)",
-    textAlign: "center",
-    justifyContent: "center",
-    width: 81,
-    height: 20,
-    marginRight: 181,
+    //  textAlign: "center",
+    //  justifyContent: "center",
+    width: "100%",
+    height: "100%",
+    //  backgroundColor:'yellow'
   },
   Group1: {
     paddingTop: 2,
@@ -269,25 +272,32 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderStyle: "solid",
     borderColor: "rgba(169,169,169,1)",
-    width: 17,
-    height: 14,
+    width: "50%",
+    height: "50%",
   },
   Frame4: {
-    width: 17,
-    height: 10,
+    width: "5%",
+    height: "40%",
+    //  marginRight: 24,
+    //  marginLeft:"10%",
+    //  marginRight:'7%'
   },
 
   Group155: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    //  backgroundColor:'red',
+    top: "-13%",
   },
   Frame155: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 58,
+    marginBottom: 50,
+    //  backgroundColor:'yellow',
+    top: "0%",
   },
   Group154: {
     display: "flex",
@@ -297,7 +307,7 @@ const styles = StyleSheet.create({
   Rectangle13: {
     borderWidth: 3,
     borderStyle: "solid",
-    backgroundColor: "rgba(201,248,248,1)",
+    backgroundColor: "rgba(217,217,217,0.5)",
     width: 18,
     height: 19,
     borderRadius: 6,
@@ -305,6 +315,7 @@ const styles = StyleSheet.create({
   },
   Txt744: {
     fontSize: 16,
+    //  fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     color: "rgba(3, 52, 83, 1)",
     textAlign: "center",
@@ -315,6 +326,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    top: "-10%",
+    // backgroundColor:'yellow',
   },
   Group151: {
     paddingTop: 16,
@@ -323,20 +336,22 @@ const styles = StyleSheet.create({
     paddingRight: 137,
     marginBottom: 32,
     borderRadius: 50,
-    backgroundColor: "rgba(201,248,248,1)",
+    backgroundColor: "rgba(9, 66, 139, 1)",
     width: 337,
     height: 53,
   },
   Txt917: {
     fontSize: 16,
+    //  fontFamily: "Montserrat, sans-serif",
     fontWeight: "700",
-    color: "rgba(5,97,174,1)",
+    color: "white",
     textAlign: "center",
     justifyContent: "center",
   },
 
   Txt744: {
     fontSize: 16,
+    //  fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     color: "rgba(3, 52, 83, 1)",
     textAlign: "center",
@@ -349,6 +364,7 @@ const styles = StyleSheet.create({
   },
   Txt881: {
     fontSize: 16,
+    //  fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     color: "rgba(169,169,169,1)",
     textAlign: "center",
@@ -366,6 +382,7 @@ const styles = StyleSheet.create({
   },
   Txt697: {
     fontSize: 16,
+    //  fontFamily: "Montserrat, sans-serif",
     fontWeight: "400",
     color: "rgba(156,148,148,1)",
     textAlign: "center",
@@ -376,6 +393,7 @@ const styles = StyleSheet.create({
   },
   Txt644: {
     fontSize: 16,
+    //  fontFamily: "Montserrat, sans-serif",
     fontWeight: "700",
     color: "rgba(5,97,174,1)",
     textAlign: "center",
