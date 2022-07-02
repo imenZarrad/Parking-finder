@@ -60,7 +60,9 @@ const styles = StyleSheet.create({
     bottom: 0,
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
+
     bottom:4.2,
+ 
   },
   Group1301: {
     display: "flex",
