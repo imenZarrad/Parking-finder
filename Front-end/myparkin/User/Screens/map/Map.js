@@ -1,7 +1,7 @@
 import * as React from "react";
 import MapView from "react-native-maps";
 import { Marker, Callout, Circle } from "react-native-maps";
-import { getDistance, getPreciseDistance } from "geolib";
+// import { getDistance, getPreciseDistance } from "geolib";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 import {

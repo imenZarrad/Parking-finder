@@ -25,10 +25,8 @@ export default function Login() {
   const signIn = () => {
     signInWithEmailAndPassword(auth, obj.email, obj.password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        alert(user.uid);
+        // const user = userCredential.user;
         navigation.navigate("Map");
-        // navigation.navigate("ProfileFill");
       })
       .catch((error) => {
         const errorCode = error.code;
