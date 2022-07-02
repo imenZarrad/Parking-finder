@@ -11,9 +11,10 @@ export default function Let_s_In() {
       <View style={styles.Android}>
         <View style={styles.Frame180}>
           <TouchableWithoutFeedback onPress={()=>navigation.navigate('Welcome')}>
-        <Lottie source={require('./assets/arrow.json')} autoPlay loop style={styles.FrameLottie}/>
+        <Lottie source={require('./assets/arrow2.json')} autoPlay loop style={styles.FrameLottie}/>
         </TouchableWithoutFeedback>
-          <Text style={styles.Txt428}>Let’s you in</Text>
+          <Lottie style={styles.Txt428} source={require('./assets/welcome.json')} autoPlay loop />
+
         </View>
         <View style={styles.Frame181}>
           <View style={styles.Group177}>
@@ -37,12 +38,10 @@ export default function Let_s_In() {
         </View>
         <View style={styles.Frame1781}>
           <View style={styles.Frame174}>
-          <View style={styles.Line2}></View>
-            <Text style={styles.Txt898}>{"   "}or</Text>
-            <View style={styles.Line2}></View>
+          
           </View>
           <TouchableOpacity style={styles.Frame178} onPress={()=> navigation.navigate("Login")}> 
-            <Text style={styles.Txt191}>Sign in with password</Text>
+            <Text style={styles.Txt191}>Sign in</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.Frame179} onPress={()=> navigation.navigate("SignUp")}>
             <Text style={styles.Txt199}>Don’t have an account?</Text>
@@ -74,30 +73,27 @@ const styles = StyleSheet.create({
     paddingRight: 18,
     borderRadius: 50,
     backgroundColor: "rgba(255, 255, 255, 1)",
-    height: "78%",
+    height: "70%",
     width: "100%"
   },
   FrameLottie:{
-    width: "40%",
-    height: "40%",
-    marginTop:"-10%",
-    marginLeft:"-15%"
+    width: "35%",
+    height: "35%",
+    top:"2%",
+    marginLeft:"43%"
   },
   Frame180: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    top:"15%",   
+    top:"4%",   
   },
   Txt428: {
-    fontSize: 48,
-    fontWeight: "600",
-    color: "rgba(3, 52, 83, 1)",
-    textAlign: "center",
-    justifyContent: "center",
-    width: "30%",
-    height: "30%",
+    width: "50%",
+    height: "50%",
+    marginLeft:"20%",
+    marginTop:"5%"
   },
 
   Frame181: {
@@ -105,8 +101,9 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 49,
-    paddingRight:25,
+    marginBottom: 29,
+    paddingRight:"1%",
+   
 
   },
   Group177: {
@@ -120,7 +117,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderWidth: 1,
     borderStyle: "solid",
-    borderColor: "rgba(0,0,0,1)",
+    borderColor: "rgba(71, 192, 192, 0.08)",
   },
   Frame2: {
     width: 27,
@@ -148,7 +145,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderWidth: 1,
     borderStyle: "solid",
-    borderColor: "rgba(0,0,0,1)",
+    borderColor: "rgba(71, 192, 192, 0.08)",
   },
   Frame3: {
     width: 27,
@@ -176,6 +173,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: "rgba(0,0,0,1)",
+    backgroundColor:'red'
   },
   Frame4: {
     width: 27,
@@ -199,6 +197,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height:"30%",
     paddingRight:20,
+    
   },
   Frame174: {
     display: "flex",
@@ -234,14 +233,14 @@ const styles = StyleSheet.create({
     paddingRight: 74,
     marginBottom: 64,
     borderRadius: 50,
-    backgroundColor: "rgba(201,248,248,1)",
+    backgroundColor: "rgba(9, 66, 139, 1)",
     
     
   },
   Txt191: {
     fontSize: 16,
     fontWeight: "700",
-    color: "rgba(5,97,174,1)",
+    color: "white",
     textAlign: "center",
     justifyContent: "center",
   },

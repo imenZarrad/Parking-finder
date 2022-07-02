@@ -15,6 +15,7 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import { Footer } from "../Footer";
 
 import { useState, useEffect } from "react";
 import MarkersInformation from "./MarkersInformation";
@@ -27,23 +28,34 @@ function Map({ navigation }) {
 
   const [parkingname, setparkingname] = useState("");
   const [parkingImage, setparkingImage] = useState("");
-  // const [price, setprice] = useState("");
+  const [price, setprice] = useState("");
   const [adress, setadress] = useState("");
+  const [number, setnumber] = useState("");
   const [oneparking, setoneParking] = useState([]);
   const [showParking, setshowParking] = useState(false);
   const [mapHieght, setmapHeight] = useState("88%");
 
   const { width, height } = Dimensions.get("window");
-  const ParkingToDisplay = (latitude) => {
+  const ParkingToDisplay = (latitudee, longitudee) => {
     let oneParking = MarkersInformation.filter((parking) => {
-      return parking.coordinate.latitude === latitude;
+      return parking.coordinate.latitude === latitudee;
     });
 
     setoneParking(oneParking);
     setparkingname(oneparking[0].parkingName);
-
+    setprice(oneParking[0].price);
+    setnumber(oneParking[0].number);
     setadress(oneparking[0].adress);
     setparkingImage(oneparking[0].image);
+    let Distance = getDistance(
+      { latitude: latitudee, longitude: longitudee },
+      { latitude: latitude, longitude: longitude }
+    );
+
+    setdistance(Distance);
+
+    console.log(distance, "aaaaaaaaaze");
+
     setshowParking(true);
     setmapHeight("50%");
   };
@@ -106,7 +118,10 @@ function Map({ navigation }) {
           return (
             <Marker
               onPress={(marker) =>
-                ParkingToDisplay(marker.nativeEvent.coordinate.latitude)
+                ParkingToDisplay(
+                  marker.nativeEvent.coordinate.latitude,
+                  marker.nativeEvent.coordinate.longitude
+                )
               }
               key={index}
               pinColor="green"
@@ -146,49 +161,19 @@ function Map({ navigation }) {
               style={styles.button}
               onPress={() =>
                 navigation.navigate("ParkingDetail", {
-                  parkingName: parkingname,
+                  parkingname: parkingname,
                   parkingImage: parkingImage,
+                  price: price,
+                  adress: adress,
+                  number: number,
+                  distance: distance,
                 })
               }
             ></Button>
           </View>
         </View>
       )}
-      <View style={styles.Group41010}>
-        <View style={styles.Group1301}>
-          <View style={styles.Group851}>
-            <Image
-              style={styles.Group99}
-              source={{
-                uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/pabo7awh17-79%3A921?alt=media&token=a1079220-cbc1-4e04-99be-256cbacf247d",
-              }}
-            />
-            <View style={styles.Group18}>
-              <View style={styles.Line7} />
-            </View>
-            <View style={styles.Group1085}>
-              <Image
-                style={styles.Group115}
-                source={{
-                  uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/pabo7awh17-79%3A931?alt=media&token=bc514255-d9ce-4e88-b654-88f89ce80898",
-                }}
-              />
-            </View>
-            <Image
-              style={styles.Vector1}
-              source={{
-                uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/pabo7awh17-79%3A912?alt=media&token=59b63bac-7858-411a-bf97-0136a86869a3",
-              }}
-            />
-          </View>
-          <View style={styles.Group0107}>
-            <Text style={styles.Txt747}>Home</Text>
-            <Text style={styles.Txt413}>Saved</Text>
-            <Text style={styles.Txt994}>Booking</Text>
-            <Text style={styles.Txt1072}>Profile</Text>
-          </View>
-        </View>
-      </View>
+      <Footer />
     </View>
   );
 }
@@ -321,7 +306,7 @@ const styles = StyleSheet.create({
     height: "20%",
     borderRadius: 30,
 
-    backgroundColor: "red",
+   
   },
 
   card: {
