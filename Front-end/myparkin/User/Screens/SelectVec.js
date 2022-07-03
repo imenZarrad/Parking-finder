@@ -2,16 +2,18 @@ import React from "react";
 import { StyleSheet, Image, Text, View, ImageBackground } from "react-native";
 import { Footer } from "./Footer";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { useState, useEffect } from "react";
 
-export default function () {
+export default function ({ route }) {
+  const [bookingReview, setbookingReview] = useState({});
+  useEffect(() => {
+    setbookingReview(route.params);
+  }, []);
+
   return (
     <View style={styles.Iphone13ProMax30}>
-      <Image
-        style={styles._5a3620812343531}
-        source={{
-          uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/41knei4xmdi-63%3A107?alt=media&token=ad8a4252-e8be-4af6-b52d-c3c8e5e732b2",
-        }}
-      />
+      {console.log(bookingReview)}
+
       <View style={styles.Group046}>
         <View style={styles.Group6107}>
           <Image
@@ -22,13 +24,28 @@ export default function () {
           />
           <Text style={styles.Txt321}>Select Your Vehicle</Text>
         </View>
-        {/* <View style={styles.Group616}>
-          <View style={styles.Group33}>
-            <Text style={styles.Txt376}>HGE 5295</Text>
-            <Text style={styles.Txt957}>4x4 Truck</Text>
+
+        <View style={styles.Group440}>
+          <View style={styles.Group286}>
+            <View style={styles.Group34}>
+              <Text style={styles.Txt987}>AFD 6397</Text>
+              <Text style={styles.Txt447}>Toyota Land Cruiser</Text>
+            </View>
+
+            <BouncyCheckbox
+              style={styles.Group70}
+              fillColor="rgba(16, 181, 241, 0.8)"
+            />
           </View>
-          <View style={styles.Ellipse40} />
-        </View> */}
+          <Image
+            style={
+              styles.KisspngToyotaLandCruiserPradoCarToyota86SportUtilToyotaLandCruiserWhiteCar5a755aed9f9d351
+            }
+            source={{
+              uri: "https://cdn.xxl.thumbs.canstockphoto.com/a-big-delivery-truck-isolated-on-white-stock-images_csp2474535.jpg",
+            }}
+          />
+        </View>
         <View style={styles.Group440}>
           <View style={styles.Group286}>
             <View style={styles.Group34}>
@@ -46,7 +63,7 @@ export default function () {
               styles.KisspngToyotaLandCruiserPradoCarToyota86SportUtilToyotaLandCruiserWhiteCar5a755aed9f9d351
             }
             source={{
-              uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/41knei4xmdi-63%3A111?alt=media&token=d1b38693-1102-4ad7-8af2-f54e10439b96",
+              uri: "https://catalogue.automobile.tn/big/2021/01/46499.jpg?t=1655500815",
             }}
           />
         </View>
@@ -88,28 +105,7 @@ export default function () {
               styles.KisspngToyotaLandCruiserPradoCarToyota86SportUtilToyotaLandCruiserWhiteCar5a755aed9f9d351
             }
             source={{
-              uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/41knei4xmdi-63%3A111?alt=media&token=d1b38693-1102-4ad7-8af2-f54e10439b96",
-            }}
-          />
-        </View>
-        <View style={styles.Group440}>
-          <View style={styles.Group286}>
-            <View style={styles.Group34}>
-              <Text style={styles.Txt987}>AFD 6397</Text>
-              <Text style={styles.Txt447}>Toyota Land Cruiser</Text>
-            </View>
-            {/* <View style={styles.Group70}></View> */}
-            <BouncyCheckbox
-              style={styles.Group70}
-              fillColor="rgba(16, 181, 241, 0.8)"
-            />
-          </View>
-          <Image
-            style={
-              styles.KisspngToyotaLandCruiserPradoCarToyota86SportUtilToyotaLandCruiserWhiteCar5a755aed9f9d351
-            }
-            source={{
-              uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/41knei4xmdi-63%3A111?alt=media&token=d1b38693-1102-4ad7-8af2-f54e10439b96",
+              uri: "https://upload.wikimedia.org/wikipedia/commons/7/74/Megelli_Sports_motorcycle.jpg",
             }}
           />
         </View>
@@ -129,10 +125,11 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     position: "relative",
     borderRadius: 50,
+    bottom: 25,
     backgroundColor: "rgba(255, 255, 255, 1)",
     width: "100%",
     height: "100%",
-    // backgroundColor: "yellow",
+    backgroundColor: "yellow",
   },
   _5a3620812343531: {
     position: "absolute",
