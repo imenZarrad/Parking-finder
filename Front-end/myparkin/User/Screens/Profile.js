@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   StyleSheet,
   Image,
@@ -6,12 +7,30 @@ import {
   View,
   ImageBackground,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import { Footer } from "./Footer";
+import { auth } from "../../firebase.config";
+import { signOut } from "firebase/auth";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { useNavigation } from "@react-navigation/native";
 export default function Profile() {
+  const data = useSelector((state) => state.bookplace.value);
+
+  const navigation = useNavigation();
+  const logOut = () => {
+    signOut(auth)
+      .then(() => {
+        alert("out");
+        navigation.navigate("Login");
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
   return (
     <View style={styles.Iphone13ProMax54}>
+      {console.log(data)}
       <View style={styles.Group282}>
         <ScrollView>
           <View style={styles.Group448}>
@@ -27,7 +46,10 @@ export default function Profile() {
                 <Text style={styles.Txt4910}>Profile</Text>
                 {/* <View style={styles.Group96}></View> */}
               </View>
-              <View style={styles.Group136}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("EditProfile")}
+                style={styles.Group136}
+              >
                 <Image
                   style={styles.Group123}
                   source={{
@@ -35,7 +57,7 @@ export default function Profile() {
                   }}
                 />
                 <Text style={styles.Txt1078}>Edit Profile</Text>
-              </View>
+              </TouchableOpacity>
               <View style={styles.Group134}>
                 <Image
                   style={styles.Group125}
@@ -78,7 +100,7 @@ export default function Profile() {
                 />
                 <Text style={styles.Txt1078}>Dark Theme</Text>
               </View>
-              <View style={styles.Group646}>
+              <TouchableOpacity onPress={logOut} style={styles.Group646}>
                 <Image
                   style={styles.Group129}
                   source={{
@@ -86,7 +108,7 @@ export default function Profile() {
                   }}
                 />
                 <Text style={styles.Txt631}>Logout</Text>
-              </View>
+              </TouchableOpacity>
             </View>
             <View style={styles.Group192}>
               <View style={styles.Group558}>
@@ -108,7 +130,10 @@ export default function Profile() {
             </View>
             <Text style={styles.Txt458}>Anabia Rani</Text>
 
-            <BouncyCheckbox style={styles.Vector5} fillColor="rgba(16, 181, 241, 0.8)" />
+            <BouncyCheckbox
+              style={styles.Vector5}
+              fillColor="rgba(16, 181, 241, 0.8)"
+            />
           </View>
         </ScrollView>
       </View>

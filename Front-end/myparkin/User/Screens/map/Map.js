@@ -2,8 +2,9 @@ import * as React from "react";
 import MapView from "react-native-maps";
 import { Marker, Callout, Circle } from "react-native-maps";
 import { getDistance, getPreciseDistance } from "geolib";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-
+import Carousel from "react-native-snap-carousel";
+import MyCarousel from "./parkingDetailOnPress";
+import { createRef } from "react";
 import {
   StyleSheet,
   Text,
@@ -13,6 +14,7 @@ import {
   Animated,
   Image,
   Button,
+  Pressable,
   TouchableOpacity,
 } from "react-native";
 import { Footer } from "../Footer";
@@ -22,10 +24,12 @@ import MarkersInformation from "./MarkersInformation";
 import * as Location from "expo-location";
 
 function Map({ navigation }) {
+  let mapRef = createRef();
+
   const [latitude, setlatitude] = useState(null);
   const [longitude, setlongitude] = useState(null);
   const [distance, setdistance] = useState(0);
-
+  const [nearestOne, setnearestOne] = useState(null);
   const [parkingname, setparkingname] = useState("");
   const [parkingImage, setparkingImage] = useState("");
   const [price, setprice] = useState("");
@@ -33,9 +37,22 @@ function Map({ navigation }) {
   const [number, setnumber] = useState("");
   const [oneparking, setoneParking] = useState([]);
   const [showParking, setshowParking] = useState(false);
-  const [mapHieght, setmapHeight] = useState("88%");
+  const [showSlider, setshowSlider] = useState(true);
+  const [showButtons, setshowButtons] = useState(true);
+  const [mapHieght, setmapHeight] = useState("50%");
 
   const { width, height } = Dimensions.get("window");
+
+  const onCarouselIetmChange = (index, coords) => {
+    let location = coords[index];
+    mapRef.animateToRegion({
+      latitude: location.coordinate.latitude,
+      longitude: location.coordinate.longitude,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    });
+  };
+
   const ParkingToDisplay = (latitudee, longitudee) => {
     let oneParking = MarkersInformation.filter((parking) => {
       return parking.coordinate.latitude === latitudee;
@@ -53,15 +70,17 @@ function Map({ navigation }) {
     );
 
     setdistance(Distance);
-
-    console.log(distance, "aaaaaaaaaze");
-
     setshowParking(true);
-    setmapHeight("50%");
+    setshowSlider(false);
   };
+
   let cancel = () => {
     setshowParking(false);
-    setmapHeight("88%");
+    setshowSlider(true);
+  };
+  let showSliderr = () => {
+    setshowSlider(true);
+    setmapHeight("50%");
   };
 
   useEffect(() => {
@@ -82,6 +101,7 @@ function Map({ navigation }) {
   return (
     <View style={styles.container}>
       <MapView
+        ref={(map) => (mapRef = map)}
         style={{
           width: Dimensions.get("window").width,
           // height: Dimensions.get("window").height ,
@@ -173,6 +193,19 @@ function Map({ navigation }) {
           </View>
         </View>
       )}
+      {showSlider && (
+        <MyCarousel onCarouselIetmChange={onCarouselIetmChange}></MyCarousel>
+      )}
+      {/* <View style={styles.ShowMenu}>
+        <Button title="show nearest parking " style={styles.btn}></Button>
+        <Button
+          title="show availible parkings"
+          style={styles.btn}
+          onPress={() => {
+            showSliderr();
+          }}
+        ></Button>
+      </View> */}
       <Footer />
     </View>
   );
@@ -183,6 +216,20 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 20,
     height: "100%",
+  },
+  btn: {
+    width: "100%",
+  },
+
+  ShowMenu: {
+    position: "relative",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    backgroundColor: "blue",
+    height: "5%",
+    bottom: 50,
+    width: "100%",
   },
   map: {
     width: Dimensions.get("window").width,
@@ -305,8 +352,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     height: "20%",
     borderRadius: 30,
-
-   
   },
 
   card: {
