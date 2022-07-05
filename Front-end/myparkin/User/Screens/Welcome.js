@@ -1,37 +1,49 @@
-import React from "react"
-import { StyleSheet, Image, Text, View, ImageBackground, TouchableWithoutFeedback, TouchableOpacity } from "react-native"
-import Lottie from 'lottie-react-native';
+import React from "react";
+import {
+  StyleSheet,
+  Image,
+  Text,
+  View,
+  ImageBackground,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+} from "react-native";
+import Lottie from "lottie-react-native";
 import { useNavigation } from "@react-navigation/native";
 
-
-export default function Welcome() {
-const navigation = useNavigation();
+export default function Welcome(props) {
+  const navigation = useNavigation();
+  console.log(props);
   return (
     <View>
-  <ImageBackground source={require('./images/backgroundImage.jpg')} style={{width: '100%', height: '100%'}}>
- 
-    <View style={styles.Frame166}>
-      <View style={styles.Frame216}>
-        <View style={styles.Frame216}>
-          <Image
-            style={styles.Image5}
-            source={{
-              uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/j2q6gwoqwna-324%3A1063?alt=media&token=08984ad7-8aaa-47ea-8c72-bb7c394e9074",
-            }}
-          />
-          <Text style={styles.Txt897}>Parky</Text>
+      <ImageBackground
+        source={require("./images/backgroundImage.jpg")}
+        style={{ width: "100%", height: "100%" }}
+      >
+        <View style={styles.Frame166}>
+          <View style={styles.Frame216}>
+            <View style={styles.Frame216}>
+              <Image
+                style={styles.Image5}
+                source={{
+                  uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/j2q6gwoqwna-324%3A1063?alt=media&token=08984ad7-8aaa-47ea-8c72-bb7c394e9074",
+                }}
+              />
+              <Text style={styles.Txt897}>Parky</Text>
+            </View>
+            <TouchableOpacity onPress={() => navigation.navigate("FirstView",{name: 'sarah'})}>
+              <Lottie
+                source={require("./assets/start2.json")}
+                autoPlay
+                loop
+                style={{ width: "100%", height: "100%" }}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
-          <TouchableOpacity onPress={()=>navigation.navigate("FirstView")}>
-            <Lottie source={require('./assets/start.json')} autoPlay loop  style={{width:"100%", height:"100%"}}/>
-          </TouchableOpacity>
-      </View>
-      
+      </ImageBackground>
     </View>
-  </ImageBackground>
-  
-    </View>
-  
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -42,8 +54,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "80%",
     height: "25%",
-    top:"85%",
-    paddingLeft:"30%",
+    top: "85%",
+    paddingLeft: "30%",
     // backgroundColor:'red'
   },
   Frame216: {
@@ -72,10 +84,4 @@ const styles = StyleSheet.create({
     width: "30%",
     height: "30%",
   },
-})
-
-
-
-
-
-
+});

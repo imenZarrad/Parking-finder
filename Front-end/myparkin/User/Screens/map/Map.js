@@ -1,6 +1,9 @@
 import * as React from "react";
 import MapView from "react-native-maps";
 import { Marker, Callout, Circle } from "react-native-maps";
+// import { getDistance, getPreciseDistance } from "geolib";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
+
 import {
   StyleSheet,
   Text,
@@ -12,37 +15,53 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import { Footer } from "../Footer";
 
 import { useState, useEffect } from "react";
 import MarkersInformation from "./MarkersInformation";
 import * as Location from "expo-location";
 
-function Map() {
+function Map({ navigation }) {
   const [latitude, setlatitude] = useState(null);
   const [longitude, setlongitude] = useState(null);
+  const [distance, setdistance] = useState(0);
+
   const [parkingname, setparkingname] = useState("");
   const [parkingImage, setparkingImage] = useState("");
   const [price, setprice] = useState("");
-  const [description, setDescription] = useState("");
+  const [adress, setadress] = useState("");
+  const [number, setnumber] = useState("");
   const [oneparking, setoneParking] = useState([]);
   const [showParking, setshowParking] = useState(false);
   const [mapHieght, setmapHeight] = useState("88%");
 
   const { width, height } = Dimensions.get("window");
-  const ParkingToDisplay = (latitude) => {
+  const ParkingToDisplay = (latitudee, longitudee) => {
     let oneParking = MarkersInformation.filter((parking) => {
-      return parking.coordinate.latitude === latitude;
+      return parking.coordinate.latitude === latitudee;
     });
 
     setoneParking(oneParking);
     setparkingname(oneparking[0].parkingName);
-    setprice(oneparking[0].price);
-    setDescription(oneparking[0].description);
-    console.log();
+    setprice(oneParking[0].price);
+    setnumber(oneParking[0].number);
+    setadress(oneparking[0].adress);
     setparkingImage(oneparking[0].image);
-    console.log(parkingImage);
+    let Distance = getDistance(
+      { latitude: latitudee, longitude: longitudee },
+      { latitude: latitude, longitude: longitude }
+    );
+
+    setdistance(Distance);
+
+    console.log(distance, "aaaaaaaaaze");
+
     setshowParking(true);
-    setmapHeight("58%");
+    setmapHeight("50%");
+  };
+  let cancel = () => {
+    setshowParking(false);
+    setmapHeight("88%");
   };
 
   useEffect(() => {
@@ -78,14 +97,12 @@ function Map() {
       >
         <Marker
           title="test title"
-          description="test description"
           coordinate={{
             latitude: latitude || 58.80278,
             longitude: longitude || 10.17972,
           }}
           pinColor="blue"
         >
-          {console.log(latitude, longitude)}
           <Callout>
             <Text>Your position</Text>
           </Callout>
@@ -101,7 +118,10 @@ function Map() {
           return (
             <Marker
               onPress={(marker) =>
-                ParkingToDisplay(marker.nativeEvent.coordinate.latitude)
+                ParkingToDisplay(
+                  marker.nativeEvent.coordinate.latitude,
+                  marker.nativeEvent.coordinate.longitude
+                )
               }
               key={index}
               pinColor="green"
@@ -111,7 +131,7 @@ function Map() {
               }}
             >
               <Callout>
-                <Text>{element.description}</Text>
+                <Text>{element.adress}</Text>
               </Callout>
             </Marker>
           );
@@ -125,51 +145,35 @@ function Map() {
               uri: parkingImage,
             }}
           ></Image>
-          <Text style={styles.cardtitle}>parking name : {parkingname}</Text>
-          <Text style={styles.cardDescription}>
-            Parking description :{description}
-          </Text>
+          <Text style={styles.cardtitle}> {parkingname}</Text>
+          <Text style={styles.cardDescription}>{adress}</Text>
 
           <View style={styles.btncontainter}>
-            <Button title="Book a place" style={styles.button}></Button>
+            <Button
+              title="Cancel"
+              style={styles.button}
+              onPress={() => {
+                cancel();
+              }}
+            ></Button>
+            <Button
+              title="Details"
+              style={styles.button}
+              onPress={() =>
+                navigation.navigate("ParkingDetail", {
+                  parkingname: parkingname,
+                  parkingImage: parkingImage,
+                  price: price,
+                  adress: adress,
+                  number: number,
+                  distance: distance,
+                })
+              }
+            ></Button>
           </View>
         </View>
       )}
-      <View style={styles.Group41010}>
-        <View style={styles.Group1301}>
-          <View style={styles.Group851}>
-            <Image
-              style={styles.Group99}
-              source={{
-                uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/pabo7awh17-79%3A921?alt=media&token=a1079220-cbc1-4e04-99be-256cbacf247d",
-              }}
-            />
-            <View style={styles.Group18}>
-              <View style={styles.Line7} />
-            </View>
-            <View style={styles.Group1085}>
-              <Image
-                style={styles.Group115}
-                source={{
-                  uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/pabo7awh17-79%3A931?alt=media&token=bc514255-d9ce-4e88-b654-88f89ce80898",
-                }}
-              />
-            </View>
-            <Image
-              style={styles.Vector1}
-              source={{
-                uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/pabo7awh17-79%3A912?alt=media&token=59b63bac-7858-411a-bf97-0136a86869a3",
-              }}
-            />
-          </View>
-          <View style={styles.Group0107}>
-            <Text style={styles.Txt747}>Home</Text>
-            <Text style={styles.Txt413}>Saved</Text>
-            <Text style={styles.Txt994}>Booking</Text>
-            <Text style={styles.Txt1072}>Profile</Text>
-          </View>
-        </View>
-      </View>
+      <Footer />
     </View>
   );
 }
@@ -186,8 +190,11 @@ const styles = StyleSheet.create({
     height: "88%",
   },
   btncontainter: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
     position: "absolute",
-    bottom: 0,
+    bottom: 5,
     width: "100%",
   },
   textContent: {
@@ -297,8 +304,9 @@ const styles = StyleSheet.create({
   button: {
     bottom: 0,
     height: "20%",
+    borderRadius: 30,
 
-    backgroundColor: "red",
+   
   },
 
   card: {
@@ -313,9 +321,9 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOpacity: 0.3,
     shadowOffset: { x: 2, y: -2 },
-    bottom: 20,
+
     left: -10,
-    height: "30%",
+    height: "37%",
     width: "100%",
     overflow: "hidden",
   },

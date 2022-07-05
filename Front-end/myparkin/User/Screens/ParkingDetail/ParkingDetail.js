@@ -1,7 +1,17 @@
 import React from "react";
-import { StyleSheet, Image, Text, View, ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  Image,
+  Text,
+  View,
+  ImageBackground,
+  Button,
+} from "react-native";
+import Icon from "@expo/vector-icons/build/FontAwesome5";
 
-export default function ParkingDetail() {
+export default function ParkingDetail({ route, navigation }) {
+  console.log(route.params);
+  console.log(navigation);
   return (
     <View style={styles.container}>
       <View style={styles.innercontainer}>
@@ -10,50 +20,27 @@ export default function ParkingDetail() {
           <Image
             style={styles.image}
             source={{
-              uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/tchxcl2433j-63%3A29?alt=media&token=3b4b277d-7cfd-445a-bb57-f19c0c82dd38",
+              uri: route.params.parkingImage,
             }}
           />
         </View>
         <View style={styles.details}>
-          <Text style={styles.Txt1064}>Parking Lot of San Manolia</Text>
-          <Text style={styles.Txt999}>
-            {" "}
-            <Text>
-              {" "}
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type
-            </Text>
+          <Icon name="address-book" size={20} style={styles.adress}></Icon>
+          <Text style={styles.Txt1064}>{route.params.adress}</Text>
+          <Icon name="phone" size={20} style={styles.phone}></Icon>
+          <Text style={styles.Txt999}> +216 {route.params.number}</Text>
+          <Text style={styles.textmoney}> {route.params.price}</Text>
+          <Icon name="dollar-sign" size={20} style={styles.money}></Icon>
+          <Icon name="car" size={20} style={styles.distance}></Icon>
+          <Text style={styles.distance1}>
+            {route.params.distance / 1000} Km away from you
           </Text>
         </View>
+      </View>
+      <View style={styles.btncontainter}>
+        <Button title="go back" style={styles.btn}></Button>
 
-        <View style={styles.Group887}>
-          {/* <Text style={styles.Txt6106}>per hour</Text>
-          <Text style={styles.Txt1077}>$2.02</Text> */}
-
-          <View style={styles.Txt215}>
-            <Text style={styles.Txt1074}>Book </Text>
-          </View>
-        </View>
-
-        <View style={styles.Group6311}>
-          <Image
-            style={styles.Group64}
-            source={{
-              uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/tchxcl2433j-63%3A52?alt=media&token=26cd5f60-77ba-4437-8f71-7b74b5573849",
-            }}
-          />
-          <Text style={styles.Txt560}>8 AM - 10 PM $2.02 / hour</Text>
-        </View>
-        {/* 
-        <View style={styles.containerdes}>
-          <Text>
-            {" "}
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-          </Text>
-        </View> */}
+        <Button title="book now"></Button>
       </View>
     </View>
   );
@@ -71,12 +58,51 @@ const styles = StyleSheet.create({
     height: "100%",
     // backgroundColor: "pink",
   },
-  details: {
+  btn: {
+    height: 100,
+  },
+  btncontainter: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
     position: "absolute",
-    bottom: "20%",
-    height: "30%",
+    bottom: 50,
+    height: "6%",
+    width: "100%",
+  },
+  distance: {
+    position: "absolute",
+    bottom: 20,
+    left: 10,
+  },
+
+  adress: {
+    position: "relative",
+    left: 10,
+    top: 5,
+  },
+  phone: {
+    position: "relative",
+    top: 32,
+    left: 10,
+  },
+  textmoney: {
+    position: "relative",
+    bottom: 30,
+    left: 40,
+  },
+  details: {
+    // backgroundColor: "pink",
+    position: "relative",
+    top: "43%",
+    height: "40%",
     width: "100%",
     // backgroundColor: "orange",
+  },
+  distance1: {
+    position: "absolute",
+    bottom: 20,
+    left: 40,
   },
   imagecontainer: {
     position: "absolute",
@@ -93,6 +119,7 @@ const styles = StyleSheet.create({
 
     resizeMode: "cover",
   },
+
   innercontainer: {
     width: "90%",
     height: "90%",
@@ -166,22 +193,44 @@ const styles = StyleSheet.create({
   Txt1064: {
     position: "absolute",
     top: 0,
-    left: 23,
-    fontSize: 20,
+    left: 40,
+    fontSize: 18,
     // fontFamily: "Jost, sans-serif",
-    fontWeight: "600",
+    fontWeight: "500",
     color: "rgba(0,0,0,1)",
     width: "80%",
     height: "40%",
   },
   Txt999: {
-    position: "absolute",
-    top: 30,
-    left: 10,
+    position: "relative",
+    top: 10,
+    left: 40,
     fontSize: 15,
     // fontFamily: "Jost, sans-serif",
-    fontWeight: "500",
-    color: "rgba(161,161,161,1)",
+    fontWeight: "600",
+
+    color: "rgba(0,0,0,1)",
+    width: "100%",
+    height: "50%",
+  },
+  money: {
+    position: "relative",
+    bottom: 50,
+    left: 10,
+
+    color: "rgba(0,0,0,1)",
+    width: "100%",
+    height: "50%",
+  },
+  price: {
+    position: "relative",
+    top: 0,
+    left: 40,
+    fontSize: 15,
+    // fontFamily: "Jost, sans-serif",
+    fontWeight: "600",
+
+    color: "rgba(0,0,0,1)",
     width: "100%",
     height: "50%",
   },

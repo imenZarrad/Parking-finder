@@ -10,8 +10,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default function Slide_1() {
-  const navigation = useNavigation();
+export default function Slide_1(props) {
+    const navigation = useNavigation();
+    console.log(props.route.params)
   return (
     <View style={styles.GooglePixel}>
       <View style={styles.Android}>
@@ -195,14 +196,14 @@ const styles = StyleSheet.create({
     paddingRight: 146,
     marginBottom: 8,
     borderRadius: 50,
-    backgroundColor: "rgba(101, 236, 244, 1)",
+    backgroundColor: "rgba(9, 66, 139, 1)",
     width: 337,
     height: "30%",
   },
   Txt1074: {
     fontSize: 16,
     fontWeight: "700",
-    color: "rgba(5,97,174,1)",
+    color: "white",
     textAlign: "center",
     justifyContent: "center",
     width: 41,
@@ -225,6 +226,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
     width: 38,
-    height: 17,
+    height: 20,
   },
 });

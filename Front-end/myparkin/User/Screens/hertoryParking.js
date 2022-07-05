@@ -1,18 +1,8 @@
 import React from "react";
 import { StyleSheet, Image, Text, View, ImageBackground } from "react-native";
-import { auth } from "../../firebase.config";
-import { signOut } from "firebase/auth";
+
 export default function HestoryParking() {
-  const logOut = () => {
-    signOut(auth)
-      .then((res) => {
-        // setIsSignedIn(false);
-        alert("ok");
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
-  };
+  
   return (
     <View style={styles.Iphone13ProMax49}>
       <View style={styles.Group163}>
