@@ -1,38 +1,51 @@
 import React from "react";
-import { StyleSheet, Image, Text, View, ImageBackground } from "react-native";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { ParkingNameAndAdress } from "../redux/Features/BookPlace";
+import {
+  StyleSheet,
+  Image,
+  Text,
+  View,
+  ImageBackground,
+  Button,
+  Dimensions,
+  AccessibilityInfo,
+} from "react-native";
 import { Footer } from "./Footer";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useState, useEffect } from "react";
 
-export default function ({ route }) {
+export default function ({ route, navigation }) {
+  const data = useSelector((state) => state.bookplace.value);
+  const dispatch = useDispatch();
   const [bookingReview, setbookingReview] = useState({});
+  const [carType, setcarType] = useState({
+    Truck: "Truck",
+    Medium_size: "Medium Size",
+    Suv: "SUV",
+    Bike: "Bike",
+  });
+
   useEffect(() => {
     setbookingReview(route.params);
   }, []);
 
   return (
     <View style={styles.Iphone13ProMax30}>
-      {console.log(bookingReview)}
-
       <View style={styles.Group046}>
         <View style={styles.Group6107}>
-          <Image
-            style={styles.Frame}
-            source={{
-              uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/41knei4xmdi-63%3A74?alt=media&token=3417d113-2c9c-4b63-ac02-c7e299619b8b",
-            }}
-          />
-          <Text style={styles.Txt321}>Select Your Vehicle</Text>
+          <Text style={styles.Txt321}>Select The Vehicle Type </Text>
         </View>
 
         <View style={styles.Group440}>
           <View style={styles.Group286}>
             <View style={styles.Group34}>
-              <Text style={styles.Txt987}>AFD 6397</Text>
-              <Text style={styles.Txt447}>Toyota Land Cruiser</Text>
+              <Text style={styles.Txt447}>Truck</Text>
             </View>
 
             <BouncyCheckbox
+              onPress={() => console.log(carType.Truck)}
               style={styles.Group70}
               fillColor="rgba(16, 181, 241, 0.8)"
             />
@@ -49,11 +62,11 @@ export default function ({ route }) {
         <View style={styles.Group440}>
           <View style={styles.Group286}>
             <View style={styles.Group34}>
-              <Text style={styles.Txt987}>AFD 6397</Text>
-              <Text style={styles.Txt447}>Toyota Land Cruiser</Text>
+              <Text style={styles.Txt447}>Medium Size</Text>
             </View>
             {/* <View style={styles.Group70}></View> */}
             <BouncyCheckbox
+              onPress={() => console.log(carType.Medium_size)}
               style={styles.Group70}
               fillColor="rgba(16, 181, 241, 0.8)"
             />
@@ -70,11 +83,10 @@ export default function ({ route }) {
         <View style={styles.Group440}>
           <View style={styles.Group286}>
             <View style={styles.Group34}>
-              <Text style={styles.Txt987}>AFD 6397</Text>
-              <Text style={styles.Txt447}>Toyota Land Cruiser</Text>
+              <Text style={styles.Txt447}>Suv</Text>
             </View>
-            {/* <View style={styles.Group70}></View> */}
             <BouncyCheckbox
+              onPress={() => console.log(carType.Suv)}
               style={styles.Group70}
               fillColor="rgba(16, 181, 241, 0.8)"
             />
@@ -91,11 +103,25 @@ export default function ({ route }) {
         <View style={styles.Group440}>
           <View style={styles.Group286}>
             <View style={styles.Group34}>
-              <Text style={styles.Txt987}>AFD 6397</Text>
-              <Text style={styles.Txt447}>Toyota Land Cruiser</Text>
+              <Text style={styles.Txt447}>Bike</Text>
             </View>
-            {/* <View style={styles.Group70}></View> */}
+
             <BouncyCheckbox
+              onPress={() => {
+                dispatch(
+                  ParkingNameAndAdress({
+                    CarType: carType.Bike,
+                    ParkingName: "",
+                    Adress: "",
+                    Floor: "",
+                    ParkingSpot: "",
+                    Date: "",
+                    Duration: "",
+                    Hours: 0,
+                  })
+                );
+                console.log(data);
+              }}
               style={styles.Group70}
               fillColor="rgba(16, 181, 241, 0.8)"
             />
@@ -109,9 +135,18 @@ export default function ({ route }) {
             }}
           />
         </View>
-        <View style={styles.Group459}>
+        {/* <View style={styles.Group459}>
           <Text style={styles.Txt469}>Continue</Text>
-        </View>
+        </View> */}
+      </View>
+      <View style={styles.btncontainer}>
+        <Button
+          title="go back"
+          onPress={() => {
+            navigation.goBack();
+          }}
+        ></Button>
+        <Button title="Continue"></Button>
       </View>
     </View>
   );
@@ -125,11 +160,11 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     position: "relative",
     borderRadius: 50,
-    bottom: 25,
+    bottom: 30,
     backgroundColor: "rgba(255, 255, 255, 1)",
     width: "100%",
     height: "100%",
-    backgroundColor: "yellow",
+    // backgroundColor: "yellow",
   },
   _5a3620812343531: {
     position: "absolute",
@@ -145,7 +180,7 @@ const styles = StyleSheet.create({
     // top: 73,
     // none: "0px",
     width: "100%",
-    height: "88%",
+    height: "90%",
     // backgroundColor: "pink",
     top: "10%",
   },
@@ -154,6 +189,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 31,
+    left: 30,
   },
   Frame: {
     width: 26,
@@ -218,6 +254,7 @@ const styles = StyleSheet.create({
 
   Group440: {
     position: "relative",
+    bottom: 26,
     marginBottom: 22,
     borderRadius: 23,
     backgroundColor: "rgba(244,244,244,1)",
@@ -257,7 +294,7 @@ const styles = StyleSheet.create({
   Txt447: {
     position: "absolute",
     top: 0,
-    left: 0,
+    left: 50,
     fontSize: 16,
     fontWeight: "600",
     color: "rgba(53,53,53,1)",
@@ -440,5 +477,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
     top: "26%",
+  },
+  btncontainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+
+    width: Dimensions.get("window").width,
+    bottom: -40,
   },
 });

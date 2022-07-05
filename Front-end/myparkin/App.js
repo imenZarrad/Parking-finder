@@ -7,6 +7,8 @@ import { useState } from "react";
 import { auth } from "./firebase.config";
 import StackNav from "./User/StacKNav2";
 import { Footer } from "./User/Screens/Footer";
+import { Provider } from "react-redux";
+import { store } from "./User/redux/store";
 export default function App() {
   const [isLogedIn, setIsLogedIn] = useState(false);
   const [check, setcheck] = useState("");
@@ -18,19 +20,21 @@ export default function App() {
     }
   });
   return (
-    <NavigationContainer>
-      {console.log(check)}
-      {isLogedIn ? (
-        <>
-          <StackNav />
-          {/* <Footer /> */}
-        </>
-      ) : (
-        <StackNavigation />
-      )}
+  
+      <NavigationContainer>
+        {console.log(check)}
+        {isLogedIn ? (
+          <>
+            <StackNav />
+            {/* <Footer /> */}
+          </>
+        ) : (
+          <StackNavigation />
+        )}
 
-      <StatusBar style="dark" />
-    </NavigationContainer>
+        <StatusBar style="dark" />
+      </NavigationContainer>
+   
   );
 }
 

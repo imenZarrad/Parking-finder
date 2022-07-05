@@ -19,6 +19,7 @@
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
     "@react-navigation/stack": "^6.2.1",
+    "@reduxjs/toolkit": "^1.8.3",
     "expo": "~45.0.0",
     "expo-app-loading": "~2.0.0",
     "expo-checkbox": "^2.1.0",
@@ -47,7 +48,8 @@
     "react-native-svg": "^12.3.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "0.17.7",
-    "react-navigation": "^4.4.4"
+    "react-navigation": "^4.4.4",
+    "react-redux": "^8.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

@@ -45,7 +45,7 @@ class MyCarousel extends Component {
 }
 const styles = StyleSheet.create({
   image: {
-    height: 200,
+    height: 150,
     width: 300,
     bottom: 0,
     position: "absolute",
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     alignSelf: "center",
   },
+  btnContainer: {},
 });
 
 export default MyCarousel;
