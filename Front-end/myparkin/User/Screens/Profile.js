@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   StyleSheet,
   Image,
@@ -14,6 +15,8 @@ import { signOut } from "firebase/auth";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useNavigation } from "@react-navigation/native";
 export default function Profile() {
+  const data = useSelector((state) => state.bookplace.value);
+
   const navigation = useNavigation();
   const logOut = () => {
     signOut(auth)
@@ -27,6 +30,7 @@ export default function Profile() {
   };
   return (
     <View style={styles.Iphone13ProMax54}>
+      {console.log(data)}
       <View style={styles.Group282}>
         <ScrollView>
           <View style={styles.Group448}>
