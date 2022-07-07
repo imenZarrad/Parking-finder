@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
-export default function Iphone13ProMax55() {
+export default function EditProfile() {
   return (
     <KeyboardAvoidingView>
       <ScrollView

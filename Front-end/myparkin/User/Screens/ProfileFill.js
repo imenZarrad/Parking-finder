@@ -14,10 +14,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Lottie from "lottie-react-native";
-import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
+import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
+import { TouchableRipple } from "react-native-paper";
 
-export default function Iphone13ProMax61() {
+export default function ProfileFill() {
   const navigation = useNavigation();
   const [date, setDate] = useState(new Date());
 
@@ -86,32 +87,35 @@ export default function Iphone13ProMax61() {
                 uri: "https://img.icons8.com/cotton/452/user-male-circle.png",
               }}
             />
-             <Image
-                  style={styles.Frame14}
-                  source={{
-                    uri: "https://img.icons8.com/external-anggara-filled-outline-anggara-putra/452/external-edit-interface-anggara-filled-outline-anggara-putra.png",
-                  }}
-                />
+            <Image
+              style={styles.Frame14}
+              source={{
+                uri: "https://img.icons8.com/external-anggara-filled-outline-anggara-putra/452/external-edit-interface-anggara-filled-outline-anggara-putra.png",
+              }}
+            />
             <SafeAreaView style={styles.Frame166}>
-              <View style={styles.Group159} >
-              <TextInput
-                maxLength={10}
-                style={styles.Txt448}
-                placeholder='FullName'
-              />
+              <View style={styles.Group159}>
+                <TextInput
+                  maxLength={10}
+                  style={styles.Txt448}
+                  placeholder='FullName'
+                />
               </View>
               {/* <TextInput maxLength={10} style={styles.Txt856} placeholder="FullName"/> */}
               {/* </View> */}
               <View style={styles.Group159}>
-              <TextInput
-                maxLength={7}
-                style={styles.Txt448}
-                placeholder='Username'
-              />
+                <TextInput
+                  maxLength={7}
+                  style={styles.Txt448}
+                  placeholder='Username'
+                />
               </View>
               {/* <TextInput style={styles.Txt856} placeholder="Username"/> */}
               {/* </View> */}
-              <TouchableOpacity style={styles.Group160} onPress={showDatepicker}>
+              <TouchableOpacity
+                style={styles.Group160}
+                onPress={showDatepicker}
+              >
                 <Text style={styles.Txt448}>Birthdate: {String(date)}</Text>
                 <Image
                   style={styles.Frame3}
@@ -119,25 +123,34 @@ export default function Iphone13ProMax61() {
                     uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/hs7mujhdsdi-322%3A229?alt=media&token=b6cce5c3-d97e-4930-b501-8119c53dfd93",
                   }}
                 />
-                </TouchableOpacity>
-                <View style={styles.Group159}>
-              <TextInput style={styles.Txt448} placeholder='Email' onChangeText={validate} />
-               
+              </TouchableOpacity>
+              <View style={styles.Group159}>
+                <TextInput
+                  style={styles.Txt448}
+                  placeholder='Email'
+                  onChangeText={validate}
+                />
               </View>
               <View style={styles.Group159}>
-              <TextInput keyboardType="numeric" style={styles.Txt448} placeholder='Phone Number'/>
+                <TextInput
+                  keyboardType='numeric'
+                  style={styles.Txt448}
+                  placeholder='Phone Number'
+                />
                 {/* <Image
                   style={styles.Frame5}
                   source={{
                     uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Tunisia.svg/1280px-Flag_of_Tunisia.svg.png",
                   }}
                 /> */}
-                </View>
-              <View style={styles.Frame165}>
-              <Text style={styles.Txt211}>Continue</Text>
-            </View>
+              </View>
+              <TouchableRipple
+                style={styles.Frame165}
+                onPress={() => navigation.navigate("SuccessfullyCreated")}
+              >
+                <Text style={styles.Txt211}>Continue</Text>
+              </TouchableRipple>
             </SafeAreaView>
-            
           </View>
         </View>
       </ScrollView>
@@ -183,7 +196,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     // marginBottom: 17,
-    top:'7%'
+    top: "7%",
   },
 
   Txt269: {
@@ -200,7 +213,7 @@ const styles = StyleSheet.create({
     width: 132,
     height: 133,
     marginBottom: 17,
-    marginTop:'10%'
+    marginTop: "10%",
   },
   Frame166: {
     display: "flex",
@@ -215,35 +228,35 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "50%",
     // top:'4%'
-    marginLeft:'22%'
+    marginLeft: "22%",
   },
   Group159: {
     display: "flex",
-       flexDirection: "row",
-       alignItems: "center",
-       paddingTop: 17,
-       paddingBottom: 17,
-      //  paddingLeft: 26,
-      //  paddingRight: 5,
-      backgroundColor: "rgba(71, 192, 192, 0.08)",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingTop: 17,
+    paddingBottom: 17,
+    //  paddingLeft: 26,
+    //  paddingRight: 5,
+    backgroundColor: "rgba(71, 192, 192, 0.08)",
     // borderWidth: 1,
     // borderStyle: "solid",
     // borderColor: "rgba(0,0,0,1)",
-       marginBottom: 28,
-       borderRadius: 15,
-      //  backgroundColor: "rgba(71, 192, 192, 0.08)",
-       
-      //  backgroundColor:'blue',
-      width:'70%',
-      height:'17%'
+    marginBottom: 28,
+    borderRadius: 15,
+    //  backgroundColor: "rgba(71, 192, 192, 0.08)",
+
+    //  backgroundColor:'blue',
+    width: "70%",
+    height: "17%",
   },
   Txt448: {
     fontSize: 15,
-   //  fontFamily: "Montserrat, sans-serif",
+    //  fontFamily: "Montserrat, sans-serif",
     fontWeight: "500",
     color: "rgba(169,169,169,1)",
-   //  textAlign: "center",
-   //  justifyContent: "center",
+    //  textAlign: "center",
+    //  justifyContent: "center",
     width: "100%",
     height: "100%",
     // backgroundColor:'yellow',
@@ -253,26 +266,26 @@ const styles = StyleSheet.create({
 
   Group160: {
     display: "flex",
-       flexDirection: "row",
-       alignItems: "center",
-       paddingTop: 17,
-       paddingBottom: 17,
-      //  paddingLeft: 26,
-      //  paddingRight: '%',
-      backgroundColor: "rgba(71, 192, 192, 0.08)",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingTop: 17,
+    paddingBottom: 17,
+    //  paddingLeft: 26,
+    //  paddingRight: '%',
+    backgroundColor: "rgba(71, 192, 192, 0.08)",
     // borderWidth: 1,
     // borderStyle: "solid",
     // borderColor: "rgba(0,0,0,1)",
-        marginLeft: '3%',
-        // paddingRight: '5%',
+    marginLeft: "3%",
+    // paddingRight: '5%',
 
-       marginBottom: 28,
-       borderRadius: 15,
-      //  backgroundColor: "rgba(71, 192, 192, 0.08)",
-       
-      //  backgroundColor:'blue',
-      width:'60%',
-      height:'15%'
+    marginBottom: 28,
+    borderRadius: 15,
+    //  backgroundColor: "rgba(71, 192, 192, 0.08)",
+
+    //  backgroundColor:'blue',
+    width: "60%",
+    height: "15%",
   },
 
   Group161: {
@@ -281,23 +294,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 17,
     paddingBottom: 17,
-   //  paddingLeft: 26,
-   //  paddingRight: '%',
-   backgroundColor: "rgba(71, 192, 192, 0.08)",
- // borderWidth: 1,
- // borderStyle: "solid",
- // borderColor: "rgba(0,0,0,1)",
-     marginLeft: '3%',
-     // paddingRight: '5%',
+    //  paddingLeft: 26,
+    //  paddingRight: '%',
+    backgroundColor: "rgba(71, 192, 192, 0.08)",
+    // borderWidth: 1,
+    // borderStyle: "solid",
+    // borderColor: "rgba(0,0,0,1)",
+    marginLeft: "3%",
+    // paddingRight: '5%',
 
     marginBottom: 28,
     borderRadius: 15,
-   //  backgroundColor: "rgba(71, 192, 192, 0.08)",
-    
-   //  backgroundColor:'blue',
-   width:'60%',
-   height:'15%',
-   marginLeft:'8%'
+    //  backgroundColor: "rgba(71, 192, 192, 0.08)",
+
+    //  backgroundColor:'blue',
+    width: "60%",
+    height: "15%",
+    marginLeft: "8%",
   },
   Txt664: {
     fontSize: 10,
@@ -394,11 +407,11 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     paddingTop: 15,
     paddingBottom: 15,
-    paddingLeft: 107,
-    paddingRight: 107,
+    paddingLeft: 90,
+    paddingRight: 80,
     borderRadius: 50,
     backgroundColor: "rgba(9, 66, 139, 1)",
-    marginRight:'18%'
+    marginRight: "18%",
   },
   Txt211: {
     fontSize: 16,
@@ -406,10 +419,11 @@ const styles = StyleSheet.create({
     color: "rgba(255, 255, 255, 1)",
     textAlign: "center",
     justifyContent: "center",
+    // width:"110%"
   },
-  Frame14:{
+  Frame14: {
     width: 27,
     height: 18,
     transform: [{ translateY: -40 }, { translateX: 59 }],
-  }
+  },
 });

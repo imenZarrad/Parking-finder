@@ -25,10 +25,8 @@ export default function Login() {
   const signIn = () => {
     signInWithEmailAndPassword(auth, obj.email, obj.password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        alert(user.uid);
+        // const user = userCredential.user;
         navigation.navigate("Map");
-        // navigation.navigate("ProfileFill");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -202,6 +200,7 @@ const styles = StyleSheet.create({
     //  paddingRight: 5,
     marginBottom: 28,
     borderRadius: 15,
+
     backgroundColor: "rgba(71, 192, 192, 0.08)",
 
     //  backgroundColor:'blue'
@@ -214,17 +213,20 @@ const styles = StyleSheet.create({
     //  marginRight: 24,
     marginLeft: "10%",
     marginRight: "7%",
+
   },
   Txt448: {
     fontSize: 15,
     //  fontFamily: "Montserrat, sans-serif",
     fontWeight: "500",
     color: "rgba(169,169,169,1)",
+
     //  textAlign: "center",
     //  justifyContent: "center",
     width: "100%",
     height: "100%",
     //  backgroundColor:'yellow'
+
   },
 
   Group152: {
