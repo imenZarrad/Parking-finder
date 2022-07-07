@@ -1,3 +1,5 @@
+import ignoreWarnings from './ignoreWarnings.js'
+
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import StackNavigation from "./User/StackNavigator";
