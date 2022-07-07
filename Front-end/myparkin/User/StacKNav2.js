@@ -6,7 +6,7 @@ import SearchFilter from "./Screens/SearchFilter";
 import HestoryParking from "./Screens/hertoryParking.js";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-
+import Parkingspot from "./Screens/Parkingspot";
 import ParkingDetail from "./Screens/ParkingDetail/ParkingDetail";
 
 import Map from "./Screens/map/Map.js";
@@ -17,6 +17,7 @@ import MyParkings from "./Screens/MyParkings.js";
 import EditProfile from "./Screens/EditProfile.js";
 import SelectVec from "./Screens/SelectVec";
 import test from "./Screens/test.js";
+import FillCarInformation from "./Screens/FillCarInformation.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,8 +29,13 @@ const StackNav = () => {
         <Stack.Screen name="MyBookMark" component={MyBookMark} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="SelectVec" component={SelectVec} />
+        <Stack.Screen
+          name="FillCarInformation"
+          component={FillCarInformation}
+        />
 
         <Stack.Screen name="HestoryParking" component={HestoryParking} />
+        <Stack.Screen name="Parkingspot" component={Parkingspot} />
         <Stack.Screen name="ProfileFill" component={ProfileFill} />
         <Stack.Screen name="MarkerDetail" component={MarkerDetail} />
         <Stack.Screen name="SearchFilter" component={SearchFilter} />
