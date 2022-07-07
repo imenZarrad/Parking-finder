@@ -18,6 +18,7 @@ import MyParkings from "./Screens/MyParkings.js";
 import EditProfile from "./Screens/EditProfile.js";
 import SelectVec from "./Screens/SelectVec";
 import test from "./Screens/test.js";
+import ParkingSpot_1 from "./Screens/ParkingSpot_1.js";
 import ParkingSpot_2 from './Screens/ParkingSpot_2';
 import ParkingSpot_3 from './Screens/ParkingSpot_3';
 import ParkingTimer from './Screens/ParkingTimer';
@@ -27,25 +28,25 @@ const Stack = createNativeStackNavigator();
 const StackNav = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="tes" component={test} />
-      <Stack.Screen name="SelectVec" component={SelectVec} />
+      {/* <Stack.Screen name="tes" component={test} /> */}
+      {/* <Stack.Screen name="SelectVec" component={SelectVec} /> */}
 
-      <Stack.Screen name="Map" component={Map} />
+      {/* <Stack.Screen name="Map" component={Map} />
       <Stack.Screen name="MyBookMark" component={MyBookMark} />
-      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Profile" component={Profile} /> */}
 
-
+{/* 
       <Stack.Screen name="HestoryParking" component={HestoryParking} />
       <Stack.Screen name="ProfileFill" component={ProfileFill} />
-      <Stack.Screen name="MarkerDetail" component={MarkerDetail} />
-      <Stack.Screen name="SearchFilter" component={SearchFilter} />
-      <Stack.Screen name="MyParkings" component={MyParkings} />
-      <Stack.Screen name="ParkingDetail" component={ParkingDetail} />
-      <Stack.Screen name="EditProfile" component={EditProfile} />
+      <Stack.Screen name="MarkerDetail" component={MarkerDetail} /> */}
+      {/* <Stack.Screen name="SearchFilter" component={SearchFilter} /> */}
+      {/* <Stack.Screen name="MyParkings" component={MyParkings} /> */}
+      {/* <Stack.Screen name="ParkingDetail" component={ParkingDetail} /> */}
+      {/* <Stack.Screen name="EditProfile" component={EditProfile} /> */}
       <Stack.Screen name="ParkingSpot_1" component={ParkingSpot_1} />
        <Stack.Screen name="ParkingSpot_2" component={ParkingSpot_2} />
        <Stack.Screen name="ParkingSpot_3" component={ParkingSpot_3} />
-       <Stack.Screen name="ParkingTimer" component={ParkingTimer} />
+       {/* <Stack.Screen name="ParkingTimer" component={ParkingTimer} /> */}
 
     </Stack.Navigator>
   );

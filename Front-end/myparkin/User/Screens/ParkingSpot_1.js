@@ -1,137 +1,3 @@
-// import * as React from 'react';
-// import {useState} from 'react';
-// import {Text, Image, View, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
-// import Constants from 'expo-constants';
-
-// import {Card} from 'react-native-paper';
-const USE = [
-  {
-    key: "A01",
-    image: "https://picsum.photos/seed/picsum/200/300",
-    type: false,
-  },
-  {
-    key: "A02",
-    image: "https://picsum.photos/seed/picsum/200/300",
-    type: false,
-  },
-  {
-    key: "A03",
-    image: "https://picsum.photos/seed/picsum/200/300",
-    type: false,
-  },
-  {
-    key: "A04",
-    image: "https://picsum.photos/seed/picsum/200/300",
-    type: false,
-  },
-  {
-    key: "A05",
-    image: "https://picsum.photos/seed/picsum/200/300",
-    type: false,
-  },
-  {
-    key: "A06",
-    image: "https://picsum.photos/seed/picsum/200/300",
-    type: false,
-  },
-  {
-    key: "A07",
-    image: "https://picsum.photos/seed/picsum/200/300",
-    type: false,
-  },
-  {
-    key: "A08",
-    image: "https://picsum.photos/seed/picsum/200/300",
-    type: false,
-  },
-  {
-    key: "A09",
-    image: "https://picsum.photos/seed/picsum/200/300",
-    type: false,
-  },
-  {
-    key: "A10",
-    image: "https://picsum.photos/seed/picsum/200/300",
-    type: false,
-  },
-  {
-    key: "A11",
-    image: "https://picsum.photos/seed/picsum/200/300",
-    type: false,
-  },
-  {
-    key: "A12",
-    image: "https://picsum.photos/seed/picsum/200/300",
-    type: false,
-  },
-];
-
-// export default function App() {
-//    const [active, setActive] = useState(false);
-
-//   return (
-//     <View style={styles.container}>
-//       <ScrollView>
-//         <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-//           {INGREDIENTS.map((value, index) => {
-//             return (
-//               <TouchableOpacity  style={styles.gridIngredients} >
-//         <Image
-//           style={styles.ingredientImage}
-//           resizeMode="contain"
-//           source={value.image}
-//         />
-//          {!value.type ? <Text style={styles.ingredientsText} id={value.key} onPress={handleChange}>{value.key}</Text>
-//           : <Text style={styles.ingredientsText && {backgroundColor: 'red'}}>{value.key}</Text>
-//          }
-//       </TouchableOpacity>
-//             )
-//           })}
-//         </View>
-//       </ScrollView>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     paddingTop: Constants.statusBarHeight,
-//     backgroundColor: '#ecf0f1',
-//     padding: 8,
-//   },
-//   ingredientsText: {
-//fontFamily: AppFonts.Primary.Sans.Regular,
-//     fontStyle: 'normal',
-//     fontWeight: '400',
-//     alignSelf: 'center',
-//     fontSize: 12,
-//     color: 'black',
-//   },
-
-//   gridIngredients: {
-//     marginTop: 12,
-//     width: '22%',
-//     flexDirection: 'row',
-//     justifyContent: 'center',
-//     backgroundColor: 'yellow',
-//     paddingStart: 16,
-//     paddingEnd: 16,
-//     paddingTop: 8,
-//     marginRight: 10,
-//     paddingBottom: 8,
-//     borderRadius: 8,
-//   },
-
-//   ingredientImage: {
-//     width: 15,
-//     alignSelf: 'center',
-//     height: 15,
-//   },
-// });
-
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
@@ -141,28 +7,50 @@ import {
   View,
   ImageBackground,
   ScrollView,
-  TouchableNativeFeedbackBase,
+  TouchableOpacity,
 } from "react-native";
-import { TouchableRipple } from "react-native-paper";
 import Lottie from "lottie-react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { firstFloor } from "./FloorSpot";
+import { FlatGrid } from "react-native-super-grid";
+import { TouchableRipple } from "react-native-paper";
 
 export default function ParkingSpot_1() {
   const navigation = useNavigation();
 
-  const [data, setData] = useState(USE);
+  const [box, setBox] = useState();
 
-  const handleChange = (e) => {
-    let array = data.map((value, i) => {
-      console.log(value.key, e.target.innerHTML);
-      if (value.key === e.target.innerHTML) {
-        value.type = !value.type;
+  const [show, setShow] = useState(false);
+
+  const [show_Hide, setShowHide] = useState(false);
+
+  const [items, setItems] = React.useState(firstFloor);
+
+  const boxColored = (e) => {
+    items.map((element, i) => {
+      if (element.name === e._dispatchInstances.memoizedProps.children) {
+        element.type = !element.type;
+        setShow(element.type);
+
+        // if(i === box){
+        //   setBox()
+        // }else {
+        //   setBox(i)
+        // }
+      } else {
+        element.type = false;
       }
-      return value;
+
+      return element;
     });
-    console.log(array, "array");
-    setData(array);
+    setShowHide(!show_Hide);
   };
+
+  // const handleImage = () =>{
+  //   if (show){
+  //     return setShowHide(true)
+  //   }
+  // }
 
   return (
     <View style={styles.Frame236}>
@@ -205,119 +93,78 @@ export default function ParkingSpot_1() {
                   <Text style={styles.Txt3710}>3rd Floor</Text>
                 </TouchableRipple>
               </View>
-              <View style={styles.Group228}>
-                <ImageBackground
-                  source={require("./images/grid.jpg")}
-                  style={styles.Group229}
-                />
-                <View style={styles.Group9510}>
-                  <View style={styles.Group867}>
-                    <Image
-                      style={
-                        styles.KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf21
+              <View style={{ transform: [{ translateY: 25 }] }}>
+                <FlatGrid
+                  itemDimension={130}
+                  data={items}
+                  style={styles.gridView}
+                  spacing={15}
+                  renderItem={({ item, index }) => {
+                    {
+                      if (index % 2 === 1) {
+                        return (
+                          <View
+                            style={[
+                              item.type ? styles.Box : styles.itemContainer,
+                            ]}
+                          >
+                            <TouchableOpacity>
+                              {!item.type ? (
+                                <Text
+                                  style={styles.itemName}
+                                  onPress={boxColored}
+                                >
+                                  {item.name}
+                                </Text>
+                              ) : (
+                                <Text style={styles.itemName}>{item.name}</Text>
+                              )}
+                            </TouchableOpacity>
+                            <View style={styles.horizontalLine}></View>
+                          </View>
+                        );
+                      } else if (index % 2 === 0) {
+                        return (
+                          <View
+                            style={[
+                              item.type ? styles.Box1 : styles.itemContainer1,
+                            ]}
+                          >
+                            <View style={styles.verticleLine}></View>
+                            <TouchableOpacity>
+                              {!item.type ? (
+                                <Text
+                                  style={styles.itemName}
+                                  onPress={boxColored}
+                                >
+                                  {item.name}
+                                </Text>
+                              ) : (
+                                <Text style={styles.itemName}>{item.name}</Text>
+                              )}
+                            </TouchableOpacity>
+                            {/* {show && index === box ? 
+         
+          <View>
+            <Image source={{uri: item.image}} style={{width: '100%', height: '100%'}} />
+          </View>
+          
+        :
+        <View></View>  
+      
+      } */}
+
+                            <View style={styles.horizontalLine}></View>
+                          </View>
+                        );
                       }
-                      source={{
-                        uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/s20zeq61yfn-63%3A5092?alt=media&token=7454989e-04ab-48ec-9815-55e206667a53",
-                      }}
-                    />
-                    <TouchableRipple
-                      style={styles.Group2227}
-                      onPress={handleChange}
-                    >
-                      <Text style={styles.Txt4669}>A02</Text>
-                    </TouchableRipple>
-                  </View>
-                  <TouchableRipple
-                    style={styles.Group2225}
-                    onPress={handleChange}
-                  >
-                    <Text style={styles.Txt4469}>A03</Text>
-                  </TouchableRipple>
-                  <TouchableRipple
-                    style={styles.Group2226}
-                    onPress={handleChange}
-                  >
-                    <Text style={styles.Txt5597}>A05</Text>
-                  </TouchableRipple>
-                  <Image
-                    style={styles.Group880}
-                    source={{
-                      uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/s20zeq61yfn-63%3A5091?alt=media&token=0a8301d0-f463-4d32-a8dd-d772be893a87",
-                    }}
-                  />
-                </View>
-                <Image
-                  style={
-                    styles.KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf24
-                  }
-                  source={{
-                    uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/s20zeq61yfn-63%3A5095?alt=media&token=00a522cf-4b56-4fdf-b7ff-2e3a393d1c59",
+                    }
                   }}
                 />
-                <Image
-                  style={
-                    styles.KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf25
-                  }
-                  source={{
-                    uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/s20zeq61yfn-63%3A5096?alt=media&token=eb6145e2-3c96-4d1a-a581-7339860ea08c",
-                  }}
-                />
-                <View style={styles.Group2281}>
-                  <ImageBackground
-                    source={require("./images/grid.jpg")}
-                    style={styles.Group229}
-                  />
-                  <View style={styles.Group9510}>
-                    <View style={styles.Group867}>
-                      <Image
-                        style={
-                          styles.KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf21
-                        }
-                        source={{
-                          uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/s20zeq61yfn-63%3A5092?alt=media&token=7454989e-04ab-48ec-9815-55e206667a53",
-                        }}
-                      />
-                      <TouchableRipple
-                        style={styles.Group2227}
-                        onPress={handleChange}
-                      >
-                        <Text style={styles.Txt4669}>A08</Text>
-                      </TouchableRipple>
-                    </View>
-                    <TouchableRipple
-                      style={styles.Group2225}
-                      onPress={handleChange}
-                    >
-                      <Text style={styles.Txt4469}>A09</Text>
-                    </TouchableRipple>
-                    <TouchableRipple
-                      style={styles.Group22251}
-                      onPress={handleChange}
-                    >
-                      <Text style={styles.Txt4469}>A11</Text>
-                    </TouchableRipple>
-                  </View>
-                  <Image
-                    style={
-                      styles.KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf24
-                    }
-                    source={{
-                      uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/s20zeq61yfn-63%3A5095?alt=media&token=00a522cf-4b56-4fdf-b7ff-2e3a393d1c59",
-                    }}
-                  />
-                  <Image
-                    style={
-                      styles.KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf25
-                    }
-                    source={{
-                      uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/s20zeq61yfn-63%3A5096?alt=media&token=eb6145e2-3c96-4d1a-a581-7339860ea08c",
-                    }}
-                  />
-                </View>
-                <View style={styles.Frame224}>
-                  <Text style={styles.Txt351}>Continue</Text>
-                </View>
               </View>
+            </View>
+            <View style={styles.Frame224}>
+              <Text style={styles.Txt351}>Continue</Text>
             </View>
           </View>
         </View>
@@ -327,11 +174,62 @@ export default function ParkingSpot_1() {
 }
 
 const styles = StyleSheet.create({
-  scroll1: {
-    display: "flex",
-    flexDirection: "row",
-    width: "100%",
-    height: "100%",
+  horizontalLine: {
+    borderBottomColor: "black",
+    borderBottomWidth: 1,
+    width: 200,
+    alignSelf: "center",
+    // transform: [ {translateY:-110}]
+    top: 23,
+  },
+  verticleLine: {
+    position: "absolute",
+    left: "-10%",
+    top: "30%",
+    height: "164%",
+    width: "5%",
+    backgroundColor: "#909090",
+    transform: [{ translateX: -62 }],
+  },
+  gridView: {
+    // marginTop: 10,
+    flex: 1,
+  },
+  gridView1: {
+    // marginTop: 10,
+    flex: 1,
+  },
+  itemContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 5,
+    padding: 10,
+    height: 50,
+    width: 70,
+    // paddingTop:60
+    transform: [{ translateX: -140 }, { translateY: 10 }],
+    backgroundColor: "rgba(4,134,135,0.08)",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "rgba(9, 66, 139, 1)",
+  },
+  itemContainer1: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 5,
+    padding: 10,
+    height: 50,
+    width: 70,
+    transform: [{ translateX: 250 }, { translateY: 10 }],
+    backgroundColor: "rgba(4,134,135,0.08)",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "rgba(9, 66, 139, 1)",
+  },
+  itemName: {
+    fontSize: 16,
+    color: "black",
+    fontWeight: "600",
   },
   Frame236: {
     display: "flex",
@@ -342,12 +240,7 @@ const styles = StyleSheet.create({
     height: "100%",
     // backgroundColor:'yellow'
   },
-  Frame237: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
+
   Frame235: {
     display: "flex",
     flexDirection: "column",
@@ -412,7 +305,7 @@ const styles = StyleSheet.create({
   Group220: {
     paddingTop: 5,
     paddingBottom: 4,
-    paddingLeft: 23,
+    paddingLeft: 20,
     paddingRight: 21,
     marginRight: 19,
     borderRadius: 50,
@@ -479,12 +372,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  Frame235: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
 
   Frame224: {
     display: "flex",
@@ -497,7 +384,7 @@ const styles = StyleSheet.create({
     paddingRight: 128,
     borderRadius: 50,
     backgroundColor: "rgba(9, 66, 139, 1)",
-    top: "-161%",
+    top: "-40%",
   },
   Txt351: {
     fontSize: 16,
@@ -508,150 +395,39 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  Group228: {
-    position: "relative",
-    backgroundColor: "white",
-    /* url(https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/s20zeq61yfn-492%3A54?alt=media&token=bf4bbbef-5ff6-4507-bb07-9bb167d876e5) */
-    width: "100%",
-    height: "100%",
-    //  top: '30%',
-    marginTop: "4%",
-  },
-  Group2281: {
-    position: "relative",
-    backgroundColor: "white",
-    /* url(https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/s20zeq61yfn-492%3A54?alt=media&token=bf4bbbef-5ff6-4507-bb07-9bb167d876e5) */
-    width: "100%",
-    height: "100%",
-    // top: '30%',
-    marginTop: "-60%",
-  },
-  Group229: {
-    position: "relative",
-    backgroundColor: "white",
-    /* url(https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/s20zeq61yfn-492%3A54?alt=media&token=bf4bbbef-5ff6-4507-bb07-9bb167d876e5) */
-    width: "80%",
-    height: "56%",
-    // top: '30%',
-    transform: [{ translateX: 70 }],
-  },
-  Group9510: {
-    display: "flex",
-    flexDirection: "column",
-    position: "absolute",
-    // top: '30%',
-    none: "0px",
-    width: "100%",
-    height: "100%",
-  },
-  Group867: {
-    display: "flex",
-    flexDirection: "row",
-    marginBottom: 26,
-  },
   KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf21: {
     width: 107,
     height: 56,
     marginRight: 20,
     transform: [{ translateX: 80 }, { translateY: 9 }],
   },
-  Group2227: {
-    paddingTop: 6,
-    paddingBottom: 4,
-    paddingLeft: 34,
-    paddingRight: 32,
-    borderRadius: 10,
-    backgroundColor: "rgba(4,134,135,0.08)",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "rgba(9, 66, 139, 1)",
-    width: "26%",
-    height: "64%",
-    transform: [{ translateX: 80 }, { translateY: 20 }],
-  },
-  Txt4669: {
-    fontSize: 16,
-    //  fontFamily: "Jost, sans-serif",
-    fontWeight: "600",
-    color: "rgba(9, 66, 139, 1)",
-  },
 
-  Group2225: {
-    paddingTop: 6,
-    paddingBottom: 4,
-    paddingLeft: 31,
-    paddingRight: 35,
-    marginBottom: 42,
-    borderRadius: 10,
-    backgroundColor: "rgba(4,134,135,0.08)",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "rgba(9, 66, 139, 1)",
-    width: "27%",
-    height: "4.25%",
-    transform: [{ translateX: 80 }, { translateY: 20 }],
-  },
-  Txt4469: {
-    fontSize: 16,
-    //  fontFamily: "Jost, sans-serif",
-    fontWeight: "600",
-    color: "rgba(9, 66, 139, 1)",
-  },
-  Group22251: {
-    paddingTop: 6,
-    paddingBottom: 4,
-    paddingLeft: 31,
-    paddingRight: 35,
-    marginBottom: 42,
-    borderRadius: 10,
-    backgroundColor: "rgba(4,134,135,0.08)",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: "rgba(9, 66, 139, 1)",
-    width: "27%",
-    height: "4.25%",
-    transform: [{ translateX: 80 }, { translateY: 40 }],
-  },
-  Group2226: {
-    display: "flex",
-    flexDirection: "row",
+  Box: {
     alignItems: "center",
-    paddingTop: 5,
-    paddingBottom: 5,
-    paddingLeft: 25,
-    paddingRight: 20,
-    borderRadius: 10,
-    backgroundColor: "rgba(9, 66, 139, 1)",
-    width: 101,
-    height: 36,
-    transform: [{ translateX: 80 }, { translateY: 40 }],
-  },
-  Txt5597: {
-    fontSize: 16,
-    //  fontFamily: "Jost, sans-serif",
-    fontWeight: "600",
-    color: "rgba(255, 255, 255, 1)",
-    transform: [{ translateX: 8 }],
-  },
-  Group880: {
-    width: 12,
-    height: 12,
+    justifyContent: "center",
+    borderRadius: 5,
+    padding: 10,
+    height: 50,
+    width: 70,
+    // paddingTop:60
+    transform: [{ translateX: -140 }, { translateY: 10 }],
+    backgroundColor: "#7CF772",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "rgba(9, 66, 139, 1)",
   },
 
-  KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf24: {
-    position: "absolute",
-    top: 78,
-    // left: 231,
-    width: 107,
-    height: 56.32,
-    transform: [{ translateX: 200 }, { translateY: 15 }],
-  },
-  KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf25: {
-    position: "absolute",
-    top: 157,
-    // left: 231,
-    width: 107,
-    height: 56.32,
-    transform: [{ translateX: 200 }, { translateY: 35 }],
+  Box1: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 5,
+    padding: 10,
+    height: 50,
+    width: 70,
+    transform: [{ translateX: 250 }, { translateY: 10 }],
+    backgroundColor: "#7CF772",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "rgba(9, 66, 139, 1)",
   },
 });
