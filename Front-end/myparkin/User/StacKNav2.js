@@ -19,7 +19,11 @@ import MyParkings from "./Screens/MyParkings.js";
 
 import EditProfile from "./Screens/EditProfile.js";
 import SelectVec from "./Screens/SelectVec";
-// import test from "./Screens/test.js";
+import test from "./Screens/test.js";
+import ParkingSpot_1 from "./Screens/ParkingSpot_1.js";
+import ParkingSpot_2 from './Screens/ParkingSpot_2';
+import ParkingSpot_3 from './Screens/ParkingSpot_3';
+import ParkingTimer from './Screens/ParkingTimer';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +43,9 @@ const StackNav = () => {
         <Stack.Screen name="SearchFilter" component={SearchFilter} />
         <Stack.Screen name="MyParkings" component={MyParkings} />
         <Stack.Screen name="ParkingDetail" component={ParkingDetail} />
+        <Stack.Screen name="ParkingSpot_1" component={ParkingSpot_1} />
+       <Stack.Screen name="ParkingSpot_2" component={ParkingSpot_2} />
+       <Stack.Screen name="ParkingSpot_3" component={ParkingSpot_3} />
         <Stack.Screen name="EditProfile" component={EditProfile} />
       </Stack.Navigator>
     </Provider>
