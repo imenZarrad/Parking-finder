@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Image,
@@ -10,8 +10,6 @@ import {
 import Icon from "@expo/vector-icons/build/FontAwesome5";
 
 export default function ParkingDetail({ route, navigation }) {
-  console.log(route.params);
-  console.log(navigation);
   return (
     <View style={styles.container}>
       <View style={styles.innercontainer}>
@@ -38,9 +36,20 @@ export default function ParkingDetail({ route, navigation }) {
         </View>
       </View>
       <View style={styles.btncontainter}>
-        <Button title="go back" style={styles.btn}></Button>
+        <Button
+          title="go back"
+          style={styles.btn}
+          onPress={() => {
+            navigation.goBack();
+          }}
+        ></Button>
 
-        <Button title="book now"></Button>
+        <Button
+          title="book now"
+          onPress={() => {
+            navigation.navigate("SelectVec", route.params);
+          }}
+        ></Button>
       </View>
     </View>
   );
