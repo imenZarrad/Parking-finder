@@ -5,8 +5,6 @@ import {
   Image,
   Text,
   View,
-  ImageBackground,
-  ScrollView,
   TouchableOpacity,
 } from "react-native";
 import Lottie from "lottie-react-native";
@@ -17,8 +15,6 @@ import { TouchableRipple } from "react-native-paper";
 
 export default function ParkingSpot_1() {
   const navigation = useNavigation();
-
-  const [box, setBox] = useState();
 
   const [show, setShow] = useState(false);
 
@@ -31,12 +27,6 @@ export default function ParkingSpot_1() {
       if (element.name === e._dispatchInstances.memoizedProps.children) {
         element.type = !element.type;
         setShow(element.type);
-
-        // if(i === box){
-        //   setBox()
-        // }else {
-        //   setBox(i)
-        // }
       } else {
         element.type = false;
       }
@@ -46,11 +36,6 @@ export default function ParkingSpot_1() {
     setShowHide(!show_Hide);
   };
 
-  // const handleImage = () =>{
-  //   if (show){
-  //     return setShowHide(true)
-  //   }
-  // }
 
   return (
     <View style={styles.Frame236}>
@@ -101,7 +86,9 @@ export default function ParkingSpot_1() {
                   spacing={15}
                   renderItem={({ item, index }) => {
                     {
-                      if (index % 2 === 1) {
+                      if (index % 2 === 1  && item.name === 'A04' || item.name === 'A08' || item.name === 'A12') {
+                        console.log(item.name);
+
                         return (
                           <View
                             style={[
@@ -123,7 +110,19 @@ export default function ParkingSpot_1() {
                             <View style={styles.horizontalLine}></View>
                           </View>
                         );
-                      } else if (index % 2 === 0) {
+                      } else if (index % 2 === 1) {
+                        return(
+                        <View
+                            style={styles.car}>
+                          
+                            <View style={styles.verticleLine}></View>
+                            <Image source={{uri: item.image}} style={{width: '100%', height: '100%'}}/>
+                            <View style={styles.horizontalLine}></View>
+                            </View>
+                            )
+                      }
+                      
+                      else if (index % 2 === 0 && item.name === 'A01' || item.name === 'A05' || item.name === 'A07') {
                         return (
                           <View
                             style={[
@@ -157,6 +156,16 @@ export default function ParkingSpot_1() {
                             <View style={styles.horizontalLine}></View>
                           </View>
                         );
+                      } else if (index % 2 === 0) {
+                        return(
+                        <View
+                            style={styles.KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf21}>
+                          
+                            <View style={styles.verticleLine}></View>
+                            <Image source={{uri: item.image}} style={{width: '100%', height: '100%'}}/>
+                            <View style={styles.horizontalLine}></View>
+                            </View>
+                            )
                       }
                     }
                   }}
@@ -198,6 +207,20 @@ const styles = StyleSheet.create({
   gridView1: {
     // marginTop: 10,
     flex: 1,
+  },
+  car: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 5,
+    padding: 10,
+    height: 50,
+    width: 70,
+    // paddingTop:60
+    transform: [{ translateX: -140 }, { translateY: 6 }],
+    // backgroundColor: "rgba(4,134,135,0.08)",
+    // borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "rgba(9, 66, 139, 1)",
   },
   itemContainer: {
     alignItems: "center",
@@ -303,60 +326,60 @@ const styles = StyleSheet.create({
     marginTop: "4%",
   },
   Group220: {
-    paddingTop: 5,
-    paddingBottom: 4,
-    paddingLeft: 20,
-    paddingRight: 21,
-    marginRight: 19,
-    borderRadius: 50,
-    backgroundColor: "rgba(9, 66, 139, 1)",
-    borderWidth: 2,
-    borderStyle: "solid",
-    borderColor: "rgba(9, 66, 139, 1)",
-    width: 111,
-    height: 37,
-  },
-  Txt122: {
-    fontSize: 16,
-    // fontFamily: "Jost, sans-serif",
-    fontWeight: "600",
-    color: "rgba(255, 255, 255, 1)",
-  },
-
-  Group221: {
-    paddingTop: 5,
-    paddingBottom: 4,
-    paddingLeft: 18,
-    paddingRight: 17,
-    marginRight: 19,
-    borderRadius: 50,
-    backgroundColor: "rgba(4,134,135,0.08)",
-    borderWidth: 2,
-    borderStyle: "solid",
-    borderColor: "rgba(9, 66, 139, 1)",
-    width: 111,
-    height: 37,
-  },
-
-  Group222: {
-    paddingTop: 5,
-    paddingBottom: 4,
-    paddingLeft: 20,
-    paddingRight: 18,
-    borderRadius: 50,
-    backgroundColor: "rgba(4,134,135,0.08)",
-    borderWidth: 2,
-    borderStyle: "solid",
-    borderColor: "rgba(9, 66, 139, 1)",
-    width: 111,
-    height: 37,
-  },
-  Txt3710: {
-    fontSize: 16,
-    // fontFamily: "Jost, sans-serif",
-    fontWeight: "600",
-    color: "rgba(9, 66, 139, 1)",
-  },
+         paddingTop: 5,
+         paddingBottom: 4,
+         paddingLeft: 18,
+         paddingRight: 21,
+         marginRight: 19,
+         borderRadius: 50,
+         backgroundColor: "rgba(9, 66, 139, 1)",
+         borderWidth: 2,
+         borderStyle: "solid",
+         borderColor: "rgba(9, 66, 139, 1)",
+         width: 111,
+         height: 37,
+       },
+       Txt122: {
+         fontSize: 16,
+          // fontFamily: "Jost, sans-serif",
+         fontWeight: "600",
+         color: "rgba(255, 255, 255, 1)",
+       },
+    
+       Group221: {
+         paddingTop: 5,
+         paddingBottom: 4,
+         paddingLeft: 18,
+         paddingRight: 17,
+         marginRight: 19,
+         borderRadius: 50,
+         backgroundColor: "rgba(4,134,135,0.08)",
+         borderWidth: 2,
+         borderStyle: "solid",
+         borderColor: "rgba(9, 66, 139, 1)",
+         width: 111,
+         height: 37,
+       },
+    
+       Group222: {
+         paddingTop: 5,
+         paddingBottom: 4,
+         paddingLeft: 20,
+         paddingRight: 18,
+         borderRadius: 50,
+         backgroundColor: "rgba(4,134,135,0.08)",
+         borderWidth: 2,
+         borderStyle: "solid",
+         borderColor: "rgba(9, 66, 139, 1)",
+         width: 111,
+         height: 37,
+       },
+       Txt3710: {
+         fontSize: 16,
+          // fontFamily: "Jost, sans-serif",
+         fontWeight: "600",
+         color: "rgba(9, 66, 139, 1)",
+       },
 
   Frame2371: {
     display: "flex",
@@ -396,10 +419,18 @@ const styles = StyleSheet.create({
   },
 
   KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf21: {
-    width: 107,
-    height: 56,
-    marginRight: 20,
-    transform: [{ translateX: 80 }, { translateY: 9 }],
+
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 5,
+    padding: 10,
+    height: 50,
+    width: 70,
+    transform: [{ translateX: 250 }, { translateY: 6 }],
+    // backgroundColor: "rgba(4,134,135,0.08)",
+    // borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "rgba(9, 66, 139, 1)",
   },
 
   Box: {

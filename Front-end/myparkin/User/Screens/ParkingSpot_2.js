@@ -5,8 +5,6 @@ import {
   Image,
   Text,
   View,
-  ImageBackground,
-  ScrollView,
   TouchableOpacity,
 } from "react-native";
 import Lottie from "lottie-react-native";
@@ -18,10 +16,8 @@ import { TouchableRipple } from "react-native-paper";
 export default function ParkingSpot_1() {
   const navigation = useNavigation();
 
-  const [box, setBox] = useState();
-
   const [show, setShow] = useState(false);
-
+  
   const [show_Hide, setShowHide] = useState(false);
 
   const [items, setItems] = React.useState(secondFloor);
@@ -31,12 +27,6 @@ export default function ParkingSpot_1() {
       if (element.name === e._dispatchInstances.memoizedProps.children) {
         element.type = !element.type;
         setShow(element.type);
-
-        // if(i === box){
-        //   setBox()
-        // }else {
-        //   setBox(i)
-        // }
       } else {
         element.type = false;
       }
@@ -45,12 +35,6 @@ export default function ParkingSpot_1() {
     });
     setShowHide(!show_Hide);
   };
-
-  // const handleImage = () =>{
-  //   if (show){
-  //     return setShowHide(true)
-  //   }
-  // }
 
   return (
     <View style={styles.Frame236}>
@@ -74,7 +58,7 @@ export default function ParkingSpot_1() {
                 </View>
               </View>
               <View style={styles.Frame223}>
-              <TouchableRipple
+                <TouchableRipple
                   style={styles.Group221}
                   onPress={() => navigation.navigate("ParkingSpot_1")}
                 >
@@ -101,7 +85,9 @@ export default function ParkingSpot_1() {
                   spacing={15}
                   renderItem={({ item, index }) => {
                     {
-                      if (index % 2 === 1) {
+                      if (index % 2 === 1  && item.name === 'B02' || item.name === 'B04' || item.name === 'B08' || item.name === 'B12') {
+                        console.log(item.name);
+
                         return (
                           <View
                             style={[
@@ -123,7 +109,19 @@ export default function ParkingSpot_1() {
                             <View style={styles.horizontalLine}></View>
                           </View>
                         );
-                      } else if (index % 2 === 0) {
+                      } else if (index % 2 === 1) {
+                        return(
+                        <View
+                            style={styles.car}>
+                          
+                            <View style={styles.verticleLine}></View>
+                            <Image source={{uri: item.image}} style={{width: '100%', height: '100%'}}/>
+                            <View style={styles.horizontalLine}></View>
+                            </View>
+                            )
+                      }
+                      
+                      else if (index % 2 === 0 && item.name === 'B03' || item.name === 'B09' || item.name === 'B07') {
                         return (
                           <View
                             style={[
@@ -157,6 +155,16 @@ export default function ParkingSpot_1() {
                             <View style={styles.horizontalLine}></View>
                           </View>
                         );
+                      } else if (index % 2 === 0) {
+                        return(
+                        <View
+                            style={styles.KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf21}>
+                          
+                            <View style={styles.verticleLine}></View>
+                            <Image source={{uri: item.image}} style={{width: '100%', height: '100%'}}/>
+                            <View style={styles.horizontalLine}></View>
+                            </View>
+                            )
                       }
                     }
                   }}
@@ -198,6 +206,20 @@ const styles = StyleSheet.create({
   gridView1: {
     // marginTop: 10,
     flex: 1,
+  },
+  car: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 5,
+    padding: 10,
+    height: 50,
+    width: 70,
+    // paddingTop:60
+    transform: [{ translateX: -140 }, { translateY: 6 }],
+    // backgroundColor: "rgba(4,134,135,0.08)",
+    // borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "rgba(9, 66, 139, 1)",
   },
   itemContainer: {
     alignItems: "center",
@@ -396,10 +418,18 @@ const styles = StyleSheet.create({
   },
 
   KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf21: {
-    width: 107,
-    height: 56,
-    marginRight: 20,
-    transform: [{ translateX: 80 }, { translateY: 9 }],
+
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 5,
+    padding: 10,
+    height: 50,
+    width: 70,
+    transform: [{ translateX: 250 }, { translateY: 6 }],
+    // backgroundColor: "rgba(4,134,135,0.08)",
+    // borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "rgba(9, 66, 139, 1)",
   },
 
   Box: {
