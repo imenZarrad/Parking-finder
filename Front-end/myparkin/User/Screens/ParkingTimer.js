@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   Txt3107: {
     fontSize: 29,
-    fontFamily: "Jost, sans-serif",
+    // fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     lineHeight: 34,
     color: "rgba(0,0,0,1)",
@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
   },
   Txt351: {
     fontSize: 16,
-    fontFamily: "Montserrat, sans-serif",
+    // fontFamily: "Montserrat, sans-serif",
     fontWeight: "700",
     color: "rgba(255, 255, 255, 1)",
     textAlign: "center",
