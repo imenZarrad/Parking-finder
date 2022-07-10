@@ -16,9 +16,13 @@ import {
 import Lottie from "lottie-react-native";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
+
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase.config";
 import { child, ref, set } from "firebase/database";
+
+import { TouchableRipple } from "react-native-paper";
+
 
 export default function ProfileFill() {
   const [obj, setObj] = useState({
@@ -124,16 +128,24 @@ export default function ProfileFill() {
                 <TextInput
                   maxLength={10}
                   style={styles.Txt448}
+
                   placeholder="FullName"
                   onChangeText={(text) => handleChange(text, "fullName")}
+
+
+
                 />
               </View>
               <View style={styles.Group159}>
                 <TextInput
                   maxLength={7}
                   style={styles.Txt448}
+
                   placeholder="Username"
                   onChangeText={(text) => handleChange(text, "userName")}
+
+ 
+
                 />
               </View>
               <TouchableOpacity
@@ -148,19 +160,34 @@ export default function ProfileFill() {
                   }}
                 />
               </TouchableOpacity>
+
              
+
               <View style={styles.Group159}>
                 <TextInput
-                  keyboardType="numeric"
                   style={styles.Txt448}
+                  placeholder='Email'
+                  onChangeText={validate}
+                />
+              </View>
+
+              <View style={styles.Group159}>
+                <TextInput
+                  keyboardType='numeric'
+                  style={styles.Txt448}
+
                   placeholder="Phone Number"
                   onChangeText={(text) => handleChange(text, "phoneNumber")}
+
                 />
                 
               </View>
-              <View style={styles.Frame165}>
+              <TouchableRipple
+                style={styles.Frame165}
+                onPress={() => navigation.navigate("SuccessfullyCreated")}
+              >
                 <Text style={styles.Txt211}>Continue</Text>
-              </View>
+              </TouchableRipple>
             </SafeAreaView>
           </View>
         </View>

@@ -9,6 +9,7 @@ import Login from "./Screens/Login.js";
 
 
 import ProfileFill from "./Screens/ProfileFill.js";
+import SuccessfullyCreated from './Screens/SuccessfullyCreated';
 
 import Welcome from "./Screens/Welcome";
 import Map from "./Screens/map/Map";
@@ -31,6 +32,9 @@ const StackNavigation = () => {
 
 
       <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name='ProfileFill' component={ProfileFill} />
+      
+      <Stack.Screen name='SuccessfullyCreated' component={SuccessfullyCreated} />
 
 
     </Stack.Navigator>
