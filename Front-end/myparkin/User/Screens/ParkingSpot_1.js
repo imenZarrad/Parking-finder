@@ -12,6 +12,9 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { firstFloor } from "./FloorSpot";
 import { FlatGrid } from "react-native-super-grid";
 import { TouchableRipple } from "react-native-paper";
+// import firestore from '@react-native-firebase/firestore';
+
+
 
 export default function ParkingSpot_1() {
   const navigation = useNavigation();
@@ -21,6 +24,10 @@ export default function ParkingSpot_1() {
   const [show_Hide, setShowHide] = useState(false);
 
   const [items, setItems] = React.useState(firstFloor);
+
+
+  // const userDocument = firestore().collection('spot').doc('NsUROkT7DgjHuoyX66r2');
+  // console.log(userDocument, 'docuuuuument');
 
   const boxColored = (e) => {
     items.map((element, i) => {
@@ -35,6 +42,7 @@ export default function ParkingSpot_1() {
     });
     setShowHide(!show_Hide);
   };
+
 
 
   return (
