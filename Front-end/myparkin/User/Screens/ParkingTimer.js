@@ -4,6 +4,7 @@ import { Text, View, StyleSheet, SafeAreaView } from "react-native";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import Lottie from "lottie-react-native";
+import { TouchableRipple } from "react-native-paper";
 
 export default function ParkingTimer() {
   const [isPlaying, setIsPlaying] = React.useState(true);
@@ -75,9 +76,9 @@ export default function ParkingTimer() {
           </View>
         </View>
       </View>
-      <View style={styles.Frame224}>
-        <Text style={styles.Txt351}>Continue</Text>
-      </View>
+      <TouchableRipple style={styles.Frame224}  onPress={() => navigation.navigate("ExtendTime")}>
+        <Text style={styles.Txt351}>Extend Parking Timer</Text>
+      </TouchableRipple>
     </SafeAreaView>
   );
 }
@@ -98,10 +99,10 @@ const styles = StyleSheet.create({
   },
   Txt3107: {
     fontSize: 29,
-    fontFamily: "Jost, sans-serif",
+    // fontFamily: "Jost, sans-serif",
     fontWeight: "600",
     lineHeight: 34,
-    color: "rgba(0,0,0,1)",
+    color: "#104685",
     width: 282,
   },
   container: {
@@ -293,10 +294,11 @@ const styles = StyleSheet.create({
   },
   Txt351: {
     fontSize: 16,
-    fontFamily: "Montserrat, sans-serif",
+    // fontFamily: "Montserrat, sans-serif",
     fontWeight: "700",
     color: "rgba(255, 255, 255, 1)",
     textAlign: "center",
     justifyContent: "center",
+    top:'-1%'
   },
 });

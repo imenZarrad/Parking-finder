@@ -23,6 +23,7 @@ import ParkingSpot_1 from "./Screens/ParkingSpot_1.js";
 import ParkingSpot_2 from './Screens/ParkingSpot_2';
 import ParkingSpot_3 from './Screens/ParkingSpot_3';
 import ParkingTimer from './Screens/ParkingTimer';
+import ExtendParkingTimer from "./Screens/ExtendParkingTimer.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -32,7 +33,9 @@ const StackNav = () => {
     <Provider store={store}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {/* <Stack.Screen name="Map" component={Map} />
+
         <Stack.Screen name="MyBookMark" component={MyBookMark} />
+
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="SelectVec" component={SelectVec} />
         <Stack.Screen
@@ -52,6 +55,9 @@ const StackNav = () => {
         <Stack.Screen name="ParkingSpot_1" component={ParkingSpot_1} />
        <Stack.Screen name="ParkingSpot_2" component={ParkingSpot_2} />
        <Stack.Screen name="ParkingSpot_3" component={ParkingSpot_3} />
+
+       <Stack.Screen name="ParkingTimer" component={ParkingTimer} />
+       <Stack.Screen name="ExtendTime" component={ExtendParkingTimer} />
         <Stack.Screen name="EditProfile" component={EditProfile} />
       </Stack.Navigator>
     </Provider>
