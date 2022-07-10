@@ -41,8 +41,10 @@ const StackNav = () => {
           component={FillCarInformation}
         />
 
+
         <Stack.Screen name="HestoryParking" component={HestoryParking} />
         <Stack.Screen name="Parkingspot" component={Parkingspot} />
+
         <Stack.Screen name="ProfileFill" component={ProfileFill} />
         <Stack.Screen name="MarkerDetail" component={MarkerDetail} />
         <Stack.Screen name="SearchFilter" component={SearchFilter} />
