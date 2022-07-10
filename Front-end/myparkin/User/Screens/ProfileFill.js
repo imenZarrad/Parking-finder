@@ -16,9 +16,28 @@ import {
 import Lottie from "lottie-react-native";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
+
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase.config";
+import { child, ref, set } from "firebase/database";
+
 import { TouchableRipple } from "react-native-paper";
 
+
 export default function ProfileFill() {
+  const [obj, setObj] = useState({
+    fullName: "",
+    userName: "",
+    phoneNumber: "",
+    birthdate: "",
+  });
+  const [userId, setUserId] = useState("");
+  onAuthStateChanged(auth, (user) => {
+    if (user != null) {
+      const uid = user.uid;
+      setUserId(uid);
+    }
+  });
   const navigation = useNavigation();
   const [date, setDate] = useState(new Date());
 
@@ -40,11 +59,7 @@ export default function ProfileFill() {
     showMode("date");
   };
 
-  const validate = (text) => {
-    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-    console.log(text, reg.test(text));
-  };
-  const logOut = () => {
+  logOut = () => {
     signOut(auth)
       .then((res) => {
         // setIsSignedIn(false);
@@ -54,6 +69,21 @@ export default function ProfileFill() {
         alert(err.message, "eee");
       });
   };
+  const fillProfile = () => {
+    if (obj.fullName === "" || obj.userName === "" || obj.phoneNumber === "") {
+      Alert.alert("Must Fill All The Fields ");
+    } else {
+      set(ref(database, "users/" + userId), obj);
+    }
+  };
+  function handleChange(text, eventName) {
+    setObj((prev) => {
+      return {
+        ...prev,
+        [eventName]: text,
+      };
+    });
+  }
   return (
     <KeyboardAvoidingView>
       <ScrollView
@@ -98,20 +128,26 @@ export default function ProfileFill() {
                 <TextInput
                   maxLength={10}
                   style={styles.Txt448}
-                  placeholder='FullName'
+
+                  placeholder="FullName"
+                  onChangeText={(text) => handleChange(text, "fullName")}
+
+
+
                 />
               </View>
-              {/* <TextInput maxLength={10} style={styles.Txt856} placeholder="FullName"/> */}
-              {/* </View> */}
               <View style={styles.Group159}>
                 <TextInput
                   maxLength={7}
                   style={styles.Txt448}
-                  placeholder='Username'
+
+                  placeholder="Username"
+                  onChangeText={(text) => handleChange(text, "userName")}
+
+ 
+
                 />
               </View>
-              {/* <TextInput style={styles.Txt856} placeholder="Username"/> */}
-              {/* </View> */}
               <TouchableOpacity
                 style={styles.Group160}
                 onPress={showDatepicker}
@@ -124,6 +160,9 @@ export default function ProfileFill() {
                   }}
                 />
               </TouchableOpacity>
+
+             
+
               <View style={styles.Group159}>
                 <TextInput
                   style={styles.Txt448}
@@ -131,18 +170,17 @@ export default function ProfileFill() {
                   onChangeText={validate}
                 />
               </View>
+
               <View style={styles.Group159}>
                 <TextInput
                   keyboardType='numeric'
                   style={styles.Txt448}
-                  placeholder='Phone Number'
+
+                  placeholder="Phone Number"
+                  onChangeText={(text) => handleChange(text, "phoneNumber")}
+
                 />
-                {/* <Image
-                  style={styles.Frame5}
-                  source={{
-                    uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Tunisia.svg/1280px-Flag_of_Tunisia.svg.png",
-                  }}
-                /> */}
+                
               </View>
               <TouchableRipple
                 style={styles.Frame165}
@@ -178,24 +216,18 @@ const styles = StyleSheet.create({
     width: "25%",
     height: "25%",
     paddingTop: 40,
-    // marginTop:"30%",
-    // marginLeft:"-10%",
-    // transform: [{ translateX: -25 }]
   },
   Frame217: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
-    // width:'100%',
-    // height:'100%'
   },
   Frame159: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
-    // marginBottom: 17,
     top: "7%",
   },
 
@@ -206,7 +238,6 @@ const styles = StyleSheet.create({
     color: "rgba(0,0,0,1)",
     width: "80%",
     top: 13,
-    // backgroundColor: "blue",
   },
 
   Group158: {
@@ -236,30 +267,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 17,
     paddingBottom: 17,
-    //  paddingLeft: 26,
-    //  paddingRight: 5,
     backgroundColor: "rgba(71, 192, 192, 0.08)",
-    // borderWidth: 1,
-    // borderStyle: "solid",
-    // borderColor: "rgba(0,0,0,1)",
     marginBottom: 28,
     borderRadius: 15,
-    //  backgroundColor: "rgba(71, 192, 192, 0.08)",
-
-    //  backgroundColor:'blue',
     width: "70%",
     height: "17%",
   },
   Txt448: {
     fontSize: 15,
-    //  fontFamily: "Montserrat, sans-serif",
     fontWeight: "500",
     color: "rgba(169,169,169,1)",
-    //  textAlign: "center",
-    //  justifyContent: "center",
     width: "100%",
     height: "100%",
-    // backgroundColor:'yellow',
     marginLeft: "8%",
     marginRight: "7%",
   },
@@ -270,22 +289,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 17,
     paddingBottom: 17,
-    //  paddingLeft: 26,
-    //  paddingRight: '%',
     backgroundColor: "rgba(71, 192, 192, 0.08)",
-    // borderWidth: 1,
-    // borderStyle: "solid",
-    // borderColor: "rgba(0,0,0,1)",
     marginLeft: "3%",
-    // paddingRight: '5%',
 
     marginBottom: 28,
     borderRadius: 15,
-    //  backgroundColor: "rgba(71, 192, 192, 0.08)",
-
-    //  backgroundColor:'blue',
     width: "60%",
-    height: "15%",
+    height: "17%",
   },
 
   Group161: {
@@ -294,20 +304,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 17,
     paddingBottom: 17,
-    //  paddingLeft: 26,
-    //  paddingRight: '%',
     backgroundColor: "rgba(71, 192, 192, 0.08)",
-    // borderWidth: 1,
-    // borderStyle: "solid",
-    // borderColor: "rgba(0,0,0,1)",
     marginLeft: "3%",
-    // paddingRight: '5%',
 
     marginBottom: 28,
     borderRadius: 15,
-    //  backgroundColor: "rgba(71, 192, 192, 0.08)",
-
-    //  backgroundColor:'blue',
     width: "60%",
     height: "15%",
     marginLeft: "8%",
@@ -316,7 +317,6 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: "400",
     color: "rgba(183,176,176,1)",
-    // marginRight: 213,
   },
   Frame3: {
     width: 16,

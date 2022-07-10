@@ -17,7 +17,7 @@ import { TextInput } from "react-native-gesture-handler";
 import { auth } from "../../firebase.config";
 import { updateProfile, updateEmail } from "firebase/auth";
 
-export default function EditProfile() {
+export default function EditProfile({ route }) {
   const navigation = useNavigation();
 
   const [userName, setUserName] = useState(auth.currentUser.displayName);
@@ -81,11 +81,10 @@ export default function EditProfile() {
             value={email}
             onChangeText={handleEmail}
           />
-
           <TextInput
             style={styles.Rectangle6}
             placeholder="FullName"
-            value={userName}
+            value={route.params.fullName}
             onChangeText={handleFullName}
           />
 
