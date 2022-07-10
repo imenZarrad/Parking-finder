@@ -9,7 +9,7 @@ const MarkersInformation = [
     adress: "Rue Jamel abdelNaceur Tounes ",
     image:
       "https://ijaa.tn/wp-content/uploads/2019/01/Parking-el-Alem-Mise-en-Avant.png",
-    price: "2dt/hour",
+    price: 2,
     number: "36 343 654",
   },
 
@@ -22,7 +22,7 @@ const MarkersInformation = [
     adress: " Av. Jean Jaurès, Tunis ",
     image:
       "https://lh3.googleusercontent.com/p/AF1QipPcAC9WVOrSyX9DEXToVGWrFlAR2FFEfwJk4j9Y=w600-k",
-    price: "2dt/hour",
+    price: 2,
     number: "71 861 174",
   },
   {
@@ -34,10 +34,11 @@ const MarkersInformation = [
     description: "description of parking ",
     image:
       "https://lh5.googleusercontent.com/p/AF1QipPOBqOiSBpIhousS4TW_jK3C9qeRN7v_rWMy20=w500-h500-k-no",
-    price: "2dt/hour",
+    price: 2,
     adress: "Avenue Habib Bourguiba, Tunis",
     number: "71 336 344",
   },
 ];
 
 export default MarkersInformation;
+

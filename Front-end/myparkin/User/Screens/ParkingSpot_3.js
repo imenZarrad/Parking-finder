@@ -1,31 +1,33 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Image,
-  Text,
-  View,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Image, Text, View, TouchableOpacity } from "react-native";
 import Lottie from "lottie-react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { thirdFloor } from "./FloorSpot";
 import { FlatGrid } from "react-native-super-grid";
 import { TouchableRipple } from "react-native-paper";
-
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { ParkingNameAndAdress } from "../redux/Features/BookPlace";
 export default function ParkingSpot_1() {
+  let dispatch = useDispatch();
+  let data = useSelector((state) => state.bookplace.value);
   const navigation = useNavigation();
+  const [globalState, setglobalState] = useState(data);
 
   const [show, setShow] = useState(false);
 
   const [show_Hide, setShowHide] = useState(false);
-
 
   const [items, setItems] = React.useState(thirdFloor);
 
   const boxColored = (e) => {
     items.map((element, i) => {
       if (element.name === e._dispatchInstances.memoizedProps.children) {
+        setglobalState((prevstate) => ({
+          ...prevstate,
+          ParkingSpot: `1st floor (${element.name})`,
+        }));
         element.type = !element.type;
         setShow(element.type);
       } else {
@@ -173,7 +175,15 @@ export default function ParkingSpot_1() {
               </View>
             </View>
             <View style={styles.Frame224}>
-              <Text style={styles.Txt351}>Continue</Text>
+              <Text
+                style={styles.Txt351}
+                onPress={() => {
+                  navigation.navigate("BookingReview");
+                  dispatch(ParkingNameAndAdress(globalState));
+                }}
+              >
+                Continue
+              </Text>
             </View>
           </View>
         </View>

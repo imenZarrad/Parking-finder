@@ -45,15 +45,15 @@ class MyCarousel extends Component {
 }
 const styles = StyleSheet.create({
   image: {
-    height: 150,
+    height: 200,
     width: 300,
     bottom: 0,
     position: "absolute",
   },
 
   slider: {
-    backgroundColor: "rgba(0, 0, 0, 0.6)",
-    height: 210,
+    backgroundColor: "rgba(9, 66, 139, 1)",
+    height: 280,
     width: 300,
     padding: 24,
     borderRadius: 24,
