@@ -139,7 +139,7 @@ const FillCarInformation = ({ navigation }) => {
         style={styles.Group151}
         onPress={() => {
           dispatch(ParkingNameAndAdress(globalState));
-          navigation.navigate("Parkingspot");
+          navigation.navigate("ParkingSpot_1");
         }}
       >
         <Text style={styles.Txt917}>continue</Text>
