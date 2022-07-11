@@ -14,6 +14,7 @@ import { ParkingNameAndAdress } from "../../redux/Features/BookPlace";
 export default function ParkingDetail({ route, navigation }) {
   const [parkingName, setParkingName] = useState(route.params.parkingname);
   const [adress, setadress] = useState(route.params.adress);
+  const [Price, setPrice] = useState(route.params.price);
   const dispatch = useDispatch();
 
   let updateStateAndNavigate = () => {
@@ -22,7 +23,7 @@ export default function ParkingDetail({ route, navigation }) {
         CarType: "",
         ParkingName: parkingName,
         Adress: adress,
-        Floor: "",
+        Price: Price,
         ParkingSpot: "",
         Date: "",
         Duration: "",
@@ -48,7 +49,7 @@ export default function ParkingDetail({ route, navigation }) {
           <Text style={styles.Txt1064}>{route.params.adress}</Text>
           <Icon name="phone" size={20} style={styles.phone}></Icon>
           <Text style={styles.Txt999}> +216 {route.params.number}</Text>
-          <Text style={styles.textmoney}> {route.params.price}</Text>
+          <Text style={styles.textmoney}> {route.params.price} Dt/hour</Text>
           <Icon name="dollar-sign" size={20} style={styles.money}></Icon>
           <Icon name="car" size={20} style={styles.distance}></Icon>
           <Text style={styles.distance1}>
