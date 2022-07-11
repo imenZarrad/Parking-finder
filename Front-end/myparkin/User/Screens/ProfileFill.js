@@ -23,7 +23,6 @@ import { child, ref, set } from "firebase/database";
 
 import { TouchableRipple } from "react-native-paper";
 
-
 export default function ProfileFill() {
   const [obj, setObj] = useState({
     fullName: "",
@@ -128,24 +127,16 @@ export default function ProfileFill() {
                 <TextInput
                   maxLength={10}
                   style={styles.Txt448}
-
                   placeholder="FullName"
                   onChangeText={(text) => handleChange(text, "fullName")}
-
-
-
                 />
               </View>
               <View style={styles.Group159}>
                 <TextInput
                   maxLength={7}
                   style={styles.Txt448}
-
                   placeholder="Username"
                   onChangeText={(text) => handleChange(text, "userName")}
-
- 
-
                 />
               </View>
               <TouchableOpacity
@@ -161,26 +152,21 @@ export default function ProfileFill() {
                 />
               </TouchableOpacity>
 
-             
-
               <View style={styles.Group159}>
                 <TextInput
                   style={styles.Txt448}
-                  placeholder='Email'
+                  placeholder="Email"
                   onChangeText={validate}
                 />
               </View>
 
               <View style={styles.Group159}>
                 <TextInput
-                  keyboardType='numeric'
+                  keyboardType="numeric"
                   style={styles.Txt448}
-
                   placeholder="Phone Number"
                   onChangeText={(text) => handleChange(text, "phoneNumber")}
-
                 />
-                
               </View>
               <TouchableRipple
                 style={styles.Frame165}

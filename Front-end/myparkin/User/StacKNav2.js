@@ -4,12 +4,10 @@ import ProfileFill from "./Screens/ProfileFill.js";
 import MarkerDetail from "./Screens/MarkerDetail";
 import SearchFilter from "./Screens/SearchFilter";
 import HistoryParking from "./Screens/hirtoryParking.js";
-
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import Parkingspot from "./Screens/Parkingspot";
 import ParkingDetail from "./Screens/ParkingDetail/ParkingDetail";
-
 import Map from "./Screens/map/Map.js";
 import Profile from "./Screens/Profile.js";
 import MyBookMark from "./Screens/MyBookMark.js";
@@ -24,6 +22,7 @@ import ParkingSpot_2 from "./Screens/ParkingSpot_2";
 import ParkingSpot_3 from "./Screens/ParkingSpot_3";
 import ParkingTimer from "./Screens/ParkingTimer";
 import ExtendParkingTimer from "./Screens/ExtendParkingTimer.js";
+import Ticket from "./Screens/ticket.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +51,7 @@ const StackNav = () => {
         <Stack.Screen name="ParkingSpot_2" component={ParkingSpot_2} />
         <Stack.Screen name="ParkingSpot_3" component={ParkingSpot_3} />
         <Stack.Screen name="BookingReview" component={BookingReview} />
+        <Stack.Screen name="ticket" component={Ticket} />
         <Stack.Screen name="ParkingTimer" component={ParkingTimer} />
         <Stack.Screen name="ExtendTime" component={ExtendParkingTimer} />
         <Stack.Screen name="EditProfile" component={EditProfile} />
