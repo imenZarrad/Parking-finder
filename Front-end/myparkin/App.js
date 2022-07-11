@@ -1,4 +1,4 @@
-import ignoreWarnings from './ignoreWarnings.js'
+import ignoreWarnings from "./ignoreWarnings.js";
 
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -22,21 +22,19 @@ export default function App() {
     }
   });
   return (
-  
-      <NavigationContainer>
-        {console.log(check)}
-        {isLogedIn ? (
-          <>
-            <StackNav />
-            {/* <Footer /> */}
-          </>
-        ) : (
-          <StackNavigation />
-        )}
+    <NavigationContainer>
+      {console.log(check)}
+      {isLogedIn ? (
+        <>
+          <StackNav />
+          {/* <Footer /> */}
+        </>
+      ) : (
+        <StackNavigation />
+      )}
 
-        <StatusBar style="dark" />
-      </NavigationContainer>
-   
+      <StatusBar style="dark" />
+    </NavigationContainer>
   );
 }
 
