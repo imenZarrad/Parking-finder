@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import Lottie from "lottie-react-native";
+import { child, ref, set } from "firebase/database";
+import { database } from "../../firebase.config";
 import {
   StyleSheet,
   Image,
@@ -19,7 +21,7 @@ import { updateProfile, updateEmail } from "firebase/auth";
 
 export default function EditProfile({ route }) {
   const navigation = useNavigation();
-
+  const [userId, setuserId] = useState(auth.currentUser.uid);
   const [userName, setUserName] = useState(auth.currentUser.displayName);
   const [email, setEmail] = useState(auth.currentUser.email);
 
@@ -31,21 +33,13 @@ export default function EditProfile({ route }) {
     setEmail(text);
   };
 
-  // console.log(email);
-  // console.log(auth);
-  // console.log(auth.currentUser);
-
   const handleUpdate = () => {
     updateProfile(auth.currentUser, {
       displayName: userName,
     })
-      .then(() => {
-        // console.log("success");
-      })
+      .then(() => {})
       .catch((error) => {
         alert("error profile");
-        // console.log("error");
-        // ...
       });
     console.log(email, "before");
 
@@ -56,10 +50,18 @@ export default function EditProfile({ route }) {
       .catch((error) => {
         console.log(error);
       });
+    set(ref(database, "users/" + userId), { fullNAme: userName });
   };
+  // const edit = () => {
+  //   if (obj.fullName === "") {
+  //     Alert.alert("Must Fill All The Fields ");
+  //   } else {
+  //   }
+  // };
 
   return (
     <KeyboardAvoidingView>
+      {console.log(userId)}
       <ScrollView
         style={{
           width: "100%",
@@ -78,13 +80,13 @@ export default function EditProfile({ route }) {
           <TextInput
             style={styles.Rectangle9}
             placeholder="Email"
-            value={email}
+            // value={email}
             onChangeText={handleEmail}
           />
           <TextInput
             style={styles.Rectangle6}
             placeholder="FullName"
-            value={route.params.fullName}
+            // value={route.params.fullName}
             onChangeText={handleFullName}
           />
 
@@ -99,13 +101,6 @@ export default function EditProfile({ route }) {
             />
           </TouchableWithoutFeedback>
 
-          {/* <Image
-            style={styles.Frame6}
-            source={{
-              uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/zqwihq6a3b-79%3A1457?alt=media&token=2f0a9469-bfef-47d6-b494-471f6cdb9df1",
-            }}
-
-          /> */}
           <Text style={styles.Txt267}>Edit Profile</Text>
         </View>
       </ScrollView>

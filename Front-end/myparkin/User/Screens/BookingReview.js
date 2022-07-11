@@ -4,15 +4,23 @@ import { TouchableRipple , Colors, Checkbox, useTheme, Button} from "react-nativ
 import Lottie from "lottie-react-native";
 import Modal from "react-native-modal";
 import { useSelector } from "react-redux";
+
 import { useNavigation } from "@react-navigation/native";
 
 const BookingReview = () => {
   const navigation = useNavigation();
 
+
+import { doc, setDoc, getDocs, collection } from "firebase/firestore";
+import { child, push, ref } from "firebase/database";
+import { db, database } from "../../firebase.config";
+
+const BookingReview = ({ navigation }) => {
   let data = useSelector((state) => state.bookplace.value);
   const [globalState, setglobalState] = useState(data);
   let TotalPrice = globalState.Price * globalState.Duration;
   let totalcoins = TotalPrice * 100;
+
 
 
   const [checkedCustom, setCheckedCustom] = React.useState(false);
@@ -33,6 +41,7 @@ const BookingReview = () => {
         </TouchableRipple>
         <Text style={styles.Txt3107}>Booking review</Text>
       </View> 
+
       <View style={styles.Group545}>
         <View style={styles.Group991}>
           <Text style={styles.Txt089}>Parking Area</Text>
@@ -129,6 +138,7 @@ const BookingReview = () => {
       </TouchableRipple>
   
     </View>
+
 
 
       <TouchableRipple style={styles.Frame224} onPress={()=>setShow(!show)}>

@@ -11,7 +11,7 @@ export const BookplaceSlice = createSlice({
       Date: "",
       Duration: 0,
       User_id: "",
-      ParkiCoins: 1000,
+      ParkiCoins: 3000,
     },
   },
   reducers: {
