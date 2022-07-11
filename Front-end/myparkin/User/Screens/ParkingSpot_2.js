@@ -1,23 +1,22 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Image,
-  Text,
-  View,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Image, Text, View, TouchableOpacity } from "react-native";
 import Lottie from "lottie-react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { secondFloor } from "./FloorSpot";
 import { FlatGrid } from "react-native-super-grid";
 import { TouchableRipple } from "react-native-paper";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { ParkingNameAndAdress } from "../redux/Features/BookPlace";
 
 export default function ParkingSpot_1() {
   const navigation = useNavigation();
-
+  let dispatch = useDispatch();
+  let data = useSelector((state) => state.bookplace.value);
+  const [globalState, setglobalState] = useState(data);
   const [show, setShow] = useState(false);
-  
+
   const [show_Hide, setShowHide] = useState(false);
 
   const [items, setItems] = React.useState(secondFloor);
@@ -25,6 +24,10 @@ export default function ParkingSpot_1() {
   const boxColored = (e) => {
     items.map((element, i) => {
       if (element.name === e._dispatchInstances.memoizedProps.children) {
+        setglobalState((prevstate) => ({
+          ...prevstate,
+          ParkingSpot: `1st floor (${element.name})`,
+        }));
         element.type = !element.type;
         setShow(element.type);
       } else {
@@ -85,7 +88,12 @@ export default function ParkingSpot_1() {
                   spacing={15}
                   renderItem={({ item, index }) => {
                     {
-                      if (index % 2 === 1  && item.name === 'B02' || item.name === 'B04' || item.name === 'B08' || item.name === 'B12') {
+                      if (
+                        (index % 2 === 1 && item.name === "B02") ||
+                        item.name === "B04" ||
+                        item.name === "B08" ||
+                        item.name === "B12"
+                      ) {
                         console.log(item.name);
 
                         return (
@@ -110,18 +118,21 @@ export default function ParkingSpot_1() {
                           </View>
                         );
                       } else if (index % 2 === 1) {
-                        return(
-                        <View
-                            style={styles.car}>
-                          
+                        return (
+                          <View style={styles.car}>
                             <View style={styles.verticleLine}></View>
-                            <Image source={{uri: item.image}} style={{width: '100%', height: '100%'}}/>
+                            <Image
+                              source={{ uri: item.image }}
+                              style={{ width: "100%", height: "100%" }}
+                            />
                             <View style={styles.horizontalLine}></View>
-                            </View>
-                            )
-                      }
-                      
-                      else if (index % 2 === 0 && item.name === 'B03' || item.name === 'B09' || item.name === 'B07') {
+                          </View>
+                        );
+                      } else if (
+                        (index % 2 === 0 && item.name === "B03") ||
+                        item.name === "B09" ||
+                        item.name === "B07"
+                      ) {
                         return (
                           <View
                             style={[
@@ -156,15 +167,20 @@ export default function ParkingSpot_1() {
                           </View>
                         );
                       } else if (index % 2 === 0) {
-                        return(
-                        <View
-                            style={styles.KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf21}>
-                          
+                        return (
+                          <View
+                            style={
+                              styles.KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf21
+                            }
+                          >
                             <View style={styles.verticleLine}></View>
-                            <Image source={{uri: item.image}} style={{width: '100%', height: '100%'}}/>
+                            <Image
+                              source={{ uri: item.image }}
+                              style={{ width: "100%", height: "100%" }}
+                            />
                             <View style={styles.horizontalLine}></View>
-                            </View>
-                            )
+                          </View>
+                        );
                       }
                     }
                   }}
@@ -172,7 +188,15 @@ export default function ParkingSpot_1() {
               </View>
             </View>
             <View style={styles.Frame224}>
-              <Text style={styles.Txt351}>Continue</Text>
+              <Text
+                style={styles.Txt351}
+                onPress={() => {
+                  navigation.navigate("BookingReview");
+                  dispatch(ParkingNameAndAdress(globalState));
+                }}
+              >
+                Continue
+              </Text>
             </View>
           </View>
         </View>
@@ -325,60 +349,60 @@ const styles = StyleSheet.create({
     marginTop: "4%",
   },
   Group220: {
-         paddingTop: 5,
-         paddingBottom: 4,
-         paddingLeft: 18,
-         paddingRight: 21,
-         marginRight: 19,
-         borderRadius: 50,
-         backgroundColor: "rgba(9, 66, 139, 1)",
-         borderWidth: 2,
-         borderStyle: "solid",
-         borderColor: "rgba(9, 66, 139, 1)",
-         width: 111,
-         height: 37,
-       },
-       Txt122: {
-         fontSize: 16,
-          // fontFamily: "Jost, sans-serif",
-         fontWeight: "600",
-         color: "rgba(255, 255, 255, 1)",
-       },
-    
-       Group221: {
-         paddingTop: 5,
-         paddingBottom: 4,
-         paddingLeft: 18,
-         paddingRight: 17,
-         marginRight: 19,
-         borderRadius: 50,
-         backgroundColor: "rgba(4,134,135,0.08)",
-         borderWidth: 2,
-         borderStyle: "solid",
-         borderColor: "rgba(9, 66, 139, 1)",
-         width: 111,
-         height: 37,
-       },
-    
-       Group222: {
-         paddingTop: 5,
-         paddingBottom: 4,
-         paddingLeft: 20,
-         paddingRight: 18,
-         borderRadius: 50,
-         backgroundColor: "rgba(4,134,135,0.08)",
-         borderWidth: 2,
-         borderStyle: "solid",
-         borderColor: "rgba(9, 66, 139, 1)",
-         width: 111,
-         height: 37,
-       },
-       Txt3710: {
-         fontSize: 16,
-          // fontFamily: "Jost, sans-serif",
-         fontWeight: "600",
-         color: "rgba(9, 66, 139, 1)",
-       },
+    paddingTop: 5,
+    paddingBottom: 4,
+    paddingLeft: 18,
+    paddingRight: 21,
+    marginRight: 19,
+    borderRadius: 50,
+    backgroundColor: "rgba(9, 66, 139, 1)",
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderColor: "rgba(9, 66, 139, 1)",
+    width: 111,
+    height: 37,
+  },
+  Txt122: {
+    fontSize: 16,
+    // fontFamily: "Jost, sans-serif",
+    fontWeight: "600",
+    color: "rgba(255, 255, 255, 1)",
+  },
+
+  Group221: {
+    paddingTop: 5,
+    paddingBottom: 4,
+    paddingLeft: 18,
+    paddingRight: 17,
+    marginRight: 19,
+    borderRadius: 50,
+    backgroundColor: "rgba(4,134,135,0.08)",
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderColor: "rgba(9, 66, 139, 1)",
+    width: 111,
+    height: 37,
+  },
+
+  Group222: {
+    paddingTop: 5,
+    paddingBottom: 4,
+    paddingLeft: 20,
+    paddingRight: 18,
+    borderRadius: 50,
+    backgroundColor: "rgba(4,134,135,0.08)",
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderColor: "rgba(9, 66, 139, 1)",
+    width: 111,
+    height: 37,
+  },
+  Txt3710: {
+    fontSize: 16,
+    // fontFamily: "Jost, sans-serif",
+    fontWeight: "600",
+    color: "rgba(9, 66, 139, 1)",
+  },
 
   Frame2371: {
     display: "flex",
@@ -418,7 +442,6 @@ const styles = StyleSheet.create({
   },
 
   KisspngCarDoorHotelLyonExtensibleTableTopView5b4dd88fb6ecf21: {
-
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 5,
