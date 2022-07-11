@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import { StyleSheet, Image, Text, View, ImageBackground } from "react-native";
 import { useSelector } from "react-redux";
+import { doc, setDoc, getDocs, collection } from "firebase/firestore";
+import { child, push, ref } from "firebase/database";
+import { db, database } from "../../firebase.config";
 
-const BookingReview = () => {
+const BookingReview = ({ navigation }) => {
   let data = useSelector((state) => state.bookplace.value);
   const [globalState, setglobalState] = useState(data);
   let TotalPrice = globalState.Price * globalState.Duration;
   let totalcoins = TotalPrice * 100;
+  function postBookings() {
+    const newKey = push(child(ref(database), "bookings")).key;
+    setDoc(doc(db, "bookings", `${newKey}`), globalState);
+    navigation.navigate("ticket");
+  }
   return (
     <View style={styles.Group97}>
       <Text style={styles.Txt321}>Booking review </Text>
-      {console.log(globalState)}
+      {console.log(globalState, "in last")}
       <View style={styles.Group545}>
         <View style={styles.Group991}>
           <Text style={styles.Txt089}>Parking Area</Text>
@@ -57,7 +65,9 @@ const BookingReview = () => {
       />
 
       <View style={styles.Frame224}>
-        <Text style={styles.Txt351}>Continue</Text>
+        <Text style={styles.Txt351} onPress={postBookings}>
+          Continue
+        </Text>
       </View>
     </View>
   );
