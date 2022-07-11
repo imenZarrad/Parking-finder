@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../firebase.config";
+import { ParkingNameAndAdress } from "../redux/Features/BookPlace";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
 import {
   StyleSheet,
   Image,
@@ -21,10 +25,10 @@ export default function Login() {
     email: "",
     password: "",
   });
-
   const signIn = () => {
     signInWithEmailAndPassword(auth, obj.email, obj.password)
       .then((userCredential) => {
+        // console.log(auth)
         // const user = userCredential.user;
         navigation.navigate("Map");
       })
@@ -87,7 +91,7 @@ export default function Login() {
                 />
                 <TextInput
                   style={styles.Txt448}
-                  placeholder='Email'
+                  placeholder="Email"
                   onChangeText={(text) => handleChange(text, "email")}
                 />
               </View>
@@ -100,7 +104,7 @@ export default function Login() {
                 />
                 <TextInput
                   style={styles.Txt1077}
-                  placeholder='Password'
+                  placeholder="Password"
                   onChangeText={(text) => handleChange(text, "password")}
                 />
               </View>
@@ -213,7 +217,6 @@ const styles = StyleSheet.create({
     //  marginRight: 24,
     marginLeft: "10%",
     marginRight: "7%",
-
   },
   Txt448: {
     fontSize: 15,
@@ -226,7 +229,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     //  backgroundColor:'yellow'
-
   },
 
   Group152: {

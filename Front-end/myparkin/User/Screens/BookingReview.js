@@ -44,7 +44,6 @@ const BookingReview = () => {
       <View style={styles.horizontalLine}></View>
       <Text style={styles.enpp}> Parki Points</Text>
       <Text style={styles.amountpp}> {totalcoins}</Text>
-
       <Image
         source={{ uri: "https://img.icons8.com/ultraviolet/344/ruble.png" }}
         style={{
