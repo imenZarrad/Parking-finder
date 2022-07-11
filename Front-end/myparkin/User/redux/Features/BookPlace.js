@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 export const BookplaceSlice = createSlice({
   name: "bookplace",
   initialState: {
@@ -11,6 +10,8 @@ export const BookplaceSlice = createSlice({
       ParkingSpot: "",
       Date: "",
       Duration: 0,
+      User_id: "",
+      ParkiCoins: 1000,
     },
   },
   reducers: {
