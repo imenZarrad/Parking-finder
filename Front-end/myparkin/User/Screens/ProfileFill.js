@@ -16,20 +16,19 @@ import {
 import Lottie from "lottie-react-native";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
-
+import { database } from "../../firebase.config";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase.config";
 import { child, ref, set } from "firebase/database";
 
 import { TouchableRipple } from "react-native-paper";
 
-
 export default function ProfileFill() {
   const [obj, setObj] = useState({
     fullName: "",
     userName: "",
     phoneNumber: "",
-    birthdate: "",
+    CIN: "",
   });
   const [userId, setUserId] = useState("");
   onAuthStateChanged(auth, (user) => {
@@ -70,11 +69,17 @@ export default function ProfileFill() {
       });
   };
   const fillProfile = () => {
-    if (obj.fullName === "" || obj.userName === "" || obj.phoneNumber === "") {
+    if (
+      obj.fullName === "" ||
+      obj.userName === "" ||
+      obj.phoneNumber === "" ||
+      obj.CIN === ""
+    ) {
       Alert.alert("Must Fill All The Fields ");
     } else {
       set(ref(database, "users/" + userId), obj);
     }
+    navigation.navigate("SuccessfullyCreated");
   };
   function handleChange(text, eventName) {
     setObj((prev) => {
@@ -126,66 +131,39 @@ export default function ProfileFill() {
             <SafeAreaView style={styles.Frame166}>
               <View style={styles.Group159}>
                 <TextInput
-                  maxLength={10}
                   style={styles.Txt448}
-
                   placeholder="FullName"
                   onChangeText={(text) => handleChange(text, "fullName")}
-
-
-
                 />
               </View>
               <View style={styles.Group159}>
                 <TextInput
-                  maxLength={7}
                   style={styles.Txt448}
-
                   placeholder="Username"
                   onChangeText={(text) => handleChange(text, "userName")}
-
- 
-
                 />
               </View>
               <TouchableOpacity
                 style={styles.Group160}
                 onPress={showDatepicker}
               >
-                <Text style={styles.Txt448}>Birthdate: {String(date)}</Text>
-                <Image
-                  style={styles.Frame3}
-                  source={{
-                    uri: "https://firebasestorage.googleapis.com/v0/b/unify-bc2ad.appspot.com/o/hs7mujhdsdi-322%3A229?alt=media&token=b6cce5c3-d97e-4930-b501-8119c53dfd93",
-                  }}
+                <TextInput
+                  style={styles.Txt448}
+                  placeholder="CIN"
+                  onChangeText={(text) => handleChange(text, "CIN")}
                 />
+                <Image style={styles.Frame3} />
               </TouchableOpacity>
 
-             
-
               <View style={styles.Group159}>
                 <TextInput
+                  keyboardType="numeric"
                   style={styles.Txt448}
-                  placeholder='Email'
-                  onChangeText={validate}
-                />
-              </View>
-
-              <View style={styles.Group159}>
-                <TextInput
-                  keyboardType='numeric'
-                  style={styles.Txt448}
-
                   placeholder="Phone Number"
                   onChangeText={(text) => handleChange(text, "phoneNumber")}
-
                 />
-                
               </View>
-              <TouchableRipple
-                style={styles.Frame165}
-                onPress={() => navigation.navigate("SuccessfullyCreated")}
-              >
+              <TouchableRipple style={styles.Frame165} onPress={fillProfile}>
                 <Text style={styles.Txt211}>Continue</Text>
               </TouchableRipple>
             </SafeAreaView>
