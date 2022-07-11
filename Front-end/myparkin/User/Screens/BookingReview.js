@@ -26,7 +26,7 @@ const BookingReview = () => {
         </View>
         <View style={styles.Group991}>
           <Text style={styles.Txt496}>Parking Spot</Text>
-          <Text style={styles.Txt153}>1st Floor (A05)</Text>
+          <Text style={styles.Txt153}>{globalState.ParkingSpot}</Text>
         </View>
         <View style={styles.Group991}>
           <Text style={styles.Txt956}>Date</Text>

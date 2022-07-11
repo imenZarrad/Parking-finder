@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ProfileFill from "./Screens/ProfileFill.js";
 import MarkerDetail from "./Screens/MarkerDetail";
 import SearchFilter from "./Screens/SearchFilter";
-import HestoryParking from "./Screens/hertoryParking.js";
+import HistoryParking from "./Screens/hirtoryParking.js";
 
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
@@ -32,9 +32,7 @@ const StackNav = () => {
     <Provider store={store}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Map" component={Map} />
-
         <Stack.Screen name="MyBookMark" component={MyBookMark} />
-
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="SelectVec" component={SelectVec} />
         <Stack.Screen
@@ -42,7 +40,7 @@ const StackNav = () => {
           component={FillCarInformation}
         />
 
-        <Stack.Screen name="HestoryParking" component={HestoryParking} />
+        <Stack.Screen name="HistoryParking" component={HistoryParking} />
         <Stack.Screen name="Parkingspot" component={Parkingspot} />
 
         <Stack.Screen name="ProfileFill" component={ProfileFill} />
