@@ -386,7 +386,6 @@ const styles = StyleSheet.create({
     position: "relative",
     // backgroundColor: "orange",
     elevation: 2,
-
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
     marginHorizontal: 10,
@@ -394,11 +393,11 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOpacity: 0.3,
     shadowOffset: { x: 2, y: -2 },
-
     left: -10,
     height: "37%",
     width: "100%",
     overflow: "hidden",
+    backgroundColor:'rgba(4,134,135,0.08)'
   },
   cardImage: {
     width: "100%",
@@ -411,6 +410,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     // marginTop: 5,
     fontWeight: "bold",
+    color:'#0260D1'
   },
   Group41010: {
     position: "absolute",

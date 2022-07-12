@@ -48,7 +48,7 @@ export default function ParkingDetail({ route, navigation }) {
             style={styles.Frame}
           />
         </TouchableRipple>
-        <Text style={styles.Txt3107}>Booking review</Text>
+        <Text style={styles.Txt3107}>Parking Detail</Text>
       </View>
         <View style={styles.imagecontainer}>
           <Image
@@ -118,44 +118,47 @@ const styles = StyleSheet.create({
   distance: {
     bottom: 50,
     left: 10,
-    width: "20%",
-    height: "20%",
+    width: "10%",
+    height: "15%",
     left:'-2%',
-    top:'-41%'
+    top:'-40%'
  
   },
 
   adress: {
-    width:'20%',
-    height:'20%',
+    width:'10%',
+    height:'15%',
     left: '-3%',
     top: '-9%',
   },
   phone: {
-    width:'20%',
-    height:'22%',
+    width:'10%',
+    height:'15%',
     top:'-1%',
     left:'-2%'
   },
   textmoney: {
     position: "relative",
     bottom: 30,
-    left: '24%',
-    top:'-38%',
+    left: '20%',
+    top:'-40%',
     fontWeight:'500'
 
   },
   details: {
     position: "relative",
-    top: "43%",
+    top: "48%",
     height: "40%",
     width: "100%",
   },
   distance1: {
     position: "absolute",
     bottom: 20,
-    left: '24%',
-    fontWeight:'500'
+    left: '20%',
+    fontWeight:'500',
+    fontSize: 15,
+    top:'64%'
+
   },
   imagecontainer: {
     position: "absolute",
@@ -168,6 +171,7 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     resizeMode: "cover",
+    top:'7%'
   },
   innercontainer: {
     width: "90%",
@@ -178,9 +182,9 @@ const styles = StyleSheet.create({
   },
   Txt1064: {
     position: "absolute",
-    top: '-3%',
-    left: '22%',
-    fontSize: 18,
+    top: '-6%',
+    left: '20%',
+    fontSize: 15,
     fontWeight: "500",
     color: "rgba(0,0,0,1)",
     width: "80%",
@@ -188,8 +192,8 @@ const styles = StyleSheet.create({
   },
   Txt999: {
     position: "relative",
-    top: '-19%',
-    left: '22%',
+    top: '-14%',
+    left: '20%',
     fontSize: 15,
     fontWeight: "600",
     color: "rgba(0,0,0,1)",
@@ -197,12 +201,12 @@ const styles = StyleSheet.create({
     height: "50%",
   },
   money: {
-    bottom: 50,
+    bottom: 20,
     left: 10,
-    width: "20%",
-    height: "20%",
+    width: "10%",
+    height: "15%",
     left:'-2%',
-    top:'-52%'
+    top:'-50%'
   },
   price: {
     position: "relative",
@@ -232,6 +236,6 @@ const styles = StyleSheet.create({
     width:'100%',
     fontWeight: "700",
     color: "white",
-    left:'355%'
+    left:'380%'
   },
 });
