@@ -58,7 +58,7 @@ const StackNav = () => {
         <Stack.Screen name="ParkingSpot_3" component={ParkingSpot_3} />
         <Stack.Screen name="BookingReview" component={BookingReview} />
         <Stack.Screen name="ticket" component={Ticket} />
-        <Stack.Screen name="ParkingTimer" component={ParkingTimer} />
+        <Stack.Screen name="ParkingTimer" component={ParkingTimer} /> 
         <Stack.Screen name="ExtendTime" component={ExtendParkingTimer} />
         <Stack.Screen name="EditProfile" component={EditProfile} />
         <Stack.Screen name="Login" component={Login} />
