@@ -357,7 +357,7 @@ const styles = StyleSheet.create({
     paddingLeft: 24,
     paddingRight: 24,
     borderRadius: 50,
-    backgroundColor: "#104685",
+    backgroundColor: "#106EE0",
     bottom: "0.2%",
     left: "60%",
   },
@@ -377,7 +377,7 @@ const styles = StyleSheet.create({
     paddingLeft: 24,
     paddingRight: 24,
     borderRadius: 50,
-    backgroundColor: "#104685",
+    backgroundColor: "#106EE0",
     bottom: "0.2%",
     left: "20%",
   },
@@ -397,7 +397,7 @@ const styles = StyleSheet.create({
     height: "37%",
     width: "100%",
     overflow: "hidden",
-    backgroundColor:'rgba(4,134,135,0.08)'
+    backgroundColor:'#EDFAFA'
   },
   cardImage: {
     width: "100%",
