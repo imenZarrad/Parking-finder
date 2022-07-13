@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     paddingLeft: -100,
     paddingRight: 100,
     borderRadius: 50,
-    backgroundColor: "rgba(9, 66, 139, 1)",
+    backgroundColor: "#106EE0",
     top:'-2%',
   },
   Txt191: {

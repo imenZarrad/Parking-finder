@@ -70,7 +70,7 @@ export default function ({ route, navigation }) {
               styles.KisspngToyotaLandCruiserPradoCarToyota86SportUtilToyotaLandCruiserWhiteCar5a755aed9f9d351
             }
             source={{
-              uri: "https://cdn.xxl.thumbs.canstockphoto.com/a-big-delivery-truck-isolated-on-white-stock-images_csp2474535.jpg",
+              uri: "https://p.kindpng.com/picc/s/126-1269870_semi-truck-png-semi-truck-transparent-background-png.png",
             }}
           />
         </View>
@@ -95,7 +95,7 @@ export default function ({ route, navigation }) {
               styles.KisspngToyotaLandCruiserPradoCarToyota86SportUtilToyotaLandCruiserWhiteCar5a755aed9f9d351
             }
             source={{
-              uri: "https://catalogue.automobile.tn/big/2021/01/46499.jpg?t=1655500815",
+              uri: "https://i.pinimg.com/originals/49/5c/b9/495cb9bd6f5611300d890037cb51d729.png"
             }}
           />
         </View>
@@ -146,7 +146,7 @@ export default function ({ route, navigation }) {
               styles.KisspngToyotaLandCruiserPradoCarToyota86SportUtilToyotaLandCruiserWhiteCar5a755aed9f9d351
             }
             source={{
-              uri: "https://upload.wikimedia.org/wikipedia/commons/7/74/Megelli_Sports_motorcycle.jpg",
+              uri: "https://www.pngplay.com/wp-content/uploads/8/Yamaha-Sports-Bike-Background-PNG-Image.png",
             }}
           />
         </View>
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     bottom: 26,
     marginBottom: 22,
     borderRadius: 23,
-    backgroundColor: "rgba(4,134,135,0.08)",
+    backgroundColor: "#EDFAFA",
     borderWidth: 2,
     borderStyle: "solid",
     borderColor: "rgba(58, 107, 204, 1)",
@@ -295,7 +295,7 @@ const styles = StyleSheet.create({
     paddingLeft: -100,
     paddingRight: 100,
     borderRadius: 50,
-    backgroundColor: "rgba(9, 66, 139, 1)",
+    backgroundColor: "#106EE0",
     top:'-7%',
   },
   Txt191: {
