@@ -14,6 +14,7 @@ import MyParkings from "./Screens/MyParkings.js";
 
 import EditProfile from "./Screens/EditProfile.js";
 import SelectVec from "./Screens/SelectVec";
+
 // import test from "./Screens/test.js";
 
 const Stack = createNativeStackNavigator();
