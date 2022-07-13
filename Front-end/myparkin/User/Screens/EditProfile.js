@@ -31,27 +31,20 @@ export default function EditProfile() {
     setEmail(text);
   };
 
-  // console.log(email);
-  // console.log(auth);
-  // console.log(auth.currentUser);
-
   const handleUpdate = () => {
     updateProfile(auth.currentUser, {
       displayName: userName,
     })
       .then(() => {
-        // console.log("success");
+        console.log("success");
       })
       .catch((error) => {
-        alert("error profile");
-        // console.log("error");
-        // ...
+        console.log("error");
       });
-    console.log(email, "before");
 
     updateEmail(auth.currentUser, email)
       .then(() => {
-        console.log(email, "after");
+        console.log("Updated successfully!");
       })
       .catch((error) => {
         console.log(error);

@@ -23,29 +23,32 @@ export default function Login() {
     confirm: "",
   });
   function register() {
-    if(obj.password===obj.confirm){createUserWithEmailAndPassword(
-      auth,
+    if (obj.password === obj.confirm) {
+      createUserWithEmailAndPassword(
+        auth,
 
-      obj.email,
-      obj.password
-    )
-      .then((userCredential) => {
-        // Signed in
-        alert("signUp ok");
+        obj.email,
+        obj.password
+      )
+        .then((userCredential) => {
+          // Signed in
+          alert("signUp ok");
 
-        // userCredential.user.sendEmailVerification();
+          // userCredential.user.sendEmailVerification();
 
-        // setIsSignedIn;
-        // ...
-      })
-      .catch((error) => {
-        // setDisplayName;
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-        alert(error.message);
-      });}else{alert('Incorrect match password')}
-    
+          // setIsSignedIn;
+          // ...
+        })
+        .catch((error) => {
+          // setDisplayName;
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+          alert(error.message);
+        });
+    } else {
+      alert("Incorrect match password");
+    }
   }
   function handleChange(text, eventName) {
     setObj((prev) => {
@@ -89,7 +92,7 @@ export default function Login() {
                 />
                 <TextInput
                   style={styles.Txt448}
-                  placeholder='Email'
+                  placeholder="Email"
                   onChangeText={(text) => handleChange(text, "email")}
                 />
               </View>
@@ -102,7 +105,7 @@ export default function Login() {
                 />
                 <TextInput
                   style={styles.Txt1077}
-                  placeholder='Password'
+                  placeholder="Password"
                   onChangeText={(text) => handleChange(text, "password")}
                 />
               </View>
@@ -116,7 +119,7 @@ export default function Login() {
                 <TextInput
                   onChangeText={(text) => handleChange(text, "confirm")}
                   style={styles.Txt1077}
-                  placeholder='Confirm'
+                  placeholder="Confirm"
                 />
               </View>
             </View>
@@ -159,7 +162,6 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
- 
   Iphone13ProMax59: {
     display: "flex",
     flexDirection: "row",
@@ -416,5 +418,3 @@ const styles = StyleSheet.create({
     height: 25,
   },
 });
-
-

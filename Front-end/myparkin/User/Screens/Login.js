@@ -87,7 +87,7 @@ export default function Login() {
                 />
                 <TextInput
                   style={styles.Txt448}
-                  placeholder='Email'
+                  placeholder="Email"
                   onChangeText={(text) => handleChange(text, "email")}
                 />
               </View>
@@ -100,7 +100,7 @@ export default function Login() {
                 />
                 <TextInput
                   style={styles.Txt1077}
-                  placeholder='Password'
+                  placeholder="Password"
                   onChangeText={(text) => handleChange(text, "password")}
                 />
               </View>
@@ -113,6 +113,12 @@ export default function Login() {
                 </View>
                 <TouchableOpacity style={styles.Group151} onPress={signIn}>
                   <Text style={styles.Txt917}>Sign in</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.Group149}
+                  onPress={() => navigation.navigate("ForgetPassword")}
+                >
+                  <Text style={styles.Txt809}>Forget the password ?</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.Frame1587}>
@@ -213,7 +219,6 @@ const styles = StyleSheet.create({
     //  marginRight: 24,
     marginLeft: "10%",
     marginRight: "7%",
-
   },
   Txt448: {
     fontSize: 15,
@@ -226,7 +231,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     //  backgroundColor:'yellow'
-
   },
 
   Group152: {
