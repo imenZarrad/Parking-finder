@@ -122,7 +122,7 @@ const FillCarInformation = ({ navigation }) => {
             style={styles.Frame}
           />
         </TouchableRipple>
-        <Text style={styles.Txt3107}>Booking review</Text>
+        <Text style={styles.Txt3107}>Pick Your Time</Text>
       </View>
       <Image style={styles.date} source={{uri: 'https://img.icons8.com/stickers/452/calendar.png'}} />
       <Text style={styles.datetext}>{datee}</Text>
@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
     paddingLeft: -100,
     paddingRight: 100,
     borderRadius: 50,
-    backgroundColor: "rgba(9, 66, 139, 1)",
+    backgroundColor: "#106EE0",
     top:'137%',
     left:'-47%'
   },
