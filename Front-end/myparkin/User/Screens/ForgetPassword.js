@@ -35,7 +35,8 @@ export default function Iphone13ProMax16() {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
+
+        alert(error.message);
       });
   };
 
