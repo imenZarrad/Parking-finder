@@ -8,17 +8,22 @@ import SignUp from "./Screens/SignUp";
 import Login from "./Screens/Login.js";
 
 import ProfileFill from "./Screens/ProfileFill.js";
+import SuccessfullyCreated from "./Screens/SuccessfullyCreated";
 
 import Welcome from "./Screens/Welcome";
 import Map from "./Screens/map/Map";
+
 import ForgetPassword from "./Screens/ForgetPassword.js";
+
 
 const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Welcome" component={Welcome} />
+
+       <Stack.Screen name="Welcome" component={Welcome} />
+
 
       <Stack.Screen name="FirstView" component={FirstView} />
       <Stack.Screen name="SecondView" component={SecondView} />
@@ -27,7 +32,16 @@ const StackNavigation = () => {
       <Stack.Screen name="Login" component={Login} />
 
       <Stack.Screen name="SignUp" component={SignUp} />
+
       <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
+
+      <Stack.Screen name="ProfileFill" component={ProfileFill} />
+
+      <Stack.Screen
+        name="SuccessfullyCreated"
+        component={SuccessfullyCreated}
+      />
+
     </Stack.Navigator>
   );
 };

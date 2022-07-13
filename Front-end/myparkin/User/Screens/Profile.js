@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import {
   StyleSheet,
   Image,
@@ -13,7 +14,19 @@ import { auth } from "../../firebase.config";
 import { signOut } from "firebase/auth";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useNavigation } from "@react-navigation/native";
-export default function Profile() {
+import { getDatabase, ref, child, get } from "firebase/database";
+export default function Profile({ route }) {
+  const data = useSelector((state) => state.bookplace.value);
+  const [userObject, setUserObject] = useState({});
+  useEffect(() => {
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `users/${route.params.userId}`)).then((snapshot) => {
+      console.log(snapshot);
+      const user = snapshot.val();
+      setUserObject(user);
+    });
+  }, []);
+
   const navigation = useNavigation();
   const logOut = () => {
     signOut(auth)
@@ -27,10 +40,12 @@ export default function Profile() {
   };
   return (
     <View style={styles.Iphone13ProMax54}>
+      {/* {console.log(userObject, "aeaeaeae")} */}
       <View style={styles.Group282}>
+        {/* {console.log(route)} */}
         <ScrollView>
           <View style={styles.Group448}>
-            <Text style={styles.Txt853}>anabiajatoi448@gmail.com</Text>
+            <Text style={styles.Txt853}>{route.params.email}</Text>
             <View style={styles.Group698}>
               <View style={styles.Group588}>
                 <Image
@@ -43,7 +58,11 @@ export default function Profile() {
                 {/* <View style={styles.Group96}></View> */}
               </View>
               <TouchableOpacity
-                onPress={() => navigation.navigate("EditProfile")}
+                // onPress={() =>
+                //   navigation.navigate("EditProfile", {
+                //     fullName: userObject.fullName,
+                //   })
+                // }
                 style={styles.Group136}
               >
                 <Image
@@ -119,12 +138,12 @@ export default function Profile() {
                 <Image
                   style={styles.Frame12}
                   source={{
-                    uri: "https://th.bing.com/th/id/R.7d059adae3a4c3c45db309c68dc84278?rik=AiayBLra27bEzA&pid=ImgRaw&r=0",
+                    uri: "https://cdn5.vectorstock.com/i/thumb-large/54/69/male-user-icon-vector-8865469.jpg",
                   }}
                 />
               </View>
             </View>
-            <Text style={styles.Txt458}>Anabia Rani</Text>
+            {/* <Text style={styles.Txt458}>{userObject.fullName}</Text> */}
 
             <BouncyCheckbox
               style={styles.Vector5}

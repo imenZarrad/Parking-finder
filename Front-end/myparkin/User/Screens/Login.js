@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../firebase.config";
+import { ParkingNameAndAdress } from "../redux/Features/BookPlace";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
 import {
   StyleSheet,
   Image,
@@ -21,10 +25,10 @@ export default function Login() {
     email: "",
     password: "",
   });
-
   const signIn = () => {
     signInWithEmailAndPassword(auth, obj.email, obj.password)
       .then((userCredential) => {
+        console.log(auth);
         // const user = userCredential.user;
         navigation.navigate("Map");
       })

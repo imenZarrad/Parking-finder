@@ -15,7 +15,7 @@ import Lottie from "lottie-react-native";
 import { auth } from "../../firebase.config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export default function Login() {
+export default function SignUp() {
   const navigation = useNavigation();
   const [obj, setObj] = useState({
     email: "",
@@ -31,6 +31,7 @@ export default function Login() {
         obj.password
       )
         .then((userCredential) => {
+
           // Signed in
           alert("signUp ok");
 
@@ -44,6 +45,7 @@ export default function Login() {
           const errorCode = error.code;
           const errorMessage = error.message;
           // ..
+
           alert(error.message);
         });
     } else {
@@ -144,11 +146,7 @@ export default function Login() {
                   }}
                 />
 
-                <TouchableOpacity
-                  style={styles.Group149}
-                  // onPress={() => navigation.navigate("Login")}
-                  onPress={register}
-                >
+                <TouchableOpacity style={styles.Group149} onPress={register}>
                   <Text style={styles.Txt697}>Already have an account?</Text>
                   <Text style={styles.Txt644}>Sign in</Text>
                 </TouchableOpacity>

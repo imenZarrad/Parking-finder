@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase.config";
 export const Footer = () => {
   const navigation = useNavigation();
+  const [userId, setUserId] = useState("");
+  const [email, setEmail] = useState("");
+  onAuthStateChanged(auth, (user) => {
+    if (user != null) {
+      const uid = user.uid;
+      setUserId(uid);
+      setEmail(user.email);
+    }
+  });
   return (
     <View style={styles.Group41010}>
       <View style={styles.Group1301}>
@@ -32,7 +43,11 @@ export const Footer = () => {
               }}
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("Profile", { userId: userId, email: email })
+            }
+          >
             <Image
               style={styles.Vector1}
               source={{
@@ -61,8 +76,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
 
-    bottom:4.2,
- 
+    bottom: 4.2,
   },
   Group1301: {
     display: "flex",

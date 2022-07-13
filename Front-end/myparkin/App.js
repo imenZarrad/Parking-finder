@@ -1,3 +1,5 @@
+import ignoreWarnings from "./ignoreWarnings.js";
+
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import StackNavigation from "./User/StackNavigator";
@@ -7,6 +9,8 @@ import { useState } from "react";
 import { auth } from "./firebase.config";
 import StackNav from "./User/StacKNav2";
 import { Footer } from "./User/Screens/Footer";
+import { Provider } from "react-redux";
+import { store } from "./User/redux/store";
 export default function App() {
   const [isLogedIn, setIsLogedIn] = useState(false);
   const [check, setcheck] = useState("");

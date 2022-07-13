@@ -1,9 +1,10 @@
 import * as React from "react";
 import MapView from "react-native-maps";
 import { Marker, Callout, Circle } from "react-native-maps";
-// import { getDistance, getPreciseDistance } from "geolib";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-
+import { getDistance, getPreciseDistance } from "geolib";
+import Carousel from "react-native-snap-carousel";
+import MyCarousel from "./parkingDetailOnPress";
+import { createRef } from "react";
 import {
   StyleSheet,
   Text,
@@ -13,6 +14,7 @@ import {
   Animated,
   Image,
   Button,
+  Pressable,
   TouchableOpacity,
 } from "react-native";
 import { Footer } from "../Footer";
@@ -20,12 +22,15 @@ import { Footer } from "../Footer";
 import { useState, useEffect } from "react";
 import MarkersInformation from "./MarkersInformation";
 import * as Location from "expo-location";
+import { TouchableRipple } from "react-native-paper";
 
 function Map({ navigation }) {
-  const [latitude, setlatitude] = useState(null);
+  let mapRef = createRef();
+
+  const [latitude, setlatitude] = useState(0);
   const [longitude, setlongitude] = useState(null);
   const [distance, setdistance] = useState(0);
-
+  const [nearestOne, setnearestOne] = useState(null);
   const [parkingname, setparkingname] = useState("");
   const [parkingImage, setparkingImage] = useState("");
   const [price, setprice] = useState("");
@@ -33,9 +38,22 @@ function Map({ navigation }) {
   const [number, setnumber] = useState("");
   const [oneparking, setoneParking] = useState([]);
   const [showParking, setshowParking] = useState(false);
-  const [mapHieght, setmapHeight] = useState("88%");
+  const [showSlider, setshowSlider] = useState(true);
+  const [showButtons, setshowButtons] = useState(true);
+  const [mapHieght, setmapHeight] = useState("50%");
 
   const { width, height } = Dimensions.get("window");
+
+  const onCarouselIetmChange = (index, coords) => {
+    let location = coords[index];
+    mapRef.animateToRegion({
+      latitude: location.coordinate.latitude,
+      longitude: location.coordinate.longitude,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    });
+  };
+
   const ParkingToDisplay = (latitudee, longitudee) => {
     let oneParking = MarkersInformation.filter((parking) => {
       return parking.coordinate.latitude === latitudee;
@@ -53,15 +71,17 @@ function Map({ navigation }) {
     );
 
     setdistance(Distance);
-
-    console.log(distance, "aaaaaaaaaze");
-
     setshowParking(true);
-    setmapHeight("50%");
+    setshowSlider(false);
   };
+
   let cancel = () => {
     setshowParking(false);
-    setmapHeight("88%");
+    setshowSlider(true);
+  };
+  let showSliderr = () => {
+    setshowSlider(true);
+    setmapHeight("50%");
   };
 
   useEffect(() => {
@@ -82,6 +102,7 @@ function Map({ navigation }) {
   return (
     <View style={styles.container}>
       <MapView
+        ref={(map) => (mapRef = map)}
         style={{
           width: Dimensions.get("window").width,
           // height: Dimensions.get("window").height ,
@@ -113,6 +134,7 @@ function Map({ navigation }) {
             longitude: longitude || 10.17972,
           }}
           radius={1000}
+          lineDashPattern={[1]}
         />
         {MarkersInformation.map((element, index) => {
           return (
@@ -149,17 +171,13 @@ function Map({ navigation }) {
           <Text style={styles.cardDescription}>{adress}</Text>
 
           <View style={styles.btncontainter}>
-            <Button
-              title="Cancel"
-              style={styles.button}
-              onPress={() => {
+          <TouchableRipple style={styles.button2} onPress={() => {
                 cancel();
-              }}
-            ></Button>
-            <Button
-              title="Details"
-              style={styles.button}
-              onPress={() =>
+              }}>
+            <Text
+              style={styles.TxtB}>Cancel</Text>
+            </TouchableRipple>
+            <TouchableRipple style={styles.button} onPress={() =>
                 navigation.navigate("ParkingDetail", {
                   parkingname: parkingname,
                   parkingImage: parkingImage,
@@ -168,11 +186,25 @@ function Map({ navigation }) {
                   number: number,
                   distance: distance,
                 })
-              }
-            ></Button>
+              }>
+            <Text style={styles.TxtB}>Details</Text>
+            </TouchableRipple>
           </View>
         </View>
       )}
+      {showSlider && (
+        <MyCarousel onCarouselIetmChange={onCarouselIetmChange}></MyCarousel>
+      )}
+      {/* <View style={styles.ShowMenu}>
+        <Button title="show nearest parking " style={styles.btn}></Button>
+        <Button
+          title="show availible parkings"
+          style={styles.btn}
+          onPress={() => {
+            showSliderr();
+          }}
+        ></Button>
+      </View> */}
       <Footer />
     </View>
   );
@@ -183,6 +215,20 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 20,
     height: "100%",
+  },
+  btn: {
+    width: "100%",
+  },
+
+  ShowMenu: {
+    position: "relative",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    backgroundColor: "blue",
+    height: "5%",
+    bottom: 50,
+    width: "100%",
   },
   map: {
     width: Dimensions.get("window").width,
@@ -302,18 +348,44 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
   button: {
-    bottom: 0,
-    height: "20%",
-    borderRadius: 30,
+    // bottom: 0,
+    // height: "20%",
+    // borderRadius: 20,
+    position: "absolute",
+    paddingTop: 10,
+    paddingBottom: 15,
+    paddingLeft: 24,
+    paddingRight: 24,
+    borderRadius: 50,
+    backgroundColor: "#106EE0",
+    bottom: "0.2%",
+    left: "60%",
+  },
 
-   
+  TxtB:{
+    color:'white',
+    fontWeight:'700',
+  },
+
+  button2: {
+    // bottom: 0,
+    // height: "20%",
+    // borderRadius: 20,
+    position: "absolute",
+    paddingTop: 10,
+    paddingBottom: 15,
+    paddingLeft: 24,
+    paddingRight: 24,
+    borderRadius: 50,
+    backgroundColor: "#106EE0",
+    bottom: "0.2%",
+    left: "20%",
   },
 
   card: {
     position: "relative",
     // backgroundColor: "orange",
     elevation: 2,
-
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
     marginHorizontal: 10,
@@ -321,11 +393,11 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOpacity: 0.3,
     shadowOffset: { x: 2, y: -2 },
-
     left: -10,
     height: "37%",
     width: "100%",
     overflow: "hidden",
+    backgroundColor:'#EDFAFA'
   },
   cardImage: {
     width: "100%",
@@ -334,9 +406,11 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   cardtitle: {
-    fontSize: 12,
+    margin:4,
+    fontSize: 20,
     // marginTop: 5,
     fontWeight: "bold",
+    color:'#0260D1'
   },
   Group41010: {
     position: "absolute",
@@ -348,7 +422,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
   },
   cardDescription: {
-    fontSize: 12,
+    marginLeft:10,
+    fontSize: 15,
     color: "#444",
   },
 });
